@@ -47,212 +47,147 @@ export default function HomePage() {
   return (
     <>
       {/* ==================== HERO SECTION ==================== */}
-      <section className="relative min-h-[90vh] lg:min-h-screen flex items-center overflow-hidden pt-32 lg:pt-28 pb-16 lg:pb-20 bg-white">
-        {/* Decorative Background Elements */}
-        <div className="absolute top-0 right-0 w-full lg:w-1/2 h-full bg-slate-50/50 -z-10 skew-x-[-12deg] translate-x-1/4 hidden lg:block" />
-        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-sky-50 rounded-full blur-[120px] -z-10 opacity-60" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-50 rounded-full blur-[100px] -z-10 opacity-50" />
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-[#1A0A00]">
+        {/* Left Background Grain Texture */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-20 bg-grid lg:w-1/2" />
+        <div className="absolute inset-0 z-0 pointer-events-none noise-bg lg:w-1/2" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Column: Text & Search (Order 1 on all sizes for better UX) */}
-            <div className="text-center lg:text-left order-1">
+        <div className="relative w-full h-full flex flex-col lg:flex-row items-stretch">
+          {/* Left Column: Content */}
+          <div className="flex-1 flex items-center px-4 sm:px-6 lg:px-16 xl:px-24 py-32 lg:py-20 z-10">
+            <div className="max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
               {/* Badge */}
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-4 py-2 mb-6 lg:mb-8 rounded-full bg-sky-50 border border-sky-100 text-sky-700 text-[10px] lg:text-xs font-black uppercase tracking-widest shadow-sm"
-              >
-                <span className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" />
-                Solusi Outsourcing No. 1 di Sulawesi
-              </motion.div>
-
-              {/* Heading */}
-              <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[1.1] mb-6 lg:mb-8 text-slate-900"
+                className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-[#DC2626]/20 border border-[#DC2626]/30 text-[#F97316] text-xs font-black uppercase tracking-widest shadow-lg shadow-red-950/20"
               >
-                Partner Kerja <br className="hidden lg:block" />
-                <span className="text-gradient">Profesional</span> Anda
+                <div className="w-1.5 h-1.5 rounded-full bg-[#DC2626] animate-pulse" />
+                Platform ManPower #1 di Indonesia
+              </motion.div>
+
+              {/* Headline */}
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[1.05] mb-8 text-white"
+              >
+                Temukan Tenaga Kerja <br className="hidden sm:block" />
+                <span className="text-gradient">Profesional</span> & Terpercaya
               </motion.h1>
 
-              {/* Subtitle */}
+              {/* Sub-headline */}
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
-                className="text-base lg:text-xl text-slate-600 max-w-2xl mx-auto lg:mx-0 mb-8 lg:mb-12 leading-relaxed font-medium"
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-lg sm:text-xl text-slate-400 mb-12 leading-relaxed font-medium"
               >
-                Temukan ribuan tenaga kerja berpengalaman yang siap mendukung
-                kemajuan bisnis Anda. Cepat, Terverifikasi, dan Berasuransi.
+                Solusi outsourcing tercepat untuk kebutuhan bisnis Anda.{" "}
+                <br className="hidden lg:block" />
+                Siap kerja, terverifikasi, dan berpengalaman di bidangnya.
               </motion.p>
 
-              {/* Search Bar */}
+              {/* CTAs */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.4 }}
-                className="relative max-w-2xl mx-auto lg:mx-0 mb-8 lg:mb-10"
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-16"
               >
-                <div className="flex flex-col sm:flex-row items-center bg-white border border-slate-200 rounded-[2rem] p-1.5 shadow-xl shadow-slate-200/50 focus-within:border-sky-400 focus-within:ring-4 focus-within:ring-sky-50 transition-all gap-2">
-                  <div className="flex items-center flex-1 w-full gap-3 px-5">
-                    <Search className="w-5 h-5 text-slate-400" />
-                    <input
-                      type="text"
-                      placeholder="Cari keahlian (Satpam, Driver...)"
-                      className="flex-1 bg-transparent py-4 text-sm font-bold text-slate-900 placeholder-slate-400 focus:outline-none"
-                    />
-                  </div>
-                  <Link
-                    href="/workers"
-                    className="w-full sm:w-auto px-8 py-4 text-sm font-black text-white bg-sky-600 rounded-2xl hover:bg-sky-500 transition-all shadow-lg shadow-sky-100 active:scale-95"
-                  >
-                    Cari Sekarang
-                  </Link>
-                </div>
+                <Link
+                  href="/workers"
+                  className="w-full sm:w-auto px-10 py-5 bg-[#DC2626] text-white font-black rounded-2xl hover:bg-[#B91C1C] transition-all shadow-xl shadow-red-900/20 flex items-center justify-center gap-3 active:scale-95 group"
+                >
+                  Cari Tenaga Kerja
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link
+                  href="/register"
+                  className="w-full sm:w-auto px-10 py-5 bg-transparent border-2 border-white/20 text-white font-black rounded-2xl hover:bg-white/10 transition-all flex items-center justify-center active:scale-95"
+                >
+                  Daftar Sebagai Pekerja
+                </Link>
               </motion.div>
 
-              {/* Popular Tags */}
+              {/* Stats Row */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-                className="flex flex-wrap items-center justify-center lg:justify-start gap-3"
+                transition={{ duration: 1, delay: 0.5 }}
+                className="flex flex-wrap items-center justify-center lg:justify-start gap-6 lg:gap-10 pt-10 border-t border-white/10"
               >
-                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mr-1">
-                  Populer:
-                </span>
-                {["Security", "Cleaning", "Driver"].map((tag) => (
-                  <Link
-                    key={tag}
-                    href={`/workers?search=${tag}`}
-                    className="px-4 py-1.5 rounded-full bg-slate-50 text-slate-500 text-[10px] font-bold hover:bg-sky-50 hover:text-sky-600 transition-colors border border-slate-100"
-                  >
-                    {tag}
-                  </Link>
-                ))}
-              </motion.div>
-            </div>
-
-            {/* Column: Hero Image Card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="relative order-2 hidden sm:block"
-            >
-              <div className="relative z-10 w-full aspect-square lg:aspect-[4/5] rounded-[3.5rem] overflow-hidden shadow-2xl shadow-sky-100 border-4 lg:border-8 border-white group">
-                <Image
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop"
-                  alt="ManPower Team"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-1000"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-60" />
-
-                {/* Floating Info Card */}
-                <motion.div
-                  initial={{ x: 20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 1.2 }}
-                  className="absolute bottom-6 lg:bottom-10 left-6 lg:left-10 right-6 lg:right-10 p-5 lg:p-7 bg-white/95 backdrop-blur-md rounded-3xl border border-white/20 shadow-2xl"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-emerald-500 flex items-center justify-center text-white shadow-lg shadow-emerald-100">
-                      <CheckCircle2 className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <div className="text-sm lg:text-base font-black text-slate-900">
-                        Terpercaya & Berizin
+                {[
+                  { value: "500+", label: "Pekerja" },
+                  { value: "50+", label: "Kategori" },
+                  { value: "100+", label: "Perusahaan" },
+                ].map((stat, i) => (
+                  <div key={stat.label} className="flex items-center gap-4">
+                    {i > 0 && (
+                      <div className="hidden sm:block w-px h-8 bg-white/10" />
+                    )}
+                    <div className="text-left">
+                      <div className="text-2xl font-black text-white">
+                        {stat.value}
                       </div>
-                      <div className="text-[10px] lg:text-xs text-slate-500 font-bold uppercase tracking-wider">
-                        Izin Resmi Ketenagakerjaan RI
+                      <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                        {stat.label}
                       </div>
                     </div>
                   </div>
-                </motion.div>
-              </div>
-
-              {/* Decorative elements */}
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-sky-100 rounded-full -z-10 blur-3xl opacity-50" />
-              <div className="absolute -bottom-10 -left-10 w-56 h-56 bg-blue-100 rounded-full -z-10 blur-[80px] opacity-40" />
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Stats Moved Below Hero Content locally */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-6"
-          >
-            {[
-              {
-                label: "Tenaga Kerja",
-                value: `${siteStats.totalWorkers}+`,
-                icon: Users,
-              },
-              {
-                label: "Penempatan",
-                value: `${siteStats.totalPlacements}+`,
-                icon: Building2,
-              },
-              {
-                label: "Wilayah",
-                value: siteStats.totalLocations,
-                icon: MapPin,
-              },
-              { label: "Kepuasan", value: "98%", icon: Award },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                variants={itemVariants}
-                className="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
-              >
-                <stat.icon className="w-6 h-6 text-sky-600 mx-auto mb-3" />
-                <div className="text-3xl font-black text-slate-900 uppercase">
-                  {stat.value}
-                </div>
-                <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">
-                  {stat.label}
-                </div>
+                ))}
               </motion.div>
-            ))}
+            </div>
+          </div>
+
+          {/* Right Column: Image Background with Overlay */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="flex-1 relative min-h-[50vh] lg:min-h-full"
+          >
+            <Image
+              src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=2070&auto=format&fit=crop"
+              alt="Professional Worker"
+              fill
+              className="object-cover"
+              priority
+            />
+            {/* Overlay Gradient to blend with Left Column */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1A0A00] via-[#1A0A00]/40 to-transparent hidden lg:block" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1A0A00] via-transparent to-transparent lg:hidden" />
           </motion.div>
         </div>
       </section>
 
       {/* ==================== KATEGORI SECTION ==================== */}
-      <section className="py-32 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+      <section className="py-32 bg-[#FFF7F5] relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-5 bg-grid pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8 text-center md:text-left">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-xs font-black text-sky-600 uppercase tracking-[0.2em] mb-3">
+              <h2 className="text-xs font-black text-[#EA580C] uppercase tracking-[0.3em] mb-4">
                 Layanan Spesialis
               </h2>
-              <h3 className="text-4xl sm:text-5xl font-black text-slate-900 leading-tight">
-                Pilih Kategori <br /> Sesuai Bisnis Anda
+              <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#1C0A00] leading-tight tracking-tighter">
+                Pilih Kategori <br className="hidden sm:block" /> Sesuai
+                Kebutuhan
               </h3>
             </motion.div>
             <motion.p
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="text-slate-500 max-w-md font-medium"
+              className="text-[#78350F]/70 max-w-md font-bold text-lg leading-relaxed"
             >
-              Setiap kategori dikelola oleh tenaga kerja bersertifikat yang
-              telah melewati proses seleksi internal secara ketat.
+              Tenaga kerja kami telah melewati verifikasi standar tinggi untuk
+              menjamin kualitas terbaik bagi operasional bisnis Anda.
             </motion.p>
           </div>
 
@@ -261,7 +196,7 @@ export default function HomePage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
           >
             {categories.map((category) => (
               <motion.div key={category.id} variants={itemVariants}>
@@ -273,28 +208,27 @@ export default function HomePage() {
       </section>
 
       {/* ==================== PEKERJA UNGGULAN ==================== */}
-      <section className="py-32 bg-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-50 rounded-full blur-[100px] -z-10 opacity-50" />
-
+      <section className="py-32 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-16 gap-6">
+          <div className="flex flex-col sm:flex-row items-center sm:items-end justify-between mb-20 gap-8 text-center sm:text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl sm:text-5xl font-black text-slate-900 mb-4">
-                Pekerja Unggulan
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#1C0A00] tracking-tighter mb-4">
+                Tenaga Kerja <span className="text-gradient">Terbaik</span>
               </h2>
-              <p className="text-slate-500 font-medium">
-                Rating tertinggi dan paling banyak disukai klien
+              <p className="text-[#78350F]/60 font-bold text-lg">
+                Rating tertinggi dan profil paling banyak dipilih oleh mitra
+                perusahaan.
               </p>
             </motion.div>
             <Link
               href="/workers"
-              className="hidden sm:flex items-center gap-2 text-sm font-bold text-sky-600 hover:text-sky-700 transition-colors group"
+              className="group flex items-center gap-3 px-8 py-4 rounded-2xl bg-[#FFF7F5] border border-[#FED7AA] text-[#EA580C] font-black text-sm hover:bg-[#EA580C] hover:text-white transition-all duration-300"
             >
-              Lihat Semua Tenaga Kerja
+              Lihat Semua
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -304,7 +238,7 @@ export default function HomePage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
           >
             {featuredWorkers.map((worker) => (
               <motion.div key={worker.id} variants={itemVariants}>
@@ -316,20 +250,25 @@ export default function HomePage() {
       </section>
 
       {/* ==================== TESTIMONIAL ==================== */}
-      <section className="py-32 bg-slate-900 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20 text-white">
-            <motion.h2
+      <section className="py-32 bg-[#1A0A00] relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-5 noise-bg pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-24">
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-4xl sm:text-5xl font-black mb-6"
             >
-              Kisah Sukses <span className="text-sky-400">Klien</span> Kami
-            </motion.h2>
+              <h2 className="text-xs font-black text-[#DC2626] uppercase tracking-[0.4em] mb-6">
+                Success Stories
+              </h2>
+              <h3 className="text-4xl sm:text-6xl font-black text-white tracking-tighter">
+                Kepercayaan <span className="text-gradient">Mitra</span> Kami
+              </h3>
+            </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {testimonials.map((t, i) => (
               <motion.div
                 key={t.id}
@@ -337,21 +276,21 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+                className="p-10 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:bg-white/[0.05] transition-all duration-500 group"
               >
-                <div className="flex gap-1 mb-6">
+                <div className="flex gap-1.5 mb-8">
                   {Array.from({ length: 5 }).map((_, st) => (
                     <Star
                       key={st}
-                      className={`w-4 h-4 ${st < t.rating ? "text-amber-400 fill-amber-400" : "text-slate-600"}`}
+                      className={`w-5 h-5 ${st < t.rating ? "text-[#F97316] fill-[#F97316]" : "text-white/10"}`}
                     />
                   ))}
                 </div>
-                <p className="text-slate-300 italic mb-10 leading-relaxed text-lg">
+                <p className="text-slate-300 italic mb-12 leading-relaxed text-xl font-medium">
                   &ldquo;{t.content}&rdquo;
                 </p>
-                <div className="flex items-center gap-4">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-sky-400/30">
+                <div className="flex items-center gap-5">
+                  <div className="relative w-14 h-14 rounded-2xl overflow-hidden border-2 border-white/10 group-hover:border-[#DC2626]/50 transition-colors">
                     <Image
                       src={t.avatar}
                       alt={t.name}
@@ -360,8 +299,10 @@ export default function HomePage() {
                     />
                   </div>
                   <div>
-                    <div className="font-bold text-white">{t.name}</div>
-                    <div className="text-xs font-bold text-sky-400 uppercase tracking-widest">
+                    <div className="font-black text-white text-lg">
+                      {t.name}
+                    </div>
+                    <div className="text-xs font-black text-[#DC2626] uppercase tracking-widest mt-0.5">
                       {t.company}
                     </div>
                   </div>
@@ -372,38 +313,44 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ==================== CTA SECTION ==================== */}
-      <section className="py-40 bg-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      {/* ==================== FINAL CTA SECTION ==================== */}
+      <section className="py-40 bg-white relative">
+        <div className="max-w-5xl mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="p-16 rounded-[3rem] bg-gradient-to-br from-sky-600 to-blue-700 text-white relative overflow-hidden"
+            className="p-16 sm:p-24 rounded-[4rem] bg-gradient-to-br from-[#1A0A00] to-[#2D1200] text-white relative overflow-hidden shadow-2xl shadow-red-900/10"
           >
-            <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none bg-grid" />
+            <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none noise-bg" />
+            <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[60%] bg-[#DC2626]/20 rounded-full blur-[120px]" />
+            <div className="absolute bottom-[-20%] left-[-10%] w-[50%] h-[50%] bg-[#F97316]/10 rounded-full blur-[100px]" />
 
-            <h2 className="text-4xl sm:text-6xl font-black mb-8 relative z-10">
-              Siap Mengembangkan <br /> Bisnis Anda?
-            </h2>
-            <p className="text-xl text-sky-50 mb-12 relative z-10 max-w-xl mx-auto font-medium">
-              Konsultasikan kebutuhan tenaga kerja Anda secara gratis dengan tim
-              ahli kami.
-            </p>
+            <div className="relative z-10 text-center">
+              <h2 className="text-4xl sm:text-7xl font-black mb-10 tracking-tighter leading-[1] text-white">
+                Siap Melangkah Lebih <br />{" "}
+                <span className="text-gradient">Profesional?</span>
+              </h2>
+              <p className="text-xl sm:text-2xl text-slate-400 mb-14 max-w-2xl mx-auto font-medium leading-relaxed">
+                Konsultasikan kebutuhan outsourcing Anda dan dapatkan penawaran
+                terbaik hari ini.
+              </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
-              <Link
-                href="/contact"
-                className="w-full sm:w-auto px-10 py-5 bg-white text-sky-600 font-black text-lg rounded-2xl hover:shadow-2xl hover:shadow-sky-800/20 active:scale-95 transition-all"
-              >
-                Mulai Berkerjasama
-              </Link>
-              <Link
-                href="/about"
-                className="w-full sm:w-auto px-10 py-5 bg-sky-700/50 border border-sky-400/30 text-white font-bold text-lg rounded-2xl hover:bg-sky-700 transition-all"
-              >
-                Pelajari Lebih Lanjut
-              </Link>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <Link
+                  href="/contact"
+                  className="w-full sm:w-auto px-12 py-6 bg-[#DC2626] text-white font-black text-xl rounded-2xl hover:bg-[#B91C1C] active:scale-95 transition-all shadow-xl shadow-red-900/40"
+                >
+                  Minta Penawaran Gratis
+                </Link>
+                <Link
+                  href="/about"
+                  className="w-full sm:w-auto px-12 py-6 bg-white/5 border-2 border-white/10 text-white font-black text-xl rounded-2xl hover:bg-white/10 active:scale-95 transition-all flex items-center justify-center gap-3"
+                >
+                  Tentang Kami
+                  <ArrowRight className="w-6 h-6" />
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>

@@ -20,27 +20,28 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header Halaman */}
-      <section className="relative pt-32 pb-20 bg-slate-50 overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
+      <section className="relative pt-40 pb-24 bg-[#FFF7F5] overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
+        <div className="absolute inset-0 noise-bg opacity-10 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 className="text-5xl sm:text-7xl font-black text-slate-900 tracking-tight leading-[1.1] mb-6">
+            <h1 className="text-5xl sm:text-8xl font-black text-[#1C0A00] tracking-tighter leading-[0.95] mb-8">
               Mulai <span className="text-gradient">Hubungi Kami</span>
             </h1>
-            <p className="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed font-medium">
+            <p className="text-xl sm:text-2xl text-[#78350F]/70 max-w-3xl mx-auto leading-relaxed font-medium">
               Tim kami siap membantu Anda 24/7. Sampaikan kebutuhan tenaga kerja
-              Anda dan kami akan segera memberikan solusi terbaik.
+              Anda dan kami akan segera memberikan solusi outsourcing terbaik.
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-5 gap-16 items-start">
+          <div className="grid lg:grid-cols-5 gap-20 items-start">
             {/* Kolom Kiri: Info Kontak */}
             <div className="lg:col-span-2 space-y-12">
               <motion.div
@@ -49,40 +50,40 @@ export default function ContactPage() {
                 whileInView="visible"
                 viewport={{ once: true }}
               >
-                <h2 className="text-3xl font-black text-slate-900 mb-10 tracking-tight">
+                <h2 className="text-3xl font-black text-[#1C0A00] mb-12 tracking-tighter uppercase tracking-[0.1em]">
                   Informasi Kontak
                 </h2>
 
-                <div className="space-y-8">
+                <div className="space-y-10">
                   {[
                     {
                       icon: Phone,
                       label: "Telepon & WhatsApp",
-                      value: "+62 411-123-4567 / 0812-3456-7890",
-                      color: "text-emerald-500",
-                      bg: "bg-emerald-50",
+                      value: "+62 411-123-4567",
+                      color: "text-emerald-600",
+                      bg: "bg-emerald-50/50",
                     },
                     {
                       icon: Mail,
                       label: "Email Resmi",
                       value: "info@manpowersupply.co.id",
-                      color: "text-sky-500",
-                      bg: "bg-sky-50",
+                      color: "text-[#EA580C]",
+                      bg: "bg-[#FFF7F5]",
                     },
                     {
                       icon: MapPin,
                       label: "Alamat Kantor",
                       value:
                         "Jl. Andi Pangeran Pettarani No. 123, Makassar, Sulawesi Selatan",
-                      color: "text-red-500",
-                      bg: "bg-red-50",
+                      color: "text-[#DC2626]",
+                      bg: "bg-[#DC2626]/5",
                     },
                     {
                       icon: Clock,
                       label: "Jam Operasional",
                       value: "Senin - Jumat: 08:00 - 17:00 WITA",
-                      color: "text-amber-500",
-                      bg: "bg-amber-50",
+                      color: "text-amber-600",
+                      bg: "bg-amber-50/50",
                     },
                   ].map((item, idx) => (
                     <motion.div
@@ -91,15 +92,15 @@ export default function ContactPage() {
                       className="flex gap-6 group"
                     >
                       <div
-                        className={`w-14 h-14 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center shrink-0 shadow-sm border border-slate-100 group-hover:scale-110 transition-transform`}
+                        className={`w-16 h-16 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-black/2 border border-slate-100 group-hover:scale-110 transition-transform duration-500`}
                       >
-                        <item.icon className="w-6 h-6" />
+                        <item.icon className="w-7 h-7" />
                       </div>
                       <div>
-                        <div className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">
+                        <div className="text-[10px] font-black text-[#EA580C] uppercase tracking-[0.3em] mb-2">
                           {item.label}
                         </div>
-                        <div className="text-lg font-bold text-slate-900 leading-snug">
+                        <div className="text-lg font-black text-[#1C0A00] leading-snug">
                           {item.value}
                         </div>
                       </div>
@@ -113,15 +114,15 @@ export default function ContactPage() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="p-8 bg-slate-900 rounded-[2.5rem] text-white relative overflow-hidden shadow-2xl"
+                className="p-10 bg-[#1A0A00] rounded-[3rem] text-white relative overflow-hidden shadow-2xl shadow-red-900/10"
               >
-                <div className="absolute top-0 right-0 p-8 opacity-10 blur-sm group-hover:blur-0 transition-opacity">
-                  <MessageSquare className="w-24 h-24" />
-                </div>
-                <h3 className="text-2xl font-black mb-4 relative z-10">
+                <div className="absolute top-0 right-0 p-8 opacity-20 pointer-events-none noise-bg h-full w-full" />
+                <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[60%] bg-[#DC2626]/20 rounded-full blur-[60px]" />
+
+                <h3 className="text-3xl font-black mb-4 relative z-10 tracking-tighter">
                   Respon Cepat via WA
                 </h3>
-                <p className="text-slate-400 font-medium mb-8 relative z-10">
+                <p className="text-slate-400 font-medium mb-10 relative z-10 leading-relaxed text-lg">
                   Konsultasi kebutuhan dalam hitungan menit lewat asisten online
                   kami.
                 </p>
@@ -129,105 +130,106 @@ export default function ContactPage() {
                   href="https://wa.me/6281234567890"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-white font-black text-sm rounded-2xl transition-all shadow-lg shadow-emerald-900/40 active:scale-95"
+                  className="inline-flex items-center gap-3 px-10 py-5 bg-emerald-500 hover:bg-emerald-400 text-white font-black text-sm rounded-2xl transition-all shadow-xl shadow-emerald-900/40 active:scale-95 relative z-10"
                 >
                   Chat Sekarang
-                  <Send className="w-4 h-4" />
+                  <Send className="w-5 h-5" />
                 </a>
               </motion.div>
             </div>
 
             {/* Kolom Kanan: Form Kontak */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-3 bg-white border border-slate-200 rounded-[3rem] p-10 sm:p-14 shadow-2xl shadow-slate-200"
+              className="lg:col-span-3 bg-white border border-[#FED7AA]/20 rounded-[4rem] p-10 sm:p-16 shadow-2xl shadow-red-900/5"
             >
-              <h2 className="text-3xl font-black text-slate-900 mb-4 tracking-tight">
+              <h2 className="text-4xl font-black text-[#1C0A00] mb-6 tracking-tighter">
                 Kirim Pesan
               </h2>
-              <p className="text-slate-500 font-medium mb-12">
-                Berikan detail kebutuhan Anda dan tim kami akan segera
-                menghubungi Anda kembali.
+              <p className="text-[#78350F]/60 font-bold text-lg mb-16 leading-relaxed">
+                Berikan detail kebutuhan Anda dan tim ahli kami akan segera
+                menghubungi Anda kembali dengan rekomendasi solusi.
               </p>
 
-              <form className="space-y-8">
+              <form className="space-y-10">
                 <div className="grid sm:grid-cols-2 gap-8">
-                  <div className="space-y-2">
-                    <label className="text-sm font-black text-slate-900 uppercase tracking-widest ml-1">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black text-[#EA580C] uppercase tracking-[0.2em] ml-1">
                       Nama Lengkap
                     </label>
                     <input
                       type="text"
                       placeholder="Contoh: Budi Santoso"
-                      className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:border-sky-500 focus:bg-white transition-all font-bold text-slate-900"
+                      className="w-full px-8 py-5 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-2xl focus:outline-none focus:border-[#EA580C] focus:bg-white transition-all font-bold text-[#1C0A00] shadow-sm"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-black text-slate-900 uppercase tracking-widest ml-1">
-                      Perusahaan
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black text-[#EA580C] uppercase tracking-[0.2em] ml-1">
+                      Perusahaan / Organisasi
                     </label>
                     <input
                       type="text"
                       placeholder="Contoh: PT. Maju Jaya"
-                      className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:border-sky-500 focus:bg-white transition-all font-bold text-slate-900"
+                      className="w-full px-8 py-5 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-2xl focus:outline-none focus:border-[#EA580C] focus:bg-white transition-all font-bold text-[#1C0A00] shadow-sm"
                     />
                   </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-8">
-                  <div className="space-y-2">
-                    <label className="text-sm font-black text-slate-900 uppercase tracking-widest ml-1">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black text-[#EA580C] uppercase tracking-[0.2em] ml-1">
                       Email
                     </label>
                     <input
                       type="email"
                       placeholder="budi@email.com"
-                      className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:border-sky-500 focus:bg-white transition-all font-bold text-slate-900"
+                      className="w-full px-8 py-5 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-2xl focus:outline-none focus:border-[#EA580C] focus:bg-white transition-all font-bold text-[#1C0A00] shadow-sm"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-black text-slate-900 uppercase tracking-widest ml-1">
-                      No. Telepon
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black text-[#EA580C] uppercase tracking-[0.2em] ml-1">
+                      No. Telepon / WA
                     </label>
                     <input
                       type="tel"
                       placeholder="0812xxxxxxx"
-                      className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:border-sky-500 focus:bg-white transition-all font-bold text-slate-900"
+                      className="w-full px-8 py-5 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-2xl focus:outline-none focus:border-[#EA580C] focus:bg-white transition-all font-bold text-[#1C0A00] shadow-sm"
                     />
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-black text-slate-900 uppercase tracking-widest ml-1">
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black text-[#EA580C] uppercase tracking-[0.2em] ml-1">
                     Kategori Tenaga Kerja
                   </label>
-                  <select className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:border-sky-500 focus:bg-white transition-all font-bold text-slate-900 cursor-pointer">
-                    <option>Pilih Kategori</option>
+                  <select className="w-full px-8 py-5 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-2xl focus:outline-none focus:border-[#EA580C] focus:bg-white transition-all font-bold text-[#1C0A00] cursor-pointer appearance-none shadow-sm">
+                    <option>Pilih Kategori Kebutuhan</option>
                     <option>Security & Satpam</option>
                     <option>Cleaning Service</option>
-                    <option>Driver</option>
+                    <option>Driver Profesional</option>
+                    <option>Teknisi & Maintenance</option>
                     <option>Lainnya</option>
                   </select>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-black text-slate-900 uppercase tracking-widest ml-1">
-                    Detail Kebutuhan
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black text-[#EA580C] uppercase tracking-[0.2em] ml-1">
+                    Detail Kebutuhan Outsourcing
                   </label>
                   <textarea
                     rows={5}
-                    placeholder="Sampaikan jumlah tenaga kerja yang dibutuhkan dan durasi penempatan..."
-                    className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:border-sky-500 focus:bg-white transition-all font-bold text-slate-900 resize-none"
+                    placeholder="Sampaikan jumlah tenaga kerja yang dibutuhkan, kualifikasi khusus, dan durasi penempatan..."
+                    className="w-full px-8 py-5 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-2xl focus:outline-none focus:border-[#EA580C] focus:bg-white transition-all font-bold text-[#1C0A00] resize-none shadow-sm"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-5 bg-sky-600 text-white font-black text-lg rounded-2xl hover:bg-sky-500 transition-all shadow-xl shadow-sky-100 active:scale-95"
+                  className="w-full py-6 bg-[#DC2626] text-white font-black text-xl rounded-2xl hover:bg-[#B91C1C] transition-all shadow-2xl shadow-red-900/20 active:scale-95"
                 >
-                  Kirim Permintaan
+                  Kirim Permintaan Penawaran
                 </button>
               </form>
             </motion.div>

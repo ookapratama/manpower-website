@@ -16,24 +16,24 @@ interface WorkerCardProps {
 
 export default function WorkerCard({ worker }: WorkerCardProps) {
   return (
-    <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.3 }}>
+    <motion.div whileHover={{ y: -8 }} transition={{ duration: 0.5 }}>
       <Link href={`/workers/${worker.slug}`} className="group block">
-        <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-sky-300 transition-all duration-300 hover:shadow-xl hover:shadow-sky-500/10">
-          <div className="p-5">
+        <div className="bg-white border border-slate-100 rounded-[2rem] overflow-hidden hover:border-[#FED7AA] transition-all duration-500 hover:shadow-2xl hover:shadow-red-900/5">
+          <div className="p-6">
             {/* Header: foto + info */}
-            <div className="flex items-start gap-4 mb-4">
+            <div className="flex items-start gap-4 mb-6">
               <div className="relative shrink-0">
-                <div className="w-14 h-14 rounded-xl overflow-hidden border border-slate-100 shadow-sm">
+                <div className="w-16 h-16 rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
                   <Image
                     src={worker.photoUrl}
                     alt={worker.fullName}
-                    width={56}
-                    height={56}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    width={64}
+                    height={64}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
                 <div
-                  className={`absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full border-2 border-white ${
+                  className={`absolute -bottom-1 -right-1 w-5 h-5 rounded-full border-4 border-white ${
                     worker.availabilityStatus === "available"
                       ? "bg-emerald-500"
                       : worker.availabilityStatus === "busy"
@@ -44,75 +44,66 @@ export default function WorkerCard({ worker }: WorkerCardProps) {
               </div>
 
               <div className="flex-1 min-w-0">
-                <h3 className="text-base font-bold text-slate-900 truncate group-hover:text-sky-600 transition-colors">
+                <h3 className="text-lg font-black text-[#1C0A00] truncate group-hover:text-[#DC2626] transition-colors leading-snug">
                   {worker.fullName}
                 </h3>
-                <p className="text-xs text-slate-500 mt-0.5">
+                <p className="text-xs font-bold text-[#EA580C] uppercase tracking-wider mt-1">
                   {worker.categoryName}
                 </p>
-                <div className="flex items-center gap-1.5 mt-1.5 text-slate-400">
-                  <MapPin className="w-3 h-3" />
-                  <span className="text-xs">{worker.location}</span>
+                <div className="flex items-center gap-1.5 mt-2 text-[#78350F]/50">
+                  <MapPin className="w-3.5 h-3.5" />
+                  <span className="text-xs font-bold">{worker.location}</span>
                 </div>
               </div>
-            </div>
-
-            {/* Status badge */}
-            <div className="mb-4">
-              <span
-                className={`inline-flex items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded-lg border ${
-                  worker.availabilityStatus === "available"
-                    ? "bg-emerald-50 text-emerald-700 border-emerald-100"
-                    : worker.availabilityStatus === "busy"
-                      ? "bg-amber-50 text-amber-700 border-amber-100"
-                      : "bg-red-50 text-red-700 border-red-100"
-                }`}
-              >
-                {getAvailabilityLabel(worker.availabilityStatus)}
-              </span>
             </div>
 
             {/* Stats row */}
-            <div className="grid grid-cols-3 gap-2 mb-4">
-              <div className="text-center p-2 rounded-xl bg-slate-50 border border-slate-100/50">
+            <div className="grid grid-cols-3 gap-3 mb-6">
+              <div className="text-center p-3 rounded-2xl bg-[#FFF7F5] border border-[#FED7AA]/30">
                 <div className="flex items-center justify-center gap-1 mb-0.5">
-                  <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
-                  <span className="text-sm font-bold text-slate-900">
+                  <Star className="w-3.5 h-3.5 text-[#F97316] fill-[#F97316]" />
+                  <span className="text-sm font-black text-[#1C0A00]">
                     {worker.rating}
                   </span>
                 </div>
-                <span className="text-[10px] text-slate-500">Rating</span>
+                <span className="text-[10px] font-black text-[#78350F]/40 uppercase tracking-tighter">
+                  Rating
+                </span>
               </div>
-              <div className="text-center p-2 rounded-xl bg-slate-50 border border-slate-100/50">
-                <div className="flex items-center justify-center gap-1 mb-0.5 text-sky-600">
-                  <Clock className="w-3 h-3" />
-                  <span className="text-sm font-bold text-slate-900">
+              <div className="text-center p-3 rounded-2xl bg-[#FFF7F5] border border-[#FED7AA]/30">
+                <div className="flex items-center justify-center gap-1 mb-0.5 text-[#EA580C]">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span className="text-sm font-black text-[#1C0A00]">
                     {worker.experienceYears}th
                   </span>
                 </div>
-                <span className="text-[10px] text-slate-500">Exp</span>
+                <span className="text-[10px] font-black text-[#78350F]/40 uppercase tracking-tighter">
+                  Exp
+                </span>
               </div>
-              <div className="text-center p-2 rounded-xl bg-slate-50 border border-slate-100/50">
-                <div className="text-sm font-bold text-emerald-600 mb-0.5">
+              <div className="text-center p-3 rounded-2xl bg-[#FFF7F5] border border-[#FED7AA]/30">
+                <div className="text-sm font-black text-[#DC2626] mb-0.5">
                   {worker.dailyRate / 1000}k
                 </div>
-                <span className="text-[10px] text-slate-500">/hari</span>
+                <span className="text-[10px] font-black text-[#78350F]/40 uppercase tracking-tighter">
+                  /hari
+                </span>
               </div>
             </div>
 
             {/* Skills */}
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-2">
               {worker.skills.slice(0, 3).map((skill) => (
                 <span
                   key={skill.id}
-                  className="px-2 py-0.5 text-[10px] font-medium text-slate-600 bg-slate-100 rounded-md border border-slate-200"
+                  className="px-3 py-1 text-[10px] font-bold text-[#78350F] bg-[#FFF7F5] rounded-lg border border-[#FED7AA]/50"
                 >
                   {skill.name}
                 </span>
               ))}
               {worker.skills.length > 3 && (
-                <span className="px-2 py-0.5 text-[10px] font-medium text-sky-700 bg-sky-50 rounded-md border border-sky-100">
-                  +{worker.skills.length - 3}
+                <span className="px-3 py-1 text-[10px] font-black text-[#DC2626] bg-[#DC2626]/5 rounded-lg border border-[#DC2626]/10">
+                  +{worker.skills.length - 3} More
                 </span>
               )}
             </div>

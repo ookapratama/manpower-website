@@ -19,52 +19,61 @@ export default function CategoriesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-32 pb-24">
+    <div className="min-h-screen bg-[#FFF7F5] pt-40 pb-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-20 relative">
+          <div className="absolute inset-0 noise-bg opacity-10 pointer-events-none" />
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-sky-50 text-sky-600 text-xs font-black uppercase tracking-widest border border-sky-100 mb-6">
+            <span className="inline-block px-5 py-2 rounded-full bg-[#EA580C]/10 text-[#EA580C] text-[10px] font-black uppercase tracking-[0.3em] border border-[#EA580C]/20 mb-8">
               Layanan Spesialis
             </span>
-            <h1 className="text-5xl sm:text-7xl font-black text-slate-900 tracking-tight leading-tight mb-8">
+            <h1 className="text-5xl sm:text-8xl font-black text-[#1C0A00] tracking-tighter leading-[0.95] mb-10">
               Jelajahi <span className="text-gradient">Kategori</span>
             </h1>
-            <p className="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed font-medium">
-              Kami menyediakan tenaga kerja terlatih untuk berbagai sektor
-              industri dan kebutuhan operasional harian Anda.
+            <p className="text-xl sm:text-2xl text-[#78350F]/70 max-w-3xl mx-auto leading-relaxed font-bold">
+              Kami menyediakan tenaga kerja terlatih dan terverifikasi untuk
+              berbagai sektor industri strategis dan kebutuhan operasional
+              bisnis Anda.
             </p>
           </motion.div>
         </div>
 
         {/* Global Stats bar */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="bg-slate-900 rounded-[2.5rem] p-8 mb-16 flex flex-wrap justify-around items-center gap-8 shadow-2xl text-white border border-white/10"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3 }}
+          className="bg-[#1A0A00] rounded-[3rem] p-10 mb-20 flex flex-wrap justify-around items-center gap-12 shadow-2xl shadow-red-900/10 text-white border border-white/5 relative overflow-hidden"
         >
-          <div className="text-center">
-            <div className="text-3xl font-black text-sky-400">8</div>
-            <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">
+          <div className="absolute inset-0 noise-bg opacity-5 pointer-events-none" />
+          <div className="text-center relative z-10">
+            <div className="text-4xl sm:text-5xl font-black text-[#F97316] mb-2 tracking-tighter">
+              8
+            </div>
+            <div className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-500">
               Kategori Utama
             </div>
           </div>
-          <div className="h-10 w-px bg-white/10 hidden sm:block" />
-          <div className="text-center">
-            <div className="text-3xl font-black text-sky-400">280+</div>
-            <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">
+          <div className="h-12 w-px bg-white/10 hidden lg:block" />
+          <div className="text-center relative z-10">
+            <div className="text-4xl sm:text-5xl font-black text-[#F97316] mb-2 tracking-tighter">
+              500+
+            </div>
+            <div className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-500">
               Professional Aktif
             </div>
           </div>
-          <div className="h-10 w-px bg-white/10 hidden sm:block" />
-          <div className="text-center">
-            <div className="text-3xl font-black text-sky-400">12+</div>
-            <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">
-              Sertifikasi Skill
+          <div className="h-12 w-px bg-white/10 hidden lg:block" />
+          <div className="text-center relative z-10">
+            <div className="text-4xl sm:text-5xl font-black text-[#F97316] mb-2 tracking-tighter">
+              24/7
+            </div>
+            <div className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-500">
+              Siap Penempatan
             </div>
           </div>
         </motion.div>
@@ -74,7 +83,7 @@ export default function CategoriesPage() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
         >
           {categories.map((category) => (
             <motion.div key={category.id} variants={itemVariants}>
@@ -85,20 +94,22 @@ export default function CategoriesPage() {
 
         {/* Info Box */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-24 p-12 bg-white border border-slate-200 rounded-[3rem] text-center shadow-xl shadow-slate-100"
+          className="mt-32 p-12 sm:p-20 bg-white border border-[#FED7AA]/30 rounded-[4rem] text-center shadow-2xl shadow-red-900/5 relative overflow-hidden"
         >
-          <h3 className="text-2xl font-black text-slate-900 mb-4">
-            Tidak Menemukan Kategori yang Anda Cari?
+          <div className="absolute top-[-20%] right-[-10%] w-[40%] h-[40%] bg-[#EA580C]/5 rounded-full blur-[100px]" />
+          <h3 className="text-3xl sm:text-4xl font-black text-[#1C0A00] mb-6 tracking-tighter relative z-10">
+            Kebutuhan <span className="text-gradient">Khusus</span> Belum
+            Terpenuhi?
           </h3>
-          <p className="text-slate-500 font-medium mb-8 max-w-xl mx-auto">
-            Kami terus memperluas jaringan tenaga kerja kami. Hubungi tim kami
-            untuk permintaan kustom tenaga kerja sesuai spesifikasi teknis
-            perusahaan Anda.
+          <p className="text-[#78350F]/70 font-bold text-lg mb-12 max-w-2xl mx-auto leading-relaxed relative z-10">
+            Kami terus memperluas jaringan tenaga kerja kami. Hubungi tim ahli
+            kami untuk konsultasi permintaan kustom tenaga kerja sesuai dengan
+            spesifikasi teknis unik perusahaan Anda.
           </p>
-          <button className="px-10 py-5 bg-sky-600 text-white font-black rounded-2xl hover:bg-sky-500 transition-all shadow-lg active:scale-95">
+          <button className="px-12 py-6 bg-[#DC2626] text-white font-black text-lg rounded-2xl hover:bg-[#B91C1C] transition-all shadow-xl shadow-red-900/20 active:scale-95 relative z-10">
             Konsultasi Kustom Tenaga Kerja
           </button>
         </motion.div>

@@ -37,46 +37,46 @@ export default function WorkersPage() {
   }, [searchQuery, selectedCategory, selectedLocation]);
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-24 pb-20">
+    <div className="min-h-screen bg-[#FFF7F5] pt-32 pb-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Halaman */}
-        <div className="mb-12">
+        <div className="mb-16 text-center lg:text-left">
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 className="text-4xl font-black text-slate-900 mb-4 tracking-tight">
-              Cari Tenaga Kerja
+            <h1 className="text-4xl sm:text-6xl font-black text-[#1C0A00] mb-6 tracking-tighter">
+              Direktori <span className="text-gradient">Tenaga Kerja</span>
             </h1>
-            <p className="text-slate-500 font-medium">
+            <p className="text-[#78350F]/70 font-bold text-lg max-w-2xl">
               Temukan partner profesional dari total {workers.length} tenaga
-              kerja terverifikasi.
+              kerja terverifikasi yang siap mendukung operasional bisnis Anda.
             </p>
           </motion.div>
         </div>
 
         {/* Search & Filter Bar */}
-        <div className="flex flex-col lg:flex-row gap-4 mb-10 sticky top-20 z-30 pt-4 pb-4 bg-slate-50/80 backdrop-blur-md">
+        <div className="flex flex-col lg:flex-row gap-6 mb-12 sticky top-24 z-30 pt-4 pb-4 bg-[#FFF7F5]/90 backdrop-blur-xl">
           <div className="flex-1 relative group">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-sky-500 transition-colors" />
+            <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 text-[#78350F]/40 group-focus-within:text-[#EA580C] transition-colors" />
             <input
               type="text"
               placeholder="Cari berdasarkan nama, kategori, atau keahlian..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 bg-white border border-slate-200 rounded-2xl focus:outline-none focus:border-sky-500 focus:ring-4 focus:ring-sky-100 transition-all shadow-sm"
+              className="w-full pl-14 pr-6 py-5 bg-white border border-[#FED7AA]/50 rounded-[2rem] focus:outline-none focus:border-[#EA580C] focus:ring-4 focus:ring-[#EA580C]/10 transition-all shadow-xl shadow-red-900/5 font-medium text-lg text-[#1C0A00]"
             />
           </div>
 
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className={`lg:hidden flex items-center justify-center gap-2 px-6 py-4 rounded-2xl border transition-all font-bold ${
+            className={`lg:hidden flex items-center justify-center gap-3 px-8 py-5 rounded-[2rem] border-2 transition-all font-black ${
               showFilters
-                ? "bg-slate-900 border-slate-900 text-white"
-                : "bg-white border-slate-200 text-slate-700"
+                ? "bg-[#1C0A00] border-[#1C0A00] text-white"
+                : "bg-white border-[#FED7AA]/50 text-[#1C0A00] shadow-xl shadow-red-900/5"
             }`}
           >
-            <SlidersHorizontal className="w-5 h-5" />
+            <SlidersHorizontal className="w-6 h-6" />
             Filter
           </button>
 
@@ -84,7 +84,7 @@ export default function WorkersPage() {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-6 py-4 bg-white border border-slate-200 rounded-2xl focus:outline-none focus:border-sky-500 font-bold text-sm text-slate-700 shadow-sm cursor-pointer"
+              className="px-8 py-5 bg-white border border-[#FED7AA]/50 rounded-[2rem] focus:outline-none focus:border-[#EA580C] focus:ring-4 focus:ring-[#EA580C]/10 font-black text-sm text-[#1C0A00] shadow-xl shadow-red-900/5 cursor-pointer appearance-none min-w-[200px]"
             >
               <option value="all">Semua Kategori</option>
               {categories.map((c) => (
@@ -96,7 +96,7 @@ export default function WorkersPage() {
             <select
               value={selectedLocation}
               onChange={(e) => setSelectedLocation(e.target.value)}
-              className="px-6 py-4 bg-white border border-slate-200 rounded-2xl focus:outline-none focus:border-sky-500 font-bold text-sm text-slate-700 shadow-sm cursor-pointer"
+              className="px-8 py-5 bg-white border border-[#FED7AA]/50 rounded-[2rem] focus:outline-none focus:border-[#EA580C] focus:ring-4 focus:ring-[#EA580C]/10 font-black text-sm text-[#1C0A00] shadow-xl shadow-red-900/5 cursor-pointer appearance-none min-w-[200px]"
             >
               <option value="all">Semua Lokasi</option>
               {locations.map((loc) => (
@@ -112,22 +112,22 @@ export default function WorkersPage() {
         <AnimatePresence>
           {showFilters && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden mb-10 overflow-hidden bg-white border border-slate-200 rounded-3xl p-6 space-y-6 shadow-xl"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="lg:hidden mb-12 overflow-hidden bg-white border border-[#FED7AA]/30 rounded-[3rem] p-8 space-y-8 shadow-2xl shadow-red-900/10"
             >
               <div>
-                <label className="block text-sm font-black text-slate-900 mb-3 uppercase tracking-widest">
-                  Kategori
+                <label className="block text-xs font-black text-[#EA580C] mb-5 uppercase tracking-[0.3em]">
+                  Pilih Kategori
                 </label>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-2 gap-3">
                   <button
                     onClick={() => setSelectedCategory("all")}
-                    className={`px-4 py-3 rounded-xl text-xs font-bold border transition-all ${
+                    className={`px-4 py-4 rounded-2xl text-xs font-black border-2 transition-all ${
                       selectedCategory === "all"
-                        ? "bg-sky-600 border-sky-600 text-white shadow-lg"
-                        : "bg-slate-50 border-slate-100 text-slate-600"
+                        ? "bg-[#DC2626] border-[#DC2626] text-white shadow-xl shadow-red-900/20"
+                        : "bg-[#FFF7F5] border-[#FED7AA]/30 text-[#78350F]"
                     }`}
                   >
                     Semua
@@ -136,10 +136,10 @@ export default function WorkersPage() {
                     <button
                       key={c.id}
                       onClick={() => setSelectedCategory(c.slug)}
-                      className={`px-4 py-3 rounded-xl text-xs font-bold border transition-all ${
+                      className={`px-4 py-4 rounded-2xl text-xs font-black border-2 transition-all ${
                         selectedCategory === c.slug
-                          ? "bg-sky-600 border-sky-600 text-white shadow-lg"
-                          : "bg-slate-50 border-slate-100 text-slate-600"
+                          ? "bg-[#DC2626] border-[#DC2626] text-white shadow-xl shadow-red-900/20"
+                          : "bg-[#FFF7F5] border-[#FED7AA]/30 text-[#78350F]"
                       }`}
                     >
                       {c.name}
@@ -147,14 +147,14 @@ export default function WorkersPage() {
                   ))}
                 </div>
               </div>
-              <div className="pt-6 border-t border-slate-100">
-                <label className="block text-sm font-black text-slate-900 mb-3 uppercase tracking-widest">
-                  Lokasi
+              <div className="pt-8 border-t border-[#FED7AA]/20">
+                <label className="block text-xs font-black text-[#EA580C] mb-5 uppercase tracking-[0.3em]">
+                  Filter Lokasi
                 </label>
                 <select
                   value={selectedLocation}
                   onChange={(e) => setSelectedLocation(e.target.value)}
-                  className="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:border-sky-400 font-bold text-sm"
+                  className="w-full px-6 py-5 bg-[#FFF7F5] border-2 border-[#FED7AA]/30 rounded-2xl focus:outline-none focus:border-[#EA580C] font-black text-sm text-[#1C0A00]"
                 >
                   <option value="all">Semua Lokasi</option>
                   {locations.map((loc) => (
@@ -166,7 +166,7 @@ export default function WorkersPage() {
               </div>
               <button
                 onClick={() => setShowFilters(false)}
-                className="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold"
+                className="w-full py-5 bg-[#1C0A00] text-white rounded-[2rem] font-black text-lg transition-all active:scale-95"
               >
                 Terapkan Filter
               </button>
@@ -176,10 +176,10 @@ export default function WorkersPage() {
 
         {/* Listing Workers with Animations */}
         <div className="relative">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-lg font-bold text-slate-900">
+          <div className="flex flex-col sm:flex-row items-center justify-between mb-10 gap-4">
+            <h2 className="text-xl font-black text-[#1C0A00]">
               Hasil:{" "}
-              <span className="text-sky-600">{filteredWorkers.length}</span>{" "}
+              <span className="text-[#EA580C]">{filteredWorkers.length}</span>{" "}
               Pekerja
             </h2>
             {(selectedCategory !== "all" ||
@@ -191,7 +191,7 @@ export default function WorkersPage() {
                   setSelectedCategory("all");
                   setSelectedLocation("all");
                 }}
-                className="text-sm font-bold text-red-500 hover:text-red-600 flex items-center gap-1.5"
+                className="text-sm font-black text-[#DC2626] hover:text-[#B91C1C] flex items-center gap-2 px-6 py-3 bg-[#DC2626]/5 rounded-xl transition-all"
               >
                 <X className="w-4 h-4" /> Reset Semua Filter
               </button>
@@ -202,7 +202,7 @@ export default function WorkersPage() {
             {filteredWorkers.length > 0 ? (
               <motion.div
                 layout
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
               >
                 {filteredWorkers.map((worker) => (
                   <motion.div
@@ -211,7 +211,7 @@ export default function WorkersPage() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.4 }}
                   >
                     <WorkerCard
                       worker={{
@@ -235,17 +235,17 @@ export default function WorkersPage() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="py-32 text-center"
+                className="py-40 text-center"
               >
-                <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Filter className="w-10 h-10 text-slate-300" />
+                <div className="w-24 h-24 bg-white border border-[#FED7AA]/30 rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-xl shadow-red-900/5">
+                  <Filter className="w-10 h-10 text-[#EA580C]/30" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
-                  Tidak ada pekerja ditemukan
+                <h3 className="text-2xl font-black text-[#1C0A00] mb-3">
+                  Pekerja Tidak Ditemukan
                 </h3>
-                <p className="text-slate-500 max-w-xs mx-auto mb-8 font-medium">
-                  Coba ubah kriteria pencarian atau reset filter untuk hasil
-                  lain.
+                <p className="text-[#78350F]/60 max-w-xs mx-auto mb-10 font-bold text-lg">
+                  Coba ubah kriteria pencarian atau reset filter untuk menemukan
+                  talenta lainnya.
                 </p>
                 <button
                   onClick={() => {
@@ -253,9 +253,9 @@ export default function WorkersPage() {
                     setSelectedCategory("all");
                     setSelectedLocation("all");
                   }}
-                  className="px-8 py-4 bg-sky-600 text-white font-bold rounded-2xl hover:bg-sky-500 transition-all shadow-lg shadow-sky-100"
+                  className="px-12 py-5 bg-[#DC2626] text-white font-black rounded-2xl hover:bg-[#B91C1C] transition-all shadow-xl shadow-red-900/20 active:scale-95"
                 >
-                  Reset Pencarian
+                  Bersihkan Pencarian
                 </button>
               </motion.div>
             )}
