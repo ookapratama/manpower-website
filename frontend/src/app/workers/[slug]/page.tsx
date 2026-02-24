@@ -1,7 +1,8 @@
 /**
- * Halaman Detail Pekerja — Profil lengkap tenaga kerja
+ * Halaman Detail Pekerja — Profil Lengkap (Light Theme)
  */
-import Link from "next/link";
+import Link from "next/image";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft,
@@ -15,12 +16,9 @@ import {
   Award,
   CalendarDays,
 } from "lucide-react";
+import LinkNext from "next/link";
 import { workers } from "@/lib/dummy-data";
-import {
-  formatRupiah,
-  getAvailabilityLabel,
-  getAvailabilityBadgeClasses,
-} from "@/lib/utils";
+import { formatRupiah, getAvailabilityLabel } from "@/lib/utils";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -33,38 +31,40 @@ export default async function WorkerDetailPage({ params }: PageProps) {
   if (!worker) return notFound();
 
   return (
-    <div className="min-h-screen">
-      {/* Back navigation */}
-      <div className="bg-slate-900/50 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link
+    <div className="min-h-screen bg-slate-50">
+      {/* Navigation Header */}
+      <div className="bg-white border-b border-slate-200 pt-24 pb-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <LinkNext
             href="/workers"
-            className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-sky-400 transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-sky-600 transition-colors group"
           >
-            <ArrowLeft className="w-4 h-4" />
-            Kembali ke direktori
-          </Link>
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            Kembali ke Daftar Pekerja
+          </LinkNext>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Kolom Kiri: Profil */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Header profil */}
-            <div className="p-6 bg-slate-900/50 border border-white/5 rounded-2xl">
-              <div className="flex flex-col sm:flex-row items-start gap-6">
-                {/* Avatar besar */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid lg:grid-cols-3 gap-10 items-start">
+          {/* Main Content */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Profil Header Card */}
+            <div className="bg-white border border-slate-200 rounded-[2.5rem] p-8 sm:p-12 shadow-sm relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-sky-50 rounded-full blur-[80px] -z-10 translate-x-1/2 -translate-y-1/2 opacity-60" />
+
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-10">
                 <div className="relative shrink-0">
-                  <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-sky-500/20 to-blue-500/20 border border-white/10 flex items-center justify-center text-3xl font-bold text-sky-400">
-                    {worker.fullName
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")
-                      .slice(0, 2)}
+                  <div className="w-40 h-40 rounded-[2rem] overflow-hidden border-4 border-white shadow-2xl ring-1 ring-slate-100">
+                    <Image
+                      src={worker.photoUrl}
+                      alt={worker.fullName}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                   <div
-                    className={`absolute -bottom-1 -right-1 w-6 h-6 rounded-full border-3 border-slate-900 ${
+                    className={`absolute bottom-2 right-2 w-8 h-8 rounded-full border-4 border-white ${
                       worker.availabilityStatus === "available"
                         ? "bg-emerald-500"
                         : worker.availabilityStatus === "busy"
@@ -74,147 +74,188 @@ export default async function WorkerDetailPage({ params }: PageProps) {
                   />
                 </div>
 
-                <div className="flex-1">
-                  <div className="flex flex-wrap items-center gap-3 mb-2">
-                    <h1 className="text-2xl font-bold text-white">
+                <div className="flex-1 text-center md:text-left">
+                  <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
+                    <h1 className="text-4xl font-black text-slate-900 tracking-tight">
                       {worker.fullName}
                     </h1>
                     <span
-                      className={`inline-flex items-center px-3 py-1 text-xs font-medium rounded-lg border ${getAvailabilityBadgeClasses(worker.availabilityStatus)}`}
+                      className={`inline-flex px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest border ${
+                        worker.availabilityStatus === "available"
+                          ? "bg-emerald-50 text-emerald-700 border-emerald-100"
+                          : worker.availabilityStatus === "busy"
+                            ? "bg-amber-50 text-amber-700 border-amber-100"
+                            : "bg-red-50 text-red-700 border-red-100"
+                      }`}
                     >
                       {getAvailabilityLabel(worker.availabilityStatus)}
                     </span>
                   </div>
 
-                  <p className="text-sm text-sky-400 font-medium mb-3">
+                  <p className="text-sky-600 font-black text-lg mb-6 uppercase tracking-wider">
                     {worker.category.name}
                   </p>
 
-                  <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
-                    <span className="flex items-center gap-1.5">
-                      <MapPin className="w-4 h-4 text-slate-500" />
+                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-6 text-sm text-slate-500 font-bold">
+                    <span className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-xl border border-slate-100">
+                      <MapPin className="w-4 h-4 text-sky-500" />
                       {worker.location}
                     </span>
-                    <span className="flex items-center gap-1.5">
-                      <Clock className="w-4 h-4 text-slate-500" />
-                      {worker.experienceYears} tahun pengalaman
+                    <span className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-xl border border-slate-100">
+                      <Clock className="w-4 h-4 text-sky-500" />
+                      {worker.experienceYears} Tahun Exp
                     </span>
-                    <span className="flex items-center gap-1.5">
-                      <Briefcase className="w-4 h-4 text-slate-500" />
-                      {worker.totalProjects} proyek selesai
+                    <span className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-xl border border-slate-100">
+                      <Briefcase className="w-4 h-4 text-sky-500" />
+                      {worker.totalProjects} Proyek
                     </span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Statistik */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              <div className="p-4 bg-slate-900/50 border border-white/5 rounded-xl text-center">
-                <Star className="w-5 h-5 text-amber-400 mx-auto mb-2" />
-                <div className="text-xl font-bold text-white">
-                  {worker.rating}
-                </div>
-                <div className="text-xs text-slate-500">Rating</div>
-              </div>
-              <div className="p-4 bg-slate-900/50 border border-white/5 rounded-xl text-center">
-                <Clock className="w-5 h-5 text-sky-400 mx-auto mb-2" />
-                <div className="text-xl font-bold text-white">
-                  {worker.experienceYears} th
-                </div>
-                <div className="text-xs text-slate-500">Pengalaman</div>
-              </div>
-              <div className="p-4 bg-slate-900/50 border border-white/5 rounded-xl text-center">
-                <Briefcase className="w-5 h-5 text-purple-400 mx-auto mb-2" />
-                <div className="text-xl font-bold text-white">
-                  {worker.totalProjects}
-                </div>
-                <div className="text-xs text-slate-500">Proyek</div>
-              </div>
-              <div className="p-4 bg-slate-900/50 border border-white/5 rounded-xl text-center">
-                <CalendarDays className="w-5 h-5 text-emerald-400 mx-auto mb-2" />
-                <div className="text-xl font-bold text-emerald-400">
-                  {formatRupiah(worker.dailyRate)}
-                </div>
-                <div className="text-xs text-slate-500">Per Hari</div>
-              </div>
-            </div>
-
-            {/* Tentang */}
-            <div className="p-6 bg-slate-900/50 border border-white/5 rounded-2xl">
-              <h2 className="text-lg font-semibold text-white mb-4">Tentang</h2>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                {worker.bio}
-              </p>
-            </div>
-
-            {/* Keahlian */}
-            <div className="p-6 bg-slate-900/50 border border-white/5 rounded-2xl">
-              <h2 className="text-lg font-semibold text-white mb-4">
-                Keahlian & Sertifikasi
-              </h2>
-              <div className="flex flex-wrap gap-2">
-                {worker.skills.map((skill) => (
-                  <span
-                    key={skill.id}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-sky-400 bg-sky-500/5 border border-sky-500/10 rounded-lg"
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+              {[
+                {
+                  label: "Rating",
+                  value: worker.rating,
+                  icon: Star,
+                  color: "text-amber-500",
+                  bg: "bg-amber-50",
+                },
+                {
+                  label: "Pengalaman",
+                  value: `${worker.experienceYears} th`,
+                  icon: Clock,
+                  color: "text-sky-500",
+                  bg: "bg-sky-50",
+                },
+                {
+                  label: "Proyek",
+                  value: worker.totalProjects,
+                  icon: Briefcase,
+                  color: "text-purple-500",
+                  bg: "bg-purple-50",
+                },
+                {
+                  label: "Tarif",
+                  value: formatRupiah(worker.dailyRate),
+                  icon: CalendarDays,
+                  color: "text-emerald-500",
+                  bg: "bg-emerald-50",
+                },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  className="bg-white border border-slate-200 p-6 rounded-3xl text-center shadow-sm"
+                >
+                  <div
+                    className={`w-12 h-12 ${stat.bg} ${stat.color} rounded-2xl flex items-center justify-center mx-auto mb-4`}
                   >
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    {skill.name}
-                  </span>
-                ))}
+                    <stat.icon className="w-6 h-6" />
+                  </div>
+                  <div className="text-xl font-black text-slate-900 mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Content Tabs Area (Simplified for now) */}
+            <div className="bg-white border border-slate-200 rounded-[2.5rem] p-10 shadow-sm overflow-hidden">
+              <div className="mb-12">
+                <h2 className="text-2xl font-black text-slate-900 mb-6 flex items-center gap-3">
+                  <span className="w-1.5 h-8 bg-sky-600 rounded-full" />
+                  Biografi & Ringkasan
+                </h2>
+                <p className="text-slate-600 leading-[1.8] text-lg font-medium">
+                  {worker.bio}
+                </p>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-black text-slate-900 mb-6 flex items-center gap-3">
+                  <span className="w-1.5 h-8 bg-emerald-500 rounded-full" />
+                  Keahlian Utama
+                </h2>
+                <div className="flex flex-wrap gap-3">
+                  {worker.skills.map((skill) => (
+                    <div
+                      key={skill.id}
+                      className="flex items-center gap-3 px-6 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-slate-700 font-bold hover:border-sky-300 hover:bg-sky-50 transition-all cursor-default"
+                    >
+                      <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+                      {skill.name}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Kolom Kanan: Sidebar */}
-          <div className="space-y-6">
-            {/* Card Hubungi */}
-            <div className="p-6 bg-slate-900/50 border border-white/5 rounded-2xl sticky top-24">
-              <h3 className="text-base font-semibold text-white mb-4">
-                Tertarik dengan pekerja ini?
+          {/* Sidebar CTA */}
+          <div className="space-y-6 lg:sticky lg:top-24">
+            <div className="bg-white border-2 border-slate-100 rounded-[2.56rem] p-8 shadow-2xl shadow-slate-200">
+              <h3 className="text-xl font-black text-slate-900 mb-8 border-b border-slate-100 pb-4">
+                Ajukan Penawaran
               </h3>
 
-              <div className="p-4 rounded-xl bg-gradient-to-br from-sky-500/5 to-blue-500/5 border border-sky-500/10 mb-4">
-                <div className="text-center">
-                  <div className="text-sm text-slate-400 mb-1">
-                    Tarif Harian
-                  </div>
-                  <div className="text-2xl font-bold text-gradient">
-                    {formatRupiah(worker.dailyRate)}
-                  </div>
-                  <div className="text-xs text-slate-500 mt-1">
-                    Belum termasuk biaya admin
-                  </div>
+              <div className="p-6 rounded-3xl bg-sky-600 text-white mb-8 text-center relative overflow-hidden group">
+                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity pointer-events-none" />
+                <div className="text-sky-100 text-sm font-bold uppercase tracking-widest mb-2">
+                  Tarif Harian
+                </div>
+                <div className="text-4xl font-black">
+                  {formatRupiah(worker.dailyRate)}
+                </div>
+                <div className="text-[10px] text-sky-100 mt-2 font-bold">
+                  * Tarif tetap, tanpa biaya tersembunyi
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <Link
+              <div className="space-y-4">
+                <LinkNext
                   href="/contact"
-                  className="flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-semibold text-white bg-gradient-to-r from-sky-500 to-blue-600 rounded-xl hover:from-sky-400 hover:to-blue-500 shadow-lg shadow-sky-500/20 transition-all"
+                  className="flex items-center justify-center gap-3 w-full px-6 py-5 text-sm font-black text-white bg-slate-900 rounded-2xl hover:bg-slate-800 transition-all shadow-lg active:scale-95"
                 >
-                  <Phone className="w-4 h-4" />
-                  Hubungi Kami
-                </Link>
-                <button className="flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-medium text-slate-300 border border-white/10 rounded-xl hover:border-sky-500/20 hover:text-white transition-colors">
-                  Minta Penawaran
+                  <Phone className="w-5 h-5" />
+                  Hubungi Via WhatsApp
+                </LinkNext>
+                <button className="flex items-center justify-center gap-3 w-full px-6 py-5 text-sm font-black text-slate-900 border-2 border-slate-200 rounded-2xl hover:bg-slate-50 transition-all active:scale-95">
+                  Download Profil PDF
                 </button>
               </div>
 
-              <div className="mt-5 pt-5 border-t border-white/5 space-y-3">
-                <div className="flex items-center gap-2 text-xs text-slate-400">
-                  <Shield className="w-4 h-4 text-emerald-400" />
-                  Pekerja terverifikasi & berasuransi
-                </div>
-                <div className="flex items-center gap-2 text-xs text-slate-400">
-                  <Award className="w-4 h-4 text-amber-400" />
-                  Garansi penggantian 1x24 jam
-                </div>
-                <div className="flex items-center gap-2 text-xs text-slate-400">
-                  <CheckCircle2 className="w-4 h-4 text-sky-400" />
-                  Konsultasi gratis
-                </div>
+              <div className="mt-10 pt-8 border-t border-slate-100 space-y-4">
+                {[
+                  {
+                    icon: Shield,
+                    text: "Pekerja Terverifikasi Internal",
+                    color: "text-emerald-500",
+                  },
+                  {
+                    icon: Award,
+                    text: "Garansi Penggantian Gratis",
+                    color: "text-amber-500",
+                  },
+                  {
+                    icon: CheckCircle2,
+                    text: "Proses Administrasi Cepat",
+                    color: "text-sky-500",
+                  },
+                ].map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center gap-3 text-xs font-bold text-slate-600"
+                  >
+                    <item.icon className={`w-5 h-5 ${item.color}`} />
+                    {item.text}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -224,7 +265,6 @@ export default async function WorkerDetailPage({ params }: PageProps) {
   );
 }
 
-// === Generate static params untuk build ===
 export function generateStaticParams() {
   return workers.map((worker) => ({
     slug: worker.slug,

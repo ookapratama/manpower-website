@@ -33,7 +33,13 @@
 - [x] Halaman: Tentang Kami /about (visi misi, keunggulan, statistik)
 - [x] Halaman: Hubungi Kami /contact (form + info kontak + WhatsApp CTA)
 - [x] SEO: Metadata title & description di setiap halaman
-- [x] Verified: Semua halaman berfungsi di dev server (http://localhost:3000)
+- [x] UI/UX: Peningkatan Visual Hero Section (2-column layout + prominent image)
+- [x] UI/UX: Perbaikan Visibilitas Navbar (contrast fix & background shadow)
+- [x] UI/UX: Migrasi ke Tema Terang (Light Mode) yang bersih dan premium
+- [x] UI/UX: Implementasi Animasi Interaktif (Framer Motion) di seluruh halaman
+- [x] UI/UX: Integrasi gambar Unsplash (pekerja, testimoni, hero background)
+- [x] Dokumentasi: Pembuatan README.md utama
+- [x] Verified: Semua halaman berfungsi dan visual sudah premium di dev server (http://localhost:3000)
 
 ### 🔄 Sedang Dikerjakan
 

@@ -1,237 +1,266 @@
 /**
- * Halaman Direktori Pekerja — Listing semua tenaga kerja dengan filter
+ * Halaman Direktori Pekerja — Listing (Light Theme + Animations)
  */
 "use client";
 
 import { useState, useMemo } from "react";
 import { Search, SlidersHorizontal, X, MapPin, Filter } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import WorkerCard from "@/components/ui/WorkerCard";
-import { workerCards, categories, locations } from "@/lib/dummy-data";
-import { AvailabilityStatus } from "@/types";
-import { getAvailabilityLabel } from "@/lib/utils";
+import { workers, categories, locations } from "@/lib/dummy-data";
 
 export default function WorkersPage() {
-  const [search, setSearch] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedLocation, setSelectedLocation] = useState("");
-  const [selectedStatus, setSelectedStatus] = useState<AvailabilityStatus | "">(
-    "",
-  );
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [selectedLocation, setSelectedLocation] = useState<string>("all");
   const [showFilters, setShowFilters] = useState(false);
 
+  // Filter logic
   const filteredWorkers = useMemo(() => {
-    let result = workerCards;
+    return workers.filter((worker) => {
+      const matchSearch =
+        worker.fullName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        worker.category.name
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase()) ||
+        worker.skills.some((s) =>
+          s.name.toLowerCase().includes(searchQuery.toLowerCase()),
+        );
 
-    if (search) {
-      const q = search.toLowerCase();
-      result = result.filter(
-        (w) =>
-          w.fullName.toLowerCase().includes(q) ||
-          w.categoryName.toLowerCase().includes(q) ||
-          w.skills.some((s) => s.name.toLowerCase().includes(q)),
-      );
-    }
+      const matchCategory =
+        selectedCategory === "all" || worker.category.slug === selectedCategory;
+      const matchLocation =
+        selectedLocation === "all" || worker.location === selectedLocation;
 
-    if (selectedCategory) {
-      const cat = categories.find((c) => c.slug === selectedCategory);
-      if (cat) result = result.filter((w) => w.categoryName === cat.name);
-    }
-
-    if (selectedLocation) {
-      result = result.filter((w) => w.location === selectedLocation);
-    }
-
-    if (selectedStatus) {
-      result = result.filter((w) => w.availabilityStatus === selectedStatus);
-    }
-
-    return result;
-  }, [search, selectedCategory, selectedLocation, selectedStatus]);
-
-  const hasActiveFilters =
-    selectedCategory || selectedLocation || selectedStatus;
-
-  const clearFilters = () => {
-    setSelectedCategory("");
-    setSelectedLocation("");
-    setSelectedStatus("");
-    setSearch("");
-  };
+      return matchSearch && matchCategory && matchLocation;
+    });
+  }, [searchQuery, selectedCategory, selectedLocation]);
 
   return (
-    <div className="min-h-screen">
-      {/* Header */}
-      <div className="relative bg-slate-900/50 border-b border-white/5">
-        <div className="absolute inset-0 bg-grid opacity-30" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2">
-            Cari Tenaga Kerja
-          </h1>
-          <p className="text-slate-400">
-            Temukan tenaga kerja profesional sesuai kebutuhan bisnis Anda
-          </p>
+    <div className="min-h-screen bg-slate-50 pt-24 pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header Halaman */}
+        <div className="mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <h1 className="text-4xl font-black text-slate-900 mb-4 tracking-tight">
+              Cari Tenaga Kerja
+            </h1>
+            <p className="text-slate-500 font-medium">
+              Temukan partner profesional dari total {workers.length} tenaga
+              kerja terverifikasi.
+            </p>
+          </motion.div>
         </div>
-      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Search + filter toggle */}
-        <div className="flex items-center gap-3 mb-6">
-          <div className="flex-1 relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+        {/* Search & Filter Bar */}
+        <div className="flex flex-col lg:flex-row gap-4 mb-10 sticky top-20 z-30 pt-4 pb-4 bg-slate-50/80 backdrop-blur-md">
+          <div className="flex-1 relative group">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-sky-500 transition-colors" />
             <input
               type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Cari nama, keahlian, atau kategori..."
-              className="w-full pl-11 pr-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-sky-500/30 transition-colors"
+              placeholder="Cari berdasarkan nama, kategori, atau keahlian..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-12 pr-4 py-4 bg-white border border-slate-200 rounded-2xl focus:outline-none focus:border-sky-500 focus:ring-4 focus:ring-sky-100 transition-all shadow-sm"
             />
-            {search && (
-              <button
-                onClick={() => setSearch("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-500 hover:text-white rounded-md hover:bg-white/5"
-              >
-                <X className="w-3.5 h-3.5" />
-              </button>
-            )}
           </div>
+
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className={`flex items-center gap-2 px-4 py-3 text-sm font-medium border rounded-xl transition-colors ${
-              showFilters || hasActiveFilters
-                ? "text-sky-400 bg-sky-500/5 border-sky-500/20"
-                : "text-slate-400 bg-slate-900/50 border-white/10 hover:border-white/20"
+            className={`lg:hidden flex items-center justify-center gap-2 px-6 py-4 rounded-2xl border transition-all font-bold ${
+              showFilters
+                ? "bg-slate-900 border-slate-900 text-white"
+                : "bg-white border-slate-200 text-slate-700"
             }`}
           >
-            <SlidersHorizontal className="w-4 h-4" />
-            <span className="hidden sm:inline">Filter</span>
-            {hasActiveFilters && (
-              <span className="w-5 h-5 text-[10px] font-bold bg-sky-500 text-white rounded-full flex items-center justify-center">
-                {
-                  [selectedCategory, selectedLocation, selectedStatus].filter(
-                    Boolean,
-                  ).length
-                }
-              </span>
-            )}
+            <SlidersHorizontal className="w-5 h-5" />
+            Filter
           </button>
+
+          <div className="hidden lg:flex gap-4">
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="px-6 py-4 bg-white border border-slate-200 rounded-2xl focus:outline-none focus:border-sky-500 font-bold text-sm text-slate-700 shadow-sm cursor-pointer"
+            >
+              <option value="all">Semua Kategori</option>
+              {categories.map((c) => (
+                <option key={c.id} value={c.slug}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
+            <select
+              value={selectedLocation}
+              onChange={(e) => setSelectedLocation(e.target.value)}
+              className="px-6 py-4 bg-white border border-slate-200 rounded-2xl focus:outline-none focus:border-sky-500 font-bold text-sm text-slate-700 shadow-sm cursor-pointer"
+            >
+              <option value="all">Semua Lokasi</option>
+              {locations.map((loc) => (
+                <option key={loc} value={loc}>
+                  {loc}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
-        {/* Filter panel */}
-        {showFilters && (
-          <div className="mb-6 p-5 bg-slate-900/50 border border-white/5 rounded-2xl">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {/* Kategori */}
+        {/* Mobile Filters Drawer */}
+        <AnimatePresence>
+          {showFilters && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden mb-10 overflow-hidden bg-white border border-slate-200 rounded-3xl p-6 space-y-6 shadow-xl"
+            >
               <div>
-                <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">
+                <label className="block text-sm font-black text-slate-900 mb-3 uppercase tracking-widest">
                   Kategori
                 </label>
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full px-3 py-2.5 bg-slate-800/50 border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-sky-500/30 appearance-none"
-                >
-                  <option value="">Semua Kategori</option>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => setSelectedCategory("all")}
+                    className={`px-4 py-3 rounded-xl text-xs font-bold border transition-all ${
+                      selectedCategory === "all"
+                        ? "bg-sky-600 border-sky-600 text-white shadow-lg"
+                        : "bg-slate-50 border-slate-100 text-slate-600"
+                    }`}
+                  >
+                    Semua
+                  </button>
                   {categories.map((c) => (
-                    <option key={c.slug} value={c.slug}>
+                    <button
+                      key={c.id}
+                      onClick={() => setSelectedCategory(c.slug)}
+                      className={`px-4 py-3 rounded-xl text-xs font-bold border transition-all ${
+                        selectedCategory === c.slug
+                          ? "bg-sky-600 border-sky-600 text-white shadow-lg"
+                          : "bg-slate-50 border-slate-100 text-slate-600"
+                      }`}
+                    >
                       {c.name}
-                    </option>
+                    </button>
                   ))}
-                </select>
+                </div>
               </div>
-
-              {/* Lokasi */}
-              <div>
-                <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">
+              <div className="pt-6 border-t border-slate-100">
+                <label className="block text-sm font-black text-slate-900 mb-3 uppercase tracking-widest">
                   Lokasi
                 </label>
                 <select
                   value={selectedLocation}
                   onChange={(e) => setSelectedLocation(e.target.value)}
-                  className="w-full px-3 py-2.5 bg-slate-800/50 border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-sky-500/30 appearance-none"
+                  className="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:border-sky-400 font-bold text-sm"
                 >
-                  <option value="">Semua Lokasi</option>
-                  {locations.map((l) => (
-                    <option key={l} value={l}>
-                      {l}
+                  <option value="all">Semua Lokasi</option>
+                  {locations.map((loc) => (
+                    <option key={loc} value={loc}>
+                      {loc}
                     </option>
                   ))}
                 </select>
               </div>
+              <button
+                onClick={() => setShowFilters(false)}
+                className="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold"
+              >
+                Terapkan Filter
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-              {/* Status */}
-              <div>
-                <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">
-                  Status
-                </label>
-                <select
-                  value={selectedStatus}
-                  onChange={(e) =>
-                    setSelectedStatus(e.target.value as AvailabilityStatus | "")
-                  }
-                  className="w-full px-3 py-2.5 bg-slate-800/50 border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-sky-500/30 appearance-none"
-                >
-                  <option value="">Semua Status</option>
-                  <option value="available">Tersedia</option>
-                  <option value="busy">Sedang Bertugas</option>
-                  <option value="not_available">Tidak Tersedia</option>
-                </select>
-              </div>
-            </div>
-
-            {hasActiveFilters && (
-              <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
-                <span className="text-xs text-slate-500">
-                  {filteredWorkers.length} dari {workerCards.length} tenaga
-                  kerja
-                </span>
-                <button
-                  onClick={clearFilters}
-                  className="text-xs text-sky-400 hover:text-sky-300 font-medium"
-                >
-                  Hapus semua filter
-                </button>
-              </div>
+        {/* Listing Workers with Animations */}
+        <div className="relative">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-lg font-bold text-slate-900">
+              Hasil:{" "}
+              <span className="text-sky-600">{filteredWorkers.length}</span>{" "}
+              Pekerja
+            </h2>
+            {(selectedCategory !== "all" ||
+              selectedLocation !== "all" ||
+              searchQuery) && (
+              <button
+                onClick={() => {
+                  setSearchQuery("");
+                  setSelectedCategory("all");
+                  setSelectedLocation("all");
+                }}
+                className="text-sm font-bold text-red-500 hover:text-red-600 flex items-center gap-1.5"
+              >
+                <X className="w-4 h-4" /> Reset Semua Filter
+              </button>
             )}
           </div>
-        )}
 
-        {/* Result count */}
-        <div className="mb-6 flex items-center justify-between">
-          <p className="text-sm text-slate-400">
-            Menampilkan{" "}
-            <span className="text-white font-semibold">
-              {filteredWorkers.length}
-            </span>{" "}
-            tenaga kerja
-          </p>
+          <AnimatePresence mode="popLayout">
+            {filteredWorkers.length > 0 ? (
+              <motion.div
+                layout
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+              >
+                {filteredWorkers.map((worker) => (
+                  <motion.div
+                    key={worker.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <WorkerCard
+                      worker={{
+                        id: worker.id,
+                        fullName: worker.fullName,
+                        slug: worker.slug,
+                        photoUrl: worker.photoUrl,
+                        location: worker.location,
+                        availabilityStatus: worker.availabilityStatus,
+                        experienceYears: worker.experienceYears,
+                        dailyRate: worker.dailyRate,
+                        rating: worker.rating,
+                        skills: worker.skills,
+                        categoryName: worker.category.name,
+                      }}
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="py-32 text-center"
+              >
+                <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Filter className="w-10 h-10 text-slate-300" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                  Tidak ada pekerja ditemukan
+                </h3>
+                <p className="text-slate-500 max-w-xs mx-auto mb-8 font-medium">
+                  Coba ubah kriteria pencarian atau reset filter untuk hasil
+                  lain.
+                </p>
+                <button
+                  onClick={() => {
+                    setSearchQuery("");
+                    setSelectedCategory("all");
+                    setSelectedLocation("all");
+                  }}
+                  className="px-8 py-4 bg-sky-600 text-white font-bold rounded-2xl hover:bg-sky-500 transition-all shadow-lg shadow-sky-100"
+                >
+                  Reset Pencarian
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-
-        {/* Workers grid */}
-        {filteredWorkers.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filteredWorkers.map((worker) => (
-              <WorkerCard key={worker.id} worker={worker} />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-20">
-            <div className="w-16 h-16 rounded-full bg-slate-900/50 border border-white/10 flex items-center justify-center mx-auto mb-4">
-              <Search className="w-7 h-7 text-slate-600" />
-            </div>
-            <h3 className="text-lg font-semibold text-white mb-2">
-              Tidak ada hasil ditemukan
-            </h3>
-            <p className="text-sm text-slate-500 mb-4">
-              Coba ubah kata kunci pencarian atau filter yang digunakan
-            </p>
-            <button
-              onClick={clearFilters}
-              className="px-4 py-2 text-sm font-medium text-sky-400 bg-sky-500/5 border border-sky-500/10 rounded-lg hover:bg-sky-500/10 transition-colors"
-            >
-              Reset Filter
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );

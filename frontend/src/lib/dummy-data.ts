@@ -1,6 +1,7 @@
 /**
  * Data dummy untuk ManPower Supply Website
  * Data ini akan diganti dengan API call ke Laravel backend nanti
+ * Gambar menggunakan Unsplash (gratis & ringan) untuk testing
  */
 
 import {
@@ -107,7 +108,8 @@ export const workers: WorkerProfile[] = [
     id: 1,
     fullName: "Ahmad Rizki Pratama",
     slug: "ahmad-rizki-pratama",
-    photoUrl: "/api/placeholder/300/300",
+    photoUrl:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face&q=80",
     location: "Makassar",
     availabilityStatus: "available",
     experienceYears: 5,
@@ -124,7 +126,8 @@ export const workers: WorkerProfile[] = [
     id: 2,
     fullName: "Siti Nurhaliza",
     slug: "siti-nurhaliza",
-    photoUrl: "/api/placeholder/300/300",
+    photoUrl:
+      "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=300&h=300&fit=crop&crop=face&q=80",
     location: "Makassar",
     availabilityStatus: "available",
     experienceYears: 3,
@@ -141,7 +144,8 @@ export const workers: WorkerProfile[] = [
     id: 3,
     fullName: "Budi Santoso",
     slug: "budi-santoso",
-    photoUrl: "/api/placeholder/300/300",
+    photoUrl:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face&q=80",
     location: "Gowa",
     availabilityStatus: "busy",
     experienceYears: 8,
@@ -158,7 +162,8 @@ export const workers: WorkerProfile[] = [
     id: 4,
     fullName: "Dewi Anggraini",
     slug: "dewi-anggraini",
-    photoUrl: "/api/placeholder/300/300",
+    photoUrl:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop&crop=face&q=80",
     location: "Makassar",
     availabilityStatus: "available",
     experienceYears: 2,
@@ -175,7 +180,8 @@ export const workers: WorkerProfile[] = [
     id: 5,
     fullName: "Arif Hidayat",
     slug: "arif-hidayat",
-    photoUrl: "/api/placeholder/300/300",
+    photoUrl:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=300&fit=crop&crop=face&q=80",
     location: "Maros",
     availabilityStatus: "available",
     experienceYears: 6,
@@ -192,7 +198,8 @@ export const workers: WorkerProfile[] = [
     id: 6,
     fullName: "Rahmat Fadli",
     slug: "rahmat-fadli",
-    photoUrl: "/api/placeholder/300/300",
+    photoUrl:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face&q=80",
     location: "Makassar",
     availabilityStatus: "not_available",
     experienceYears: 4,
@@ -209,7 +216,8 @@ export const workers: WorkerProfile[] = [
     id: 7,
     fullName: "Firman Syahputra",
     slug: "firman-syahputra",
-    photoUrl: "/api/placeholder/300/300",
+    photoUrl:
+      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=300&fit=crop&crop=face&q=80",
     location: "Gowa",
     availabilityStatus: "available",
     experienceYears: 7,
@@ -226,7 +234,8 @@ export const workers: WorkerProfile[] = [
     id: 8,
     fullName: "Yusuf Rahman",
     slug: "yusuf-rahman",
-    photoUrl: "/api/placeholder/300/300",
+    photoUrl:
+      "https://images.unsplash.com/photo-1463453091185-61582044d556?w=300&h=300&fit=crop&crop=face&q=80",
     location: "Takalar",
     availabilityStatus: "available",
     experienceYears: 4,
@@ -243,7 +252,8 @@ export const workers: WorkerProfile[] = [
     id: 9,
     fullName: "Andi Mappasere",
     slug: "andi-mappasere",
-    photoUrl: "/api/placeholder/300/300",
+    photoUrl:
+      "https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=300&h=300&fit=crop&crop=face&q=80",
     location: "Makassar",
     availabilityStatus: "available",
     experienceYears: 10,
@@ -260,7 +270,8 @@ export const workers: WorkerProfile[] = [
     id: 10,
     fullName: "Nur Aisyah",
     slug: "nur-aisyah",
-    photoUrl: "/api/placeholder/300/300",
+    photoUrl:
+      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&h=300&fit=crop&crop=face&q=80",
     location: "Makassar",
     availabilityStatus: "busy",
     experienceYears: 3,
@@ -277,7 +288,8 @@ export const workers: WorkerProfile[] = [
     id: 11,
     fullName: "Darmawan Putra",
     slug: "darmawan-putra",
-    photoUrl: "/api/placeholder/300/300",
+    photoUrl:
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face&q=80",
     location: "Pangkep",
     availabilityStatus: "available",
     experienceYears: 5,
@@ -294,7 +306,8 @@ export const workers: WorkerProfile[] = [
     id: 12,
     fullName: "Putri Ramadhani",
     slug: "putri-ramadhani",
-    photoUrl: "/api/placeholder/300/300",
+    photoUrl:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=300&fit=crop&crop=face&q=80",
     location: "Makassar",
     availabilityStatus: "available",
     experienceYears: 2,
@@ -338,7 +351,8 @@ export const testimonials: Testimonial[] = [
     id: 1,
     name: "Ir. Hasan Basri",
     company: "PT Graha Sulawesi",
-    avatar: "/api/placeholder/80/80",
+    avatar:
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&crop=face&q=80",
     content:
       "Sangat puas dengan layanan ManPower Supply. Tenaga security yang disediakan profesional, disiplin, dan sudah bersertifikat. Proses rekrutmen juga cepat.",
     rating: 5,
@@ -347,7 +361,8 @@ export const testimonials: Testimonial[] = [
     id: 2,
     name: "Anita Wijaya",
     company: "Hotel Makassar Grand",
-    avatar: "/api/placeholder/80/80",
+    avatar:
+      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=80&h=80&fit=crop&crop=face&q=80",
     content:
       "Kami sudah 2 tahun menggunakan jasa cleaning service dari ManPower Supply. Kualitas kerja konsisten dan tim support sangat responsif.",
     rating: 5,
@@ -356,7 +371,8 @@ export const testimonials: Testimonial[] = [
     id: 3,
     name: "Rudi Hartono",
     company: "CV Logistik Nusantara",
-    avatar: "/api/placeholder/80/80",
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face&q=80",
     content:
       "Driver dan tenaga gudang yang disediakan sangat kompeten. Mereka memahami SOP keselamatan dan bekerja dengan sangat profesional.",
     rating: 4,
