@@ -19,7 +19,7 @@ export default function CategoriesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFF7F5] pt-40 pb-32">
+    <div className="min-h-screen bg-[#FFF7F5] pt-28 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-20 relative">
@@ -31,10 +31,10 @@ export default function CategoriesPage() {
             <span className="inline-block px-5 py-2 rounded-full bg-[#EA580C]/10 text-[#EA580C] text-[10px] font-black uppercase tracking-[0.3em] border border-[#EA580C]/20 mb-8">
               Layanan Spesialis
             </span>
-            <h1 className="text-5xl sm:text-8xl font-black text-[#1C0A00] tracking-tighter leading-[0.95] mb-10">
+            <h1 className="text-3xl sm:text-5xl font-black text-[#1C0A00] tracking-tight leading-none mb-6">
               Jelajahi <span className="text-gradient">Kategori</span>
             </h1>
-            <p className="text-xl sm:text-2xl text-[#78350F]/70 max-w-3xl mx-auto leading-relaxed font-bold">
+            <p className="text-lg sm:text-xl text-[#78350F]/70 max-w-2xl mx-auto leading-relaxed font-bold">
               Kami menyediakan tenaga kerja terlatih dan terverifikasi untuk
               berbagai sektor industri strategis dan kebutuhan operasional
               bisnis Anda.
@@ -47,7 +47,7 @@ export default function CategoriesPage() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3 }}
-          className="bg-[#1A0A00] rounded-[3rem] p-10 mb-20 flex flex-wrap justify-around items-center gap-12 shadow-2xl shadow-red-900/10 text-white border border-white/5 relative overflow-hidden"
+          className="bg-[#1A0A00] rounded-3xl p-8 mb-16 flex flex-wrap justify-around items-center gap-10 shadow-2xl shadow-red-900/10 text-white border border-white/5 relative overflow-hidden"
         >
           <div className="absolute inset-0 noise-bg opacity-5 pointer-events-none" />
           <div className="text-center relative z-10">
@@ -97,7 +97,7 @@ export default function CategoriesPage() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-32 p-12 sm:p-20 bg-white border border-[#FED7AA]/30 rounded-[4rem] text-center shadow-2xl shadow-red-900/5 relative overflow-hidden"
+          className="mt-24 p-10 sm:p-14 bg-white border border-[#FED7AA]/30 rounded-3xl text-center shadow-2xl shadow-red-900/5 relative overflow-hidden"
         >
           <div className="absolute top-[-20%] right-[-10%] w-[40%] h-[40%] bg-[#EA580C]/5 rounded-full blur-[100px]" />
           <h3 className="text-3xl sm:text-4xl font-black text-[#1C0A00] mb-6 tracking-tighter relative z-10">

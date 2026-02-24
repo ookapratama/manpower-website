@@ -37,7 +37,7 @@ export default function WorkersPage() {
   }, [searchQuery, selectedCategory, selectedLocation]);
 
   return (
-    <div className="min-h-screen bg-[#FFF7F5] pt-32 pb-24">
+    <div className="min-h-screen bg-[#FFF7F5] pt-28 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Halaman */}
         <div className="mb-16 text-center lg:text-left">
@@ -45,10 +45,10 @@ export default function WorkersPage() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 className="text-4xl sm:text-6xl font-black text-[#1C0A00] mb-6 tracking-tighter">
+            <h1 className="text-3xl sm:text-5xl font-black text-[#1C0A00] tracking-tight leading-none mb-6">
               Direktori <span className="text-gradient">Tenaga Kerja</span>
             </h1>
-            <p className="text-[#78350F]/70 font-bold text-lg max-w-2xl">
+            <p className="text-lg sm:text-xl text-[#78350F]/70 max-w-2xl mx-auto leading-relaxed font-bold">
               Temukan partner profesional dari total {workers.length} tenaga
               kerja terverifikasi yang siap mendukung operasional bisnis Anda.
             </p>
@@ -64,19 +64,19 @@ export default function WorkersPage() {
               placeholder="Cari berdasarkan nama, kategori, atau keahlian..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-14 pr-6 py-5 bg-white border border-[#FED7AA]/50 rounded-[2rem] focus:outline-none focus:border-[#EA580C] focus:ring-4 focus:ring-[#EA580C]/10 transition-all shadow-xl shadow-red-900/5 font-medium text-lg text-[#1C0A00]"
+              className="w-full pl-12 pr-6 py-4 bg-white border border-[#FED7AA]/50 rounded-2xl focus:outline-none focus:border-[#EA580C] focus:ring-4 focus:ring-[#EA580C]/10 transition-all shadow-xl shadow-red-900/5 font-medium text-base text-[#1C0A00]"
             />
           </div>
 
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className={`lg:hidden flex items-center justify-center gap-3 px-8 py-5 rounded-[2rem] border-2 transition-all font-black ${
+            className={`lg:hidden flex items-center justify-center gap-2 px-6 py-4 rounded-2xl border-2 transition-all font-black text-sm ${
               showFilters
                 ? "bg-[#1C0A00] border-[#1C0A00] text-white"
                 : "bg-white border-[#FED7AA]/50 text-[#1C0A00] shadow-xl shadow-red-900/5"
             }`}
           >
-            <SlidersHorizontal className="w-6 h-6" />
+            <SlidersHorizontal className="w-5 h-5" />
             Filter
           </button>
 
@@ -84,7 +84,7 @@ export default function WorkersPage() {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-8 py-5 bg-white border border-[#FED7AA]/50 rounded-[2rem] focus:outline-none focus:border-[#EA580C] focus:ring-4 focus:ring-[#EA580C]/10 font-black text-sm text-[#1C0A00] shadow-xl shadow-red-900/5 cursor-pointer appearance-none min-w-[200px]"
+              className="px-6 py-4 bg-white border border-[#FED7AA]/50 rounded-2xl focus:outline-none focus:border-[#EA580C] focus:ring-4 focus:ring-[#EA580C]/10 font-black text-xs text-[#1C0A00] shadow-xl shadow-red-900/5 cursor-pointer appearance-none min-w-[180px]"
             >
               <option value="all">Semua Kategori</option>
               {categories.map((c) => (
@@ -96,7 +96,7 @@ export default function WorkersPage() {
             <select
               value={selectedLocation}
               onChange={(e) => setSelectedLocation(e.target.value)}
-              className="px-8 py-5 bg-white border border-[#FED7AA]/50 rounded-[2rem] focus:outline-none focus:border-[#EA580C] focus:ring-4 focus:ring-[#EA580C]/10 font-black text-sm text-[#1C0A00] shadow-xl shadow-red-900/5 cursor-pointer appearance-none min-w-[200px]"
+              className="px-6 py-4 bg-white border border-[#FED7AA]/50 rounded-2xl focus:outline-none focus:border-[#EA580C] focus:ring-4 focus:ring-[#EA580C]/10 font-black text-xs text-[#1C0A00] shadow-xl shadow-red-900/5 cursor-pointer appearance-none min-w-[180px]"
             >
               <option value="all">Semua Lokasi</option>
               {locations.map((loc) => (
@@ -115,7 +115,8 @@ export default function WorkersPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="lg:hidden mb-12 overflow-hidden bg-white border border-[#FED7AA]/30 rounded-[3rem] p-8 space-y-8 shadow-2xl shadow-red-900/10"
+              transition={{ delay: 0.3 }}
+              className="lg:hidden mb-12 overflow-hidden bg-[#1A0A00] border border-white/5 rounded-3xl p-8 space-y-8 shadow-2xl shadow-red-900/10 text-white"
             >
               <div>
                 <label className="block text-xs font-black text-[#EA580C] mb-5 uppercase tracking-[0.3em]">

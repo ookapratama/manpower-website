@@ -72,7 +72,7 @@ export default function HomePage() {
           <div className="absolute bottom-[-10%] left-[-5%] w-[50%] h-[50%] bg-[#EA580C]/10 rounded-full blur-[140px]" />
         </div>
 
-        <div className="relative w-full max-w-9xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col lg:flex-row items-center gap-20 py-32 lg:py-0">
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-16 py-32 lg:py-40">
           {/* Left Content */}
           <motion.div
             style={{ y: heroY, opacity: heroOpacity }}
@@ -94,7 +94,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-6xl sm:text-8xl lg:text-[10rem] font-black tracking-[-0.05em] leading-[0.85] mb-12 text-white"
+              className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-8 text-white"
             >
               Strategic <br />
               <span className="text-gradient">Force</span> For Your <br />
@@ -105,7 +105,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-xl sm:text-2xl text-slate-400 mb-16 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium tracking-tight"
+              className="text-lg sm:text-xl text-slate-400 mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0 font-medium tracking-tight"
             >
               Solusi penyediaan tenaga kerja terlatih dan terverifikasi untuk
               mengakselerasi pertumbuhan operasional perusahaan Anda secara
@@ -120,11 +120,11 @@ export default function HomePage() {
             >
               <Link
                 href="/workers"
-                className="group relative w-full sm:w-auto px-12 py-7 bg-[#DC2626] text-white font-black text-xl rounded-[2rem] hover:bg-[#B91C1C] transition-all shadow-[0_25px_60px_-15px_rgba(220,38,38,0.5)] flex items-center justify-center gap-4 active:scale-95 overflow-hidden"
+                className="group relative w-full sm:w-auto px-10 py-5 bg-[#DC2626] text-white font-black text-lg rounded-2xl hover:bg-[#B91C1C] transition-all shadow-[0_20px_50px_-10px_rgba(220,38,38,0.4)] flex items-center justify-center gap-4 active:scale-95 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-linear-to-r from-white/0 via-white/10 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                 Dapatkan Tenaga Kerja
-                <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
               </Link>
               <button className="flex items-center gap-4 text-white hover:text-[#EA580C] transition-colors group">
                 <div className="w-16 h-16 rounded-full border-2 border-white/10 flex items-center justify-center group-hover:border-[#EA580C]/50 group-hover:bg-[#EA580C]/5 transition-all">
@@ -164,9 +164,9 @@ export default function HomePage() {
             initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
             animate={{ opacity: 1, scale: 1, rotateY: 0 }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-            className="flex-1 relative w-full h-[600px] lg:h-[850px] z-10"
+            className="flex-1 relative w-full h-[500px] lg:h-[700px] z-10"
           >
-            <div className="relative w-full h-full rounded-[4rem] sm:rounded-[6rem] overflow-hidden border-12 border-white/5 shadow-2xl">
+            <div className="relative w-full h-full rounded-[3rem] overflow-hidden border-8 border-white/5 shadow-2xl">
               <Image
                 src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop"
                 alt="Modern Workspace"
@@ -239,7 +239,7 @@ export default function HomePage() {
       </section>
 
       {/* ==================== KATEGORI SECTION ==================== */}
-      <section className="py-48 bg-[#FFF7F5] relative overflow-hidden">
+      <section className="py-24 bg-[#FFF7F5] relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-5 bg-grid pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-32 gap-12 text-center md:text-left">
@@ -255,11 +255,11 @@ export default function HomePage() {
                   Core Categories
                 </span>
               </div>
-              <h2 className="text-5xl sm:text-8xl font-black text-[#1C0A00] leading-[0.9] tracking-tighter mb-10">
+              <h2 className="text-3xl sm:text-5xl font-black text-[#1C0A00] leading-[1.1] tracking-tight mb-6">
                 Layanan <span className="text-gradient">Terintegrasi</span>{" "}
                 <br /> Sesuai Sektor Bisnis.
               </h2>
-              <p className="text-[#78350F]/70 font-bold text-xl sm:text-2xl leading-relaxed max-w-2xl tracking-tight">
+              <p className="text-[#78350F]/70 font-bold text-lg sm:text-xl leading-relaxed max-w-xl tracking-tight">
                 Pilih spesialisasi yang tepat untuk mendukung ekosistem kerja
                 perusahaan Anda dengan standar kualitas premium.
               </p>
@@ -279,9 +279,9 @@ export default function HomePage() {
               </div>
               <Link
                 href="/workers"
-                className="inline-flex items-center gap-4 px-10 py-6 bg-white border-2 border-[#FED7AA]/30 rounded-[2rem] text-base font-black text-[#1C0A00] hover:bg-[#1C0A00] hover:text-white hover:border-[#1C0A00] transition-all"
+                className="inline-flex items-center gap-4 px-8 py-5 bg-white border-2 border-[#FED7AA]/30 rounded-2xl text-sm font-black text-[#1C0A00] hover:bg-[#1C0A00] hover:text-white hover:border-[#1C0A00] transition-all"
               >
-                Lihat Semua Katalog <ArrowRight className="w-5 h-5" />
+                Lihat Semua Katalog <ArrowRight className="w-4 h-4" />
               </Link>
             </motion.div>
           </div>
@@ -310,15 +310,15 @@ export default function HomePage() {
           viewport={{ once: true }}
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
         >
-          <div className="bg-[#1C0A00] rounded-[5rem] p-12 sm:p-24 relative overflow-hidden">
+          <div className="bg-[#1C0A00] rounded-[3rem] p-12 sm:p-20 relative overflow-hidden">
             <div className="absolute inset-0 noise-bg opacity-10" />
             <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-16">
               <div className="max-w-2xl text-center lg:text-left">
-                <h3 className="text-4xl sm:text-6xl font-black text-white tracking-tighter mb-8 leading-none">
+                <h3 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-6 leading-none">
                   Butuh Tenaga Kerja <br />{" "}
                   <span className="text-[#EA580C]">Skala Besar?</span>
                 </h3>
-                <p className="text-slate-400 text-lg sm:text-xl font-medium tracking-tight">
+                <p className="text-slate-400 text-base sm:text-lg font-medium tracking-tight">
                   Kami siap menangani rekrutmen massal dengan timeline yang
                   ketat tanpa mengabaikan kualitas seleksi.
                 </p>
@@ -350,7 +350,7 @@ export default function HomePage() {
       </section>
 
       {/* ==================== PEKERJA UNGGULAN ==================== */}
-      <section className="py-48 bg-white relative">
+      <section className="py-32 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center sm:items-end justify-between mb-32 gap-12 text-center sm:text-left">
             <motion.div
@@ -365,21 +365,21 @@ export default function HomePage() {
                   Elite Profile
                 </span>
               </div>
-              <h2 className="text-5xl sm:text-8xl font-black text-[#1C0A00] tracking-tighter leading-[0.9] mb-10">
+              <h2 className="text-3xl sm:text-5xl font-black text-[#1C0A00] tracking-tight leading-[1.1] mb-6">
                 Sambut Tenaga <br />{" "}
                 <span className="text-gradient">Terbaik</span> Kami.
               </h2>
-              <p className="text-[#78350F]/60 font-bold text-xl sm:text-2xl leading-relaxed tracking-tight">
+              <p className="text-[#78350F]/60 font-bold text-lg sm:text-xl leading-relaxed tracking-tight">
                 Rating konsisten di atas 4.8 dengan portofolio proyek
                 keberhasilan yang impresif.
               </p>
             </motion.div>
             <Link
               href="/workers"
-              className="group flex items-center gap-4 px-10 py-6 rounded-[2rem] bg-[#FFF7F5] border-2 border-[#FED7AA]/40 text-[#1C0A00] font-black text-base hover:bg-[#1C0A00] hover:text-white hover:border-[#1C0A00] transition-all duration-500 shadow-xl shadow-red-900/2"
+              className="group flex items-center gap-4 px-8 py-5 rounded-2xl bg-[#FFF7F5] border-2 border-[#FED7AA]/40 text-[#1C0A00] font-black text-sm hover:bg-[#1C0A00] hover:text-white hover:border-[#1C0A00] transition-all duration-500 shadow-xl shadow-red-900/2"
             >
               Lihat Direktori Lengkap
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
             </Link>
           </div>
 
@@ -413,11 +413,11 @@ export default function HomePage() {
               <h2 className="text-xs font-black text-[#DC2626] uppercase tracking-[0.5em] mb-10 block">
                 Partner Satisfaction
               </h2>
-              <h3 className="text-5xl sm:text-8xl font-black text-white tracking-tighter leading-none mb-10">
+              <h3 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-none mb-8">
                 Apa Kata <span className="text-gradient">Mitra</span> Strategis{" "}
                 <br /> Kami?
               </h3>
-              <p className="text-slate-400 text-xl font-medium max-w-2xl mx-auto tracking-tight">
+              <p className="text-slate-400 text-lg font-medium max-w-xl mx-auto tracking-tight">
                 Kepuasan klien adalah validasi mutlak atas standar kualitas yang
                 kami pertahankan selama bertahun-tahun.
               </p>
@@ -432,7 +432,7 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.15, duration: 0.8 }}
                 viewport={{ once: true }}
-                className="p-12 sm:p-16 rounded-[4rem] bg-white/5 border border-white/10 hover:bg-white/8 transition-all duration-700 group relative"
+                className="p-8 sm:p-12 rounded-[2.5rem] bg-white/5 border border-white/10 hover:bg-white/8 transition-all duration-700 group relative"
               >
                 <div className="absolute top-10 right-10 text-8xl text-white/5 font-serif leading-none rotate-12 select-none">
                   &ldquo;
@@ -483,7 +483,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="p-16 sm:p-32 rounded-[5rem] lg:rounded-[8rem] bg-linear-to-br from-[#1C0A00] via-[#2D1200] to-black text-white relative overflow-hidden shadow-2xl shadow-red-900/30"
+            className="p-12 sm:p-24 rounded-[3rem] lg:rounded-[5rem] bg-linear-to-br from-[#1C0A00] via-[#2D1200] to-black text-white relative overflow-hidden shadow-2xl shadow-red-900/30"
           >
             <div className="absolute inset-0 noise-bg opacity-15 pointer-events-none" />
             <div className="absolute top-0 left-0 w-full h-full bg-grid opacity-10" />
@@ -499,26 +499,26 @@ export default function HomePage() {
               >
                 <Zap className="w-12 h-12 text-[#DC2626]" />
               </motion.div>
-              <h2 className="text-6xl sm:text-9xl font-black mb-12 tracking-[-0.04em] leading-[0.85] text-white">
+              <h2 className="text-4xl sm:text-7xl font-black mb-8 tracking-tight leading-[1.1] text-white">
                 Siap Melangkah <br />{" "}
                 <span className="text-gradient">Lebih Profesional?</span>
               </h2>
-              <p className="text-xl sm:text-3xl text-slate-400 mb-20 max-w-3xl mx-auto font-medium leading-relaxed tracking-tight">
+              <p className="text-lg sm:text-xl text-slate-400 mb-12 max-w-2xl mx-auto font-medium leading-relaxed tracking-tight">
                 Konsultasikan kebutuhan workforce strategis Anda hari ini dan
                 dapatkan penawaran solusi terbaik yang dipersonalisasi.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-8 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full sm:w-auto">
                 <Link
                   href="/contact"
-                  className="group relative w-full sm:w-auto px-16 py-8 bg-[#DC2626] text-white font-black text-2xl rounded-[2.5rem] hover:bg-[#B91C1C] active:scale-95 transition-all shadow-[0_30px_70px_-15px_rgba(220,38,38,0.6)] flex items-center justify-center gap-4"
+                  className="group relative w-full sm:w-auto px-12 py-6 bg-[#DC2626] text-white font-black text-lg rounded-2xl hover:bg-[#B91C1C] active:scale-95 transition-all shadow-[0_25px_60px_-15px_rgba(220,38,38,0.5)] flex items-center justify-center gap-4"
                 >
                   Minta Penawaran{" "}
-                  <ArrowRight className="w-8 h-8 group-hover:translate-x-2 transition-transform" />
+                  <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
                 </Link>
                 <Link
                   href="/about"
-                  className="w-full sm:w-auto px-16 py-8 bg-white/5 border-2 border-white/10 text-white font-black text-2xl rounded-[2.5rem] hover:bg-white/10 active:scale-95 transition-all flex items-center justify-center gap-4 backdrop-blur-md"
+                  className="w-full sm:w-auto px-12 py-6 bg-white/5 border-2 border-white/10 text-white font-black text-lg rounded-2xl hover:bg-white/10 active:scale-95 transition-all flex items-center justify-center gap-4 backdrop-blur-md"
                 >
                   Pelajari Metodologi Kami
                 </Link>

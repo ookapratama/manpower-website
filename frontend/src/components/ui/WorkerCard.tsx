@@ -25,7 +25,7 @@ export default function WorkerCard({ worker }: WorkerCardProps) {
       className="relative group"
     >
       <Link href={`/workers/${worker.slug}`} className="block">
-        <div className="bg-white border border-[#FED7AA]/30 rounded-[2.5rem] overflow-hidden transition-all duration-500 hover:shadow-[0_20px_50px_rgba(220,38,38,0.1)] hover:border-[#EA580C]/30 relative">
+        <div className="bg-white border border-[#FED7AA]/30 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_20px_50px_rgba(220,38,38,0.1)] hover:border-[#EA580C]/30 relative">
           {/* Top Info Bar */}
           <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
             <div
@@ -61,14 +61,14 @@ export default function WorkerCard({ worker }: WorkerCardProps) {
           </div>
 
           {/* Card Content */}
-          <div className="p-8 relative">
+          <div className="p-6 relative">
             {/* Verification Badge */}
             <div className="flex items-center gap-1.5 mb-3 text-[9px] font-black text-emerald-600 uppercase tracking-widest">
               <ShieldCheck className="w-3.5 h-3.5" />
               Verified Expert
             </div>
 
-            <h3 className="text-2xl font-black text-[#1C0A00] tracking-tighter mb-1 truncate leading-tight">
+            <h3 className="text-xl font-black text-[#1C0A00] tracking-tight mb-1 truncate leading-tight">
               {worker.fullName}
             </h3>
 

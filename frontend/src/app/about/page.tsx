@@ -48,7 +48,7 @@ export default function AboutPage() {
       className="min-h-screen bg-[#FFF7F5] selection:bg-[#DC2626]/10 selection:text-[#DC2626]"
     >
       {/* Hero Header */}
-      <section className="relative pt-48 pb-32 overflow-hidden bg-[#1C0A00]">
+      <section className="relative pt-32 pb-24 overflow-hidden bg-[#1C0A00]">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#EA580C]/15 rounded-full blur-[160px] -translate-y-1/2 translate-x-1/2 opacity-60 animate-pulse" />
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#DC2626]/10 rounded-full blur-[140px] translate-y-1/2 -translate-x-1/2 opacity-40" />
@@ -67,13 +67,13 @@ export default function AboutPage() {
               Kenali Lebih Dekat
             </motion.div>
 
-            <h1 className="text-6xl sm:text-9xl font-black text-white tracking-[-0.04em] leading-[0.85] mb-12">
+            <h1 className="text-4xl sm:text-7xl font-black text-white tracking-tight leading-[1.1] mb-8">
               The Engine <br />
               Behind Your <br />
               <span className="text-gradient">Success.</span>
             </h1>
 
-            <p className="text-xl sm:text-3xl text-slate-400 max-w-3xl mx-auto leading-relaxed font-medium tracking-tight">
+            <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium tracking-tight">
               Sejak 2020, ManPower Supply telah menjadi katalisator bagi
               transformasi ekosistem ketenagakerjaan profesional di seluruh
               Indonesia.
@@ -83,7 +83,7 @@ export default function AboutPage() {
       </section>
 
       {/* Philosophy Section */}
-      <section className="py-48 bg-white relative">
+      <section className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={containerVariants}
@@ -99,11 +99,11 @@ export default function AboutPage() {
                   Our Core Value
                 </span>
               </div>
-              <h2 className="text-5xl sm:text-7xl font-black text-[#1C0A00] tracking-tighter leading-[0.9] mb-10">
+              <h2 className="text-3xl sm:text-5xl font-black text-[#1C0A00] tracking-tight leading-[1.1] mb-8">
                 Misi Besar Untuk <br /> Dampak{" "}
                 <span className="text-gradient">Nyata.</span>
               </h2>
-              <p className="text-[#78350F]/70 text-xl sm:text-2xl leading-relaxed font-bold tracking-tight mb-12">
+              <p className="text-[#78350F]/70 text-lg sm:text-xl leading-relaxed font-bold tracking-tight mb-10">
                 Kami tidak sekadar menyalurkan tenaga kerja; kami membangun
                 jembatan kepercayaan antara talenta terbaik dan perusahaan
                 visioner.
@@ -124,7 +124,7 @@ export default function AboutPage() {
                 ].map((stat, i) => (
                   <div
                     key={i}
-                    className="p-8 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-3xl"
+                    className="p-6 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-2xl"
                   >
                     <stat.icon className="w-8 h-8 text-[#DC2626] mb-4" />
                     <div className="font-black text-[#1C0A00] text-lg mb-1">
@@ -139,7 +139,7 @@ export default function AboutPage() {
             </motion.div>
 
             <motion.div variants={itemVariants} className="relative group">
-              <div className="aspect-4/5 rounded-[4rem] overflow-hidden border-12 border-[#FFF7F5] shadow-2xl relative">
+              <div className="aspect-4/5 rounded-[2.5rem] overflow-hidden border-8 border-[#FFF7F5] shadow-2xl relative">
                 <Image
                   src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2000&auto=format&fit=crop"
                   alt="Professional Leadership"
@@ -148,7 +148,7 @@ export default function AboutPage() {
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-[#1C0A00]/80 via-transparent to-transparent" />
                 <div className="absolute bottom-12 left-12 right-12 text-white">
-                  <div className="text-3xl font-black tracking-tight mb-2">
+                  <div className="text-2xl font-black tracking-tight mb-2">
                     Integritas Tanpa Kompromi
                   </div>
                   <div className="text-[#EA580C] text-[10px] font-black uppercase tracking-[0.4em]">
@@ -169,16 +169,16 @@ export default function AboutPage() {
           >
             <motion.div
               variants={itemVariants}
-              className="p-16 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-[4rem] hover:border-[#EA580C]/30 transition-all duration-700 group relative overflow-hidden"
+              className="p-10 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-3xl hover:border-[#EA580C]/30 transition-all duration-700 group relative overflow-hidden"
             >
               <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#EA580C]/5 rounded-full blur-3xl" />
-              <div className="w-24 h-24 rounded-[2rem] bg-[#EA580C] text-white flex items-center justify-center mb-12 shadow-2xl shadow-orange-900/30 group-hover:rotate-6 transition-transform">
-                <Target className="w-12 h-12" />
+              <div className="w-16 h-16 rounded-2xl bg-[#EA580C] text-white flex items-center justify-center mb-10 shadow-xl shadow-orange-900/30 group-hover:rotate-6 transition-transform">
+                <Target className="w-8 h-8" />
               </div>
-              <h2 className="text-4xl sm:text-5xl font-black text-[#1C0A00] mb-8 tracking-tighter">
+              <h2 className="text-2xl sm:text-3xl font-black text-[#1C0A00] mb-6 tracking-tight">
                 Visi Strategis
               </h2>
-              <p className="text-[#78350F]/70 text-2xl leading-relaxed font-bold tracking-tight">
+              <p className="text-[#78350F]/70 text-lg leading-relaxed font-bold tracking-tight">
                 Menjadi benchmark utama dalam industri penyediaan tenaga kerja
                 profesional di Asia Pasifik dengan mengedepankan inovasi
                 teknologi rekrutmen.
@@ -187,13 +187,13 @@ export default function AboutPage() {
 
             <motion.div
               variants={itemVariants}
-              className="p-16 bg-[#1C0A00] text-white rounded-[4rem] shadow-2xl shadow-red-900/10 relative overflow-hidden group"
+              className="p-10 bg-[#1C0A00] text-white rounded-3xl shadow-2xl shadow-red-900/10 relative overflow-hidden group"
             >
               <div className="absolute inset-0 noise-bg opacity-10" />
-              <div className="w-24 h-24 rounded-[2rem] bg-white/5 text-[#EA580C] flex items-center justify-center mb-12 border border-white/10 group-hover:rotate-6 transition-transform">
-                <TrendingUp className="w-12 h-12" />
+              <div className="w-16 h-16 rounded-2xl bg-white/5 text-[#EA580C] flex items-center justify-center mb-10 border border-white/10 group-hover:rotate-6 transition-transform">
+                <TrendingUp className="w-8 h-8" />
               </div>
-              <h2 className="text-4xl sm:text-5xl font-black text-white mb-8 tracking-tighter">
+              <h2 className="text-2xl sm:text-3xl font-black text-white mb-6 tracking-tight">
                 Misi Operasional
               </h2>
               <ul className="space-y-8">
@@ -205,12 +205,12 @@ export default function AboutPage() {
                 ].map((misi, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-6 text-slate-300 font-bold"
+                    className="flex items-start gap-4 text-slate-300 font-bold"
                   >
-                    <div className="w-8 h-8 rounded-full bg-[#EA580C]/10 flex items-center justify-center shrink-0 mt-1">
-                      <CheckCircle2 className="w-5 h-5 text-[#EA580C]" />
+                    <div className="w-6 h-6 rounded-full bg-[#EA580C]/10 flex items-center justify-center shrink-0 mt-1">
+                      <CheckCircle2 className="w-4 h-4 text-[#EA580C]" />
                     </div>
-                    <span className="text-xl leading-snug tracking-tight">
+                    <span className="text-lg leading-snug tracking-tight">
                       {misi}
                     </span>
                   </li>
@@ -222,7 +222,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Visual with Glassmorphism */}
-      <section className="py-48 bg-[#FFF7F5] relative overflow-hidden">
+      <section className="py-24 bg-[#FFF7F5] relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-[#EA580C]/5 blur-[160px] translate-x-1/2" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -230,7 +230,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true }}
-            className="relative aspect-21/10 rounded-[4rem] sm:rounded-[6rem] overflow-hidden border-12 border-white shadow-3xl group"
+            className="relative aspect-21/10 rounded-3xl sm:rounded-[4rem] overflow-hidden border-8 border-white shadow-3xl group"
           >
             <Image
               src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop"
@@ -241,7 +241,7 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-linear-to-t from-[#1C0A00]/95 via-[#1C0A00]/20 to-transparent" />
             <div className="absolute bottom-16 left-16 right-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
               <div>
-                <h3 className="text-4xl sm:text-6xl font-black text-white mb-4 tracking-tighter">
+                <h3 className="text-3xl sm:text-5xl font-black text-white mb-4 tracking-tight">
                   Kekuatan di Balik Layanan.
                 </h3>
                 <p className="text-[#EA580C] font-black uppercase tracking-[0.5em] text-[10px]">
@@ -260,7 +260,7 @@ export default function AboutPage() {
       </section>
 
       {/* Keunggulan Header */}
-      <section className="py-48 bg-white relative">
+      <section className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center text-center mb-32">
             <motion.div
@@ -269,11 +269,11 @@ export default function AboutPage() {
               viewport={{ once: true }}
             >
               <div className="w-20 h-1 bg-[#DC2626] mb-10 rounded-full mx-auto" />
-              <h2 className="text-5xl sm:text-8xl font-black text-[#1C0A00] mb-8 tracking-tighter leading-none">
+              <h2 className="text-3xl sm:text-5xl font-black text-[#1C0A00] mb-6 tracking-tight leading-none">
                 Why Partners <br />{" "}
                 <span className="text-gradient">Choose Us?</span>
               </h2>
-              <p className="text-[#78350F]/60 max-w-2xl mx-auto font-bold text-xl sm:text-2xl tracking-tight leading-relaxed">
+              <p className="text-[#78350F]/60 max-w-xl mx-auto font-bold text-lg sm:text-xl tracking-tight leading-relaxed">
                 Empat pilar utama yang menjadikan kami mitra strategis paling
                 andal di industri outsourcing Indonesia.
               </p>
@@ -320,19 +320,19 @@ export default function AboutPage() {
               <motion.div
                 key={item.title}
                 variants={itemVariants}
-                whileHover={{ y: -15 }}
-                className="p-12 bg-white border border-[#FED7AA]/30 rounded-[3.5rem] shadow-2xl shadow-red-900/2 hover:shadow-red-900/5 transition-all duration-500 group relative"
+                whileHover={{ y: -10 }}
+                className="p-8 bg-white border border-[#FED7AA]/30 rounded-3xl shadow-2xl shadow-red-900/2 hover:shadow-red-900/5 transition-all duration-500 group relative"
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-[#FED7AA]/20 to-transparent group-hover:via-[#EA580C]/40 transition-all" />
                 <div
-                  className={`w-20 h-20 ${item.bg} ${item.color} rounded-[2rem] flex items-center justify-center mb-10 border border-black/5 shadow-inner transition-transform group-hover:scale-110`}
+                  className={`w-16 h-16 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center mb-8 border border-black/5 shadow-inner transition-transform group-hover:scale-110`}
                 >
-                  <item.icon className="w-10 h-10" />
+                  <item.icon className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-black text-[#1C0A00] mb-5 tracking-tight group-hover:text-[#DC2626] transition-colors">
+                <h3 className="text-xl font-black text-[#1C0A00] mb-4 tracking-tight group-hover:text-[#DC2626] transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-base text-[#78350F]/70 leading-relaxed font-bold italic">
+                <p className="text-sm text-[#78350F]/70 leading-relaxed font-bold italic">
                   &ldquo;{item.desc}&rdquo;
                 </p>
               </motion.div>
@@ -342,7 +342,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats with Big Numbers */}
-      <section className="py-64 bg-[#1C0A00] text-white relative overflow-hidden shadow-2xl">
+      <section className="py-32 bg-[#1C0A00] text-white relative overflow-hidden shadow-2xl">
         <div className="absolute inset-0 noise-bg opacity-15" />
         <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
         <div className="max-w-7xl mx-auto px-8 relative z-10">
@@ -360,7 +360,7 @@ export default function AboutPage() {
                 transition={{ delay: i * 0.1, duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <div className="text-7xl sm:text-[10rem] font-black text-[#EA580C] mb-8 tracking-[-0.05em] leading-none">
+                <div className="text-5xl sm:text-8xl font-black text-[#EA580C] mb-6 tracking-tight leading-none">
                   {stat.value}
                 </div>
                 <div className="text-[10px] sm:text-xs font-black text-white/40 uppercase tracking-[0.5em] leading-loose">
