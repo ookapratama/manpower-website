@@ -5,6 +5,13 @@
 
 import { Phone, Mail, MapPin, Clock, MessageSquare, Send } from "lucide-react";
 import { motion } from "framer-motion";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function ContactPage() {
   const containerVariants = {
@@ -204,14 +211,22 @@ export default function ContactPage() {
                   <label className="text-[10px] font-black text-[#EA580C] uppercase tracking-[0.2em] ml-1">
                     Kategori Tenaga Kerja
                   </label>
-                  <select className="w-full px-6 py-4 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-xl focus:outline-none focus:border-[#EA580C] focus:bg-white transition-all font-bold text-[#1C0A00] cursor-pointer appearance-none shadow-sm text-sm">
-                    <option>Pilih Kategori Kebutuhan</option>
-                    <option>Security & Satpam</option>
-                    <option>Cleaning Service</option>
-                    <option>Driver Profesional</option>
-                    <option>Teknisi & Maintenance</option>
-                    <option>Lainnya</option>
-                  </select>
+                  <Select>
+                    <SelectTrigger className="w-full px-6 py-7 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-xl focus:ring-4 focus:ring-[#EA580C]/10 font-bold text-[#1C0A00] cursor-pointer shadow-sm text-sm h-auto">
+                      <SelectValue placeholder="Pilih Kategori Kebutuhan" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white border-[#FED7AA]/50 rounded-xl font-bold text-[#1C0A00]">
+                      <SelectItem value="security">
+                        Security & Satpam
+                      </SelectItem>
+                      <SelectItem value="cleaning">Cleaning Service</SelectItem>
+                      <SelectItem value="driver">Driver Profesional</SelectItem>
+                      <SelectItem value="technician">
+                        Teknisi & Maintenance
+                      </SelectItem>
+                      <SelectItem value="others">Lainnya</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 <div className="space-y-3">

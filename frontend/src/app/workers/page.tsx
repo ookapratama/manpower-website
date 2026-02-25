@@ -6,6 +6,13 @@
 import { useState, useMemo } from "react";
 import { Search, SlidersHorizontal, X, MapPin, Filter } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import WorkerCard from "@/components/ui/WorkerCard";
 import { workers, categories, locations } from "@/lib/dummy-data";
 
@@ -81,30 +88,39 @@ export default function WorkersPage() {
           </button>
 
           <div className="hidden lg:flex gap-4">
-            <select
+            <Select
               value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-6 py-4 bg-white border border-[#FED7AA]/50 rounded-2xl focus:outline-none focus:border-[#EA580C] focus:ring-4 focus:ring-[#EA580C]/10 font-black text-xs text-[#1C0A00] shadow-xl shadow-red-900/5 cursor-pointer appearance-none min-w-[180px]"
+              onValueChange={setSelectedCategory}
             >
-              <option value="all">Semua Kategori</option>
-              {categories.map((c) => (
-                <option key={c.id} value={c.slug}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
-            <select
+              <SelectTrigger className="px-6 py-7 bg-white border border-[#FED7AA]/50 rounded-2xl focus:ring-4 focus:ring-[#EA580C]/10 font-black text-xs text-[#1C0A00] shadow-xl shadow-red-900/5 cursor-pointer appearance-none min-w-[200px] h-auto">
+                <SelectValue placeholder="Pilih Kategori" />
+              </SelectTrigger>
+              <SelectContent className="bg-white border-[#FED7AA]/50 rounded-xl font-bold text-[#1C0A00]">
+                <SelectItem value="all">Semua Kategori</SelectItem>
+                {categories.map((c) => (
+                  <SelectItem key={c.id} value={c.slug}>
+                    {c.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            <Select
               value={selectedLocation}
-              onChange={(e) => setSelectedLocation(e.target.value)}
-              className="px-6 py-4 bg-white border border-[#FED7AA]/50 rounded-2xl focus:outline-none focus:border-[#EA580C] focus:ring-4 focus:ring-[#EA580C]/10 font-black text-xs text-[#1C0A00] shadow-xl shadow-red-900/5 cursor-pointer appearance-none min-w-[180px]"
+              onValueChange={setSelectedLocation}
             >
-              <option value="all">Semua Lokasi</option>
-              {locations.map((loc) => (
-                <option key={loc} value={loc}>
-                  {loc}
-                </option>
-              ))}
-            </select>
+              <SelectTrigger className="px-6 py-7 bg-white border border-[#FED7AA]/50 rounded-2xl focus:ring-4 focus:ring-[#EA580C]/10 font-black text-xs text-[#1C0A00] shadow-xl shadow-red-900/5 cursor-pointer appearance-none min-w-[200px] h-auto">
+                <SelectValue placeholder="Pilih Lokasi" />
+              </SelectTrigger>
+              <SelectContent className="bg-white border-[#FED7AA]/50 rounded-xl font-bold text-[#1C0A00]">
+                <SelectItem value="all">Semua Lokasi</SelectItem>
+                {locations.map((loc) => (
+                  <SelectItem key={loc} value={loc}>
+                    {loc}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
         </div>
 
@@ -152,18 +168,22 @@ export default function WorkersPage() {
                 <label className="block text-xs font-black text-[#EA580C] mb-5 uppercase tracking-[0.3em]">
                   Filter Lokasi
                 </label>
-                <select
+                <Select
                   value={selectedLocation}
-                  onChange={(e) => setSelectedLocation(e.target.value)}
-                  className="w-full px-6 py-5 bg-[#FFF7F5] border-2 border-[#FED7AA]/30 rounded-2xl focus:outline-none focus:border-[#EA580C] font-black text-sm text-[#1C0A00]"
+                  onValueChange={setSelectedLocation}
                 >
-                  <option value="all">Semua Lokasi</option>
-                  {locations.map((loc) => (
-                    <option key={loc} value={loc}>
-                      {loc}
-                    </option>
-                  ))}
-                </select>
+                  <SelectTrigger className="w-full px-6 py-7 bg-[#FFF7F5] border-2 border-[#FED7AA]/30 rounded-2xl focus:ring-4 focus:ring-[#EA580C]/10 font-black text-sm text-[#1C0A00] h-auto">
+                    <SelectValue placeholder="Semua Lokasi" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-white border-[#FED7AA]/50 rounded-xl font-bold text-[#1C0A00]">
+                    <SelectItem value="all">Semua Lokasi</SelectItem>
+                    {locations.map((loc) => (
+                      <SelectItem key={loc} value={loc}>
+                        {loc}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
               <button
                 onClick={() => setShowFilters(false)}
