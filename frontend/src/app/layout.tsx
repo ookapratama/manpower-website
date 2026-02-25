@@ -7,9 +7,14 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+  ),
   title: {
-    template: "%s | ManPower Supply",
-    default: "ManPower Supply — Penyedia Tenaga Kerja Profesional",
+    template: "%s | " + (process.env.NEXT_PUBLIC_APP_NAME || "ManPower Supply"),
+    default:
+      (process.env.NEXT_PUBLIC_APP_NAME || "ManPower Supply") +
+      " — Penyedia Tenaga Kerja Profesional",
   },
   description:
     "Penyedia jasa tenaga kerja outsourcing profesional dan terpercaya di Sulawesi Selatan. Security, cleaning service, driver, teknisi, dan tenaga kerja lainnya.",
@@ -23,6 +28,15 @@ export const metadata: Metadata = {
     "makassar",
     "sulawesi selatan",
   ],
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    url: "/",
+    siteName: process.env.NEXT_PUBLIC_APP_NAME || "ManPower Supply",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
