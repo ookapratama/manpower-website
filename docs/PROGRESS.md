@@ -1,6 +1,6 @@
 # Progress Tracker — ManPower Supply Website
 
-> Diperbarui: 2026-02-24 05:30 WITA
+> Diperbarui: 2026-03-04 18:00 WITA
 
 ## Status: Fase 1 — MVP Frontend
 
@@ -43,7 +43,41 @@
 
 ### 🔄 Sedang Dikerjakan
 
-_Tidak ada_
+#### Integrasi Kegiatan Usaha Akta Perusahaan → Website
+
+> 📄 Detail lengkap: [`docs/TASK_AKTA_INTEGRASI.md`](./TASK_AKTA_INTEGRASI.md)
+
+**Fase A — Frontend Data Foundation**
+
+- [ ] A1. Update Type Definitions (tambah Sector, kbliCode)
+- [ ] A2. Update Dummy Data (6 sektor baru, 14 total kategori)
+- [ ] A3. Update Icon Map di CategoryCard
+
+**Fase B — Frontend UI Update**
+
+- [ ] B1. Update halaman `/categories` (kelompokkan per sektor)
+- [ ] B2. Update homepage section kategori
+- [ ] B3. Buat halaman `/services` (baru)
+- [ ] B4. Update filter di halaman `/workers`
+- [ ] B5. Update navigasi (tambah menu Layanan)
+- [ ] B6. Tambah data dummy pekerja untuk kategori baru
+
+**Fase C — Frontend Polish & Enhancement**
+
+- [ ] C1. Buat komponen SectorCard (baru)
+- [ ] C2. Update SEO metadata
+- [ ] C3. Update halaman About — section sektor bisnis
+- [ ] C4. Halaman Legalitas & Perizinan (opsional)
+
+### ⏸️ Ditunda (Backend — Setelah Frontend Selesai)
+
+- [ ] D1. Migration: tabel `sectors`
+- [ ] D2. Migration: update tabel `job_categories` (tambah sector_id, kbli_code)
+- [ ] D3. Model & Repository: Sector
+- [ ] D4. Seeder: Data sektor & kategori dari akta
+- [ ] D5. API Endpoint: Sectors
+- [ ] D6. Admin Panel: CRUD sektor & kategori
+- [ ] D7. Frontend: ganti dummy data → API call
 
 ### ⏳ Belum Dimulai
 
