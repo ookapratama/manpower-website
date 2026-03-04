@@ -18,7 +18,7 @@ export const metadata: Metadata = {
       " — Penyedia Tenaga Kerja Profesional",
   },
   description:
-    "Penyedia jasa tenaga kerja outsourcing profesional dan terpercaya di Sulawesi Selatan. Security, cleaning service, driver, teknisi, dan tenaga kerja lainnya.",
+    "Penyedia jasa tenaga kerja outsourcing profesional untuk berbagai sektor industri: keamanan, kebersihan, kehutanan, pertambangan, konstruksi, dan pengelolaan limbah di Sulawesi Selatan.",
   keywords: [
     "manpower supply",
     "outsourcing",
@@ -26,6 +26,10 @@ export const metadata: Metadata = {
     "jasa security",
     "cleaning service",
     "driver",
+    "kehutanan",
+    "pertambangan",
+    "konstruksi",
+    "pengelolaan limbah",
     "makassar",
     "sulawesi selatan",
   ],

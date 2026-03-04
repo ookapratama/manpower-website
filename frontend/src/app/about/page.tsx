@@ -21,6 +21,8 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import React, { useRef } from "react";
+import SectorCard from "@/components/ui/SectorCard";
+import { sectors, siteStats } from "@/lib/dummy-data";
 
 export default function AboutPage() {
   const containerRef = useRef(null);
@@ -221,7 +223,53 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Visual with Glassmorphism */}
+      {/* Sektor Bisnis Section */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-[#FED7AA]/30 to-transparent" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-[#EA580C]/5 border border-[#EA580C]/10 text-[#EA580C] text-[10px] font-black uppercase tracking-[0.4em] mb-8">
+              Lingkup Operasional
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-black text-[#1C0A00] tracking-tight leading-none mb-6">
+              Sektor <span className="text-gradient">Bisnis</span> Kami.
+            </h2>
+            <p className="text-[#78350F]/60 max-w-2xl mx-auto font-bold text-lg sm:text-xl tracking-tight leading-relaxed">
+              Kami beroperasi di 7 sektor strategis nasional dengan legalitas
+              dan kompetensi yang teruji di setiap bidangnya.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+          >
+            {sectors.map((sector) => (
+              <motion.div key={sector.id} variants={itemVariants}>
+                <SectorCard sector={sector} />
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <div className="mt-20 text-center">
+            <LinkNext
+              href="/services"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-[#1C0A00] text-white font-black rounded-2xl hover:bg-[#EA580C] transition-all shadow-xl shadow-black/10 active:scale-95 group"
+            >
+              Lihat Detail Layanan per Sektor
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+            </LinkNext>
+          </div>
+        </div>
+      </section>
       <section className="py-24 bg-[#FFF7F5] relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-[#EA580C]/5 blur-[160px] translate-x-1/2" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -349,9 +397,12 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-24 sm:gap-32 text-center">
             {[
               { value: "5+", label: "Years Exp" },
-              { value: "500+", label: "Active Talent" },
-              { value: "150+", label: "Business Partners" },
-              { value: "98%", label: "Satisfaction Rate" },
+              { value: `${siteStats.totalWorkers}+`, label: "Active Talent" },
+              { value: `${siteStats.totalSectors}`, label: "Sektor Bisnis" },
+              {
+                value: `${siteStats.totalCategories}`,
+                label: "Kategori Layanan",
+              },
             ].map((stat, i) => (
               <motion.div
                 key={i}

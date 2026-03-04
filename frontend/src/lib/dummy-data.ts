@@ -2,6 +2,10 @@
  * Data dummy untuk ManPower Supply Website
  * Data ini akan diganti dengan API call ke Laravel backend nanti
  * Gambar menggunakan Unsplash (gratis & ringan) untuk testing
+ *
+ * Diperbarui: 2026-03-04
+ * Perubahan: Penambahan sektor bisnis, kategori baru, skills baru, dan pekerja baru
+ *            berdasarkan akta perusahaan (Pasal 3 — Kegiatan Usaha)
  */
 
 import {
@@ -11,10 +15,86 @@ import {
   SiteStats,
   Testimonial,
   Skill,
+  Sector,
+  ServiceItem,
 } from "@/types";
 
-// === Data Kategori ===
+// ══════════════════════════════════════════════
+// DATA SEKTOR BISNIS
+// ══════════════════════════════════════════════
+
+export const sectors: Sector[] = [
+  {
+    id: 1,
+    name: "Outsourcing Umum",
+    slug: "outsourcing-umum",
+    description:
+      "Penyediaan tenaga kerja profesional untuk kebutuhan operasional umum perusahaan, termasuk keamanan, kebersihan, pengemudi, dan administrasi.",
+    icon: "Users",
+    categories: [], // Diisi otomatis di bawah
+  },
+  {
+    id: 2,
+    name: "Kehutanan & Konservasi",
+    slug: "kehutanan-konservasi",
+    description:
+      "Jasa profesional di bidang kehutanan mencakup pemanfaatan hasil hutan, konservasi alam, rehabilitasi kawasan hutan, dan perencanaan kehutanan.",
+    icon: "Trees",
+    categories: [],
+  },
+  {
+    id: 3,
+    name: "Pertambangan & Energi",
+    slug: "pertambangan-energi",
+    description:
+      "Tenaga kerja profesional untuk aktivitas penunjang pertambangan, penggalian, dan sektor energi di seluruh wilayah Indonesia.",
+    icon: "Mountain",
+    categories: [],
+  },
+  {
+    id: 4,
+    name: "Industri & Fabrikasi Logam",
+    slug: "industri-logam",
+    description:
+      "Jasa industri untuk berbagai pengerjaan khusus logam dan barang dari logam, termasuk fabrikasi, pemotongan, dan pengelasan.",
+    icon: "Hammer",
+    categories: [],
+  },
+  {
+    id: 5,
+    name: "Reparasi, Instalasi & Maintenance",
+    slug: "reparasi-instalasi",
+    description:
+      "Jasa reparasi mesin, peralatan listrik, serta instalasi dan pemasangan mesin dan peralatan industri.",
+    icon: "Wrench",
+    categories: [],
+  },
+  {
+    id: 6,
+    name: "Pengelolaan Limbah & Lingkungan",
+    slug: "pengelolaan-limbah",
+    description:
+      "Pengelolaan limbah cair dan padat secara aman dan berkelanjutan, termasuk pengumpulan, treatment, dan pembuangan limbah berbahaya maupun tidak berbahaya.",
+    icon: "Recycle",
+    categories: [],
+  },
+  {
+    id: 7,
+    name: "Konstruksi & Bangunan",
+    slug: "konstruksi-bangunan",
+    description:
+      "Jasa konstruksi gedung untuk berbagai fungsi: hunian, perkantoran, industri, perbelanjaan, kesehatan, dan pendidikan.",
+    icon: "HardHat",
+    categories: [],
+  },
+];
+
+// ══════════════════════════════════════════════
+// DATA KATEGORI (8 existing + 6 baru = 14 total)
+// ══════════════════════════════════════════════
+
 export const categories: Category[] = [
+  // --- Sektor 1: Outsourcing Umum (existing) ---
   {
     id: 1,
     name: "Security & Satpam",
@@ -23,6 +103,8 @@ export const categories: Category[] = [
       "Tenaga keamanan profesional untuk gedung, pabrik, dan perumahan",
     icon: "Shield",
     workerCount: 45,
+    sectorId: 1,
+    sectorName: "Outsourcing Umum",
   },
   {
     id: 2,
@@ -31,6 +113,8 @@ export const categories: Category[] = [
     description: "Tenaga kebersihan untuk kantor, hotel, rumah sakit, dan mall",
     icon: "Sparkles",
     workerCount: 62,
+    sectorId: 1,
+    sectorName: "Outsourcing Umum",
   },
   {
     id: 3,
@@ -39,6 +123,8 @@ export const categories: Category[] = [
     description: "Pengemudi profesional untuk operasional dan eksekutif",
     icon: "Car",
     workerCount: 38,
+    sectorId: 1,
+    sectorName: "Outsourcing Umum",
   },
   {
     id: 4,
@@ -47,14 +133,20 @@ export const categories: Category[] = [
     description: "Tenaga pendukung operasional kantor sehari-hari",
     icon: "Coffee",
     workerCount: 29,
+    sectorId: 1,
+    sectorName: "Outsourcing Umum",
   },
   {
     id: 5,
     name: "Teknisi & Maintenance",
     slug: "teknisi",
-    description: "Tenaga teknis untuk perawatan gedung, mesin, dan listrik",
+    description:
+      "Tenaga teknis untuk perawatan gedung, mesin, listrik, dan peralatan industri",
     icon: "Wrench",
     workerCount: 33,
+    sectorId: 5,
+    sectorName: "Reparasi, Instalasi & Maintenance",
+    kbliCode: "33121, 33149",
   },
   {
     id: 6,
@@ -63,6 +155,8 @@ export const categories: Category[] = [
     description: "Tenaga penerima tamu profesional untuk perusahaan dan hotel",
     icon: "UserCheck",
     workerCount: 21,
+    sectorId: 1,
+    sectorName: "Outsourcing Umum",
   },
   {
     id: 7,
@@ -71,6 +165,8 @@ export const categories: Category[] = [
     description: "Tenaga perawatan taman dan landscaping profesional",
     icon: "TreePine",
     workerCount: 18,
+    sectorId: 1,
+    sectorName: "Outsourcing Umum",
   },
   {
     id: 8,
@@ -79,11 +175,292 @@ export const categories: Category[] = [
     description: "Tenaga operasional gudang, packing, dan distribusi",
     icon: "Package",
     workerCount: 41,
+    sectorId: 1,
+    sectorName: "Outsourcing Umum",
+  },
+
+  // --- Sektor 2: Kehutanan & Konservasi (baru) ---
+  {
+    id: 9,
+    name: "Kehutanan & Konservasi",
+    slug: "kehutanan",
+    description:
+      "Tenaga profesional untuk pemanfaatan hasil hutan, pemanenan kayu, perlindungan dan konservasi alam, serta rehabilitasi kawasan hutan",
+    icon: "Trees",
+    workerCount: 24,
+    sectorId: 2,
+    sectorName: "Kehutanan & Konservasi",
+    kbliCode: "02130, 02201, 02401, 02402, 02403, 02404, 02409",
+  },
+
+  // --- Sektor 3: Pertambangan & Energi (baru) ---
+  {
+    id: 10,
+    name: "Pertambangan & Energi",
+    slug: "pertambangan",
+    description:
+      "Tenaga kerja untuk aktivitas penunjang pertambangan, penggalian, dan operasional sektor energi",
+    icon: "Mountain",
+    workerCount: 30,
+    sectorId: 3,
+    sectorName: "Pertambangan & Energi",
+    kbliCode: "09900",
+  },
+
+  // --- Sektor 4: Industri & Fabrikasi Logam (baru) ---
+  {
+    id: 11,
+    name: "Industri & Fabrikasi Logam",
+    slug: "industri-logam",
+    description:
+      "Tenaga terampil untuk pengerjaan khusus logam, fabrikasi, pengelasan, pemotongan, dan finishing barang logam",
+    icon: "Hammer",
+    workerCount: 22,
+    sectorId: 4,
+    sectorName: "Industri & Fabrikasi Logam",
+    kbliCode: "25920",
+  },
+
+  // --- Sektor 5: Reparasi, Instalasi & Maintenance sebagian (baru) ---
+  {
+    id: 12,
+    name: "Instalasi Mesin & Peralatan",
+    slug: "instalasi-mesin",
+    description:
+      "Tenaga ahli untuk instalasi, pemasangan, dan commissioning mesin serta peralatan industri",
+    icon: "Cog",
+    workerCount: 19,
+    sectorId: 5,
+    sectorName: "Reparasi, Instalasi & Maintenance",
+    kbliCode: "33200",
+  },
+
+  // --- Sektor 6: Pengelolaan Limbah & Lingkungan (baru) ---
+  {
+    id: 13,
+    name: "Pengelolaan Limbah & Lingkungan",
+    slug: "pengelolaan-limbah",
+    description:
+      "Tenaga profesional untuk pengumpulan, treatment, dan pembuangan limbah cair dan padat, baik berbahaya maupun tidak berbahaya",
+    icon: "Recycle",
+    workerCount: 17,
+    sectorId: 6,
+    sectorName: "Pengelolaan Limbah & Lingkungan",
+    kbliCode: "37012, 37021, 38110, 38120, 38211",
+  },
+
+  // --- Sektor 7: Konstruksi & Bangunan (baru) ---
+  {
+    id: 14,
+    name: "Konstruksi & Bangunan",
+    slug: "konstruksi",
+    description:
+      "Tenaga konstruksi untuk pembangunan gedung hunian, perkantoran, industri, perbelanjaan, kesehatan, dan pendidikan",
+    icon: "HardHat",
+    workerCount: 35,
+    sectorId: 7,
+    sectorName: "Konstruksi & Bangunan",
+    kbliCode: "41011, 41012, 41013, 41014, 41015, 41016",
   },
 ];
 
-// === Data Skills ===
+// Isi categories di setiap sektor secara otomatis
+sectors.forEach((sector) => {
+  sector.categories = categories.filter((c) => c.sectorId === sector.id);
+});
+
+// ══════════════════════════════════════════════
+// DATA KEGIATAN USAHA (referensi akta perusahaan Pasal 3)
+// ══════════════════════════════════════════════
+
+export const serviceItems: ServiceItem[] = [
+  // Sektor 2 — Kehutanan
+  {
+    id: 1,
+    name: "Pemanfaatan Hasil Hutan Bukan Kayu",
+    kbliCode: "02130",
+    sectorId: 2,
+    description:
+      "Pengelolaan dan pemanfaatan produk hutan non-kayu seperti rotan, madu, dan getah",
+  },
+  {
+    id: 2,
+    name: "Pemanenan Kayu",
+    kbliCode: "02201",
+    sectorId: 2,
+    description:
+      "Operasional penebangan dan pemanenan kayu secara legal dan berkelanjutan",
+  },
+  {
+    id: 3,
+    name: "Jasa Penggunaan Kawasan Hutan di Luar Sektor Kehutanan",
+    kbliCode: "02401",
+    sectorId: 2,
+    description: "Pengelolaan kawasan hutan untuk kepentingan non-kehutanan",
+  },
+  {
+    id: 4,
+    name: "Jasa Perlindungan Hutan dan Konservasi Alam",
+    kbliCode: "02402",
+    sectorId: 2,
+    description:
+      "Pengawasan dan perlindungan kawasan hutan serta konservasi biodiversitas",
+  },
+  {
+    id: 5,
+    name: "Jasa Rehabilitasi dan Restorasi Kehutanan Sosial",
+    kbliCode: "02403",
+    sectorId: 2,
+    description:
+      "Pemulihan dan rehabilitasi kawasan hutan sosial yang terdegradasi",
+  },
+  {
+    id: 6,
+    name: "Jasa Kehutanan Bidang Perencanaan Kehutanan",
+    kbliCode: "02404",
+    sectorId: 2,
+    description: "Perencanaan dan tata kelola kawasan hutan secara strategis",
+  },
+  {
+    id: 7,
+    name: "Jasa Penunjang Kehutanan Lainnya",
+    kbliCode: "02409",
+    sectorId: 2,
+    description: "Berbagai jasa pendukung operasional kehutanan",
+  },
+
+  // Sektor 3 — Pertambangan
+  {
+    id: 8,
+    name: "Aktivitas Penunjang Pertambangan dan Penggalian",
+    kbliCode: "09900",
+    sectorId: 3,
+    description:
+      "Tenaga pendukung untuk operasional pertambangan dan penggalian",
+  },
+
+  // Sektor 4 — Industri Logam
+  {
+    id: 9,
+    name: "Jasa Industri Pengerjaan Khusus Logam dan Barang dari Logam",
+    kbliCode: "25920",
+    sectorId: 4,
+    description:
+      "Pengerjaan fabrikasi, pemotongan, pengelasan, dan finishing logam",
+  },
+
+  // Sektor 5 — Reparasi & Instalasi
+  {
+    id: 10,
+    name: "Reparasi Mesin Untuk Keperluan Umum",
+    kbliCode: "33121",
+    sectorId: 5,
+    description: "Perbaikan dan pemeliharaan mesin-mesin keperluan umum",
+  },
+  {
+    id: 11,
+    name: "Reparasi Peralatan Listrik Lainnya",
+    kbliCode: "33149",
+    sectorId: 5,
+    description: "Perbaikan peralatan dan instalasi listrik",
+  },
+  {
+    id: 12,
+    name: "Instalasi/Pemasangan Mesin dan Peralatan Industri",
+    kbliCode: "33200",
+    sectorId: 5,
+    description:
+      "Pemasangan, instalasi, dan commissioning mesin serta peralatan industri",
+  },
+
+  // Sektor 6 — Pengelolaan Limbah
+  {
+    id: 13,
+    name: "Pengumpulan Air Limbah Berbahaya",
+    kbliCode: "37012",
+    sectorId: 6,
+    description: "Pengumpulan dan penanganan air limbah berbahaya (B3)",
+  },
+  {
+    id: 14,
+    name: "Treatment dan Pembuangan Air Limbah Tidak Berbahaya",
+    kbliCode: "37021",
+    sectorId: 6,
+    description: "Pengolahan dan pembuangan air limbah non-B3 secara aman",
+  },
+  {
+    id: 15,
+    name: "Pengumpulan Limbah dan Sampah Tidak Berbahaya",
+    kbliCode: "38110",
+    sectorId: 6,
+    description: "Pengumpulan limbah dan sampah domestik serta non-B3",
+  },
+  {
+    id: 16,
+    name: "Pengumpulan Limbah Berbahaya",
+    kbliCode: "38120",
+    sectorId: 6,
+    description: "Pengumpulan dan penanganan limbah berbahaya (B3)",
+  },
+  {
+    id: 17,
+    name: "Treatment dan Pembuangan Limbah dan Sampah Tidak Berbahaya",
+    kbliCode: "38211",
+    sectorId: 6,
+    description: "Pengolahan dan pembuangan limbah non-B3 secara aman",
+  },
+
+  // Sektor 7 — Konstruksi
+  {
+    id: 18,
+    name: "Konstruksi Gedung Hunian",
+    kbliCode: "41011",
+    sectorId: 7,
+    description: "Pembangunan gedung tempat tinggal dan hunian",
+  },
+  {
+    id: 19,
+    name: "Konstruksi Gedung Perkantoran",
+    kbliCode: "41012",
+    sectorId: 7,
+    description: "Pembangunan gedung perkantoran komersial",
+  },
+  {
+    id: 20,
+    name: "Konstruksi Gedung Industri",
+    kbliCode: "41013",
+    sectorId: 7,
+    description: "Pembangunan fasilitas dan gedung industri",
+  },
+  {
+    id: 21,
+    name: "Konstruksi Gedung Perbelanjaan",
+    kbliCode: "41014",
+    sectorId: 7,
+    description: "Pembangunan pusat perbelanjaan dan retail",
+  },
+  {
+    id: 22,
+    name: "Konstruksi Gedung Kesehatan",
+    kbliCode: "41015",
+    sectorId: 7,
+    description: "Pembangunan rumah sakit, klinik, dan fasilitas kesehatan",
+  },
+  {
+    id: 23,
+    name: "Konstruksi Gedung Pendidikan",
+    kbliCode: "41016",
+    sectorId: 7,
+    description: "Pembangunan sekolah, universitas, dan fasilitas pendidikan",
+  },
+];
+
+// ══════════════════════════════════════════════
+// DATA SKILLS (16 existing + 12 baru = 28 total)
+// ══════════════════════════════════════════════
+
 export const skills: Skill[] = [
+  // --- Existing (id 1–16) ---
   { id: 1, name: "Bela Diri", slug: "bela-diri" },
   { id: 2, name: "CCTV Monitoring", slug: "cctv-monitoring" },
   { id: 3, name: "P3K / First Aid", slug: "p3k" },
@@ -100,10 +477,39 @@ export const skills: Skill[] = [
   { id: 14, name: "Bahasa Inggris", slug: "bahasa-inggris" },
   { id: 15, name: "Forklift", slug: "forklift" },
   { id: 16, name: "Landscaping", slug: "landscaping" },
+
+  // --- Baru: Kehutanan & Konservasi ---
+  { id: 17, name: "Chainsaw Operation", slug: "chainsaw-operation" },
+  { id: 18, name: "Silviculture", slug: "silviculture" },
+  { id: 19, name: "Konservasi Alam", slug: "konservasi-alam" },
+
+  // --- Baru: Pertambangan ---
+  { id: 20, name: "Operator Alat Berat", slug: "operator-alat-berat" },
+  { id: 21, name: "K3 Pertambangan", slug: "k3-pertambangan" },
+
+  // --- Baru: Industri Logam ---
+  { id: 22, name: "Welding / Las", slug: "welding" },
+  { id: 23, name: "Fabrikasi Logam", slug: "fabrikasi-logam" },
+
+  // --- Baru: Instalasi Mesin ---
+  { id: 24, name: "Instalasi Mekanikal", slug: "instalasi-mekanikal" },
+  { id: 25, name: "Piping / Perpipaan", slug: "piping" },
+
+  // --- Baru: Pengelolaan Limbah ---
+  { id: 26, name: "Waste Management", slug: "waste-management" },
+  { id: 27, name: "Penanganan B3", slug: "penanganan-b3" },
+
+  // --- Baru: Konstruksi ---
+  { id: 28, name: "K3 Konstruksi", slug: "k3-konstruksi" },
+  { id: 29, name: "Scaffolding", slug: "scaffolding" },
 ];
 
-// === Data Pekerja ===
+// ══════════════════════════════════════════════
+// DATA PEKERJA (12 existing + 6 baru = 18 total)
+// ══════════════════════════════════════════════
+
 export const workers: WorkerProfile[] = [
+  // --- Existing workers (id 1–12, tetap tidak berubah) ---
   {
     id: 1,
     fullName: "Ahmad Rizki Pratama",
@@ -320,9 +726,122 @@ export const workers: WorkerProfile[] = [
     category: categories[5],
     createdAt: "2025-05-10",
   },
+
+  // --- Pekerja baru untuk kategori baru (id 13–18) ---
+  {
+    id: 13,
+    fullName: "Hendra Wijaya",
+    slug: "hendra-wijaya",
+    photoUrl:
+      "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=300&h=300&fit=crop&crop=face&q=80",
+    location: "Bone",
+    availabilityStatus: "available",
+    experienceYears: 8,
+    dailyRate: 200000,
+    rating: 4.7,
+    totalProjects: 32,
+    bio: "Tenaga kehutanan berpengalaman dengan keahlian dalam pemanenan kayu berkelanjutan dan konservasi hutan. Menguasai chainsaw operation dan teknik silviculture modern.",
+    phone: "0815-xxxx-xxxx",
+    skills: [skills[16], skills[17], skills[18]],
+    category: categories[8], // Kehutanan & Konservasi
+    createdAt: "2025-06-01",
+  },
+  {
+    id: 14,
+    fullName: "Ruslan Mardianto",
+    slug: "ruslan-mardianto",
+    photoUrl:
+      "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?w=300&h=300&fit=crop&crop=face&q=80",
+    location: "Pangkep",
+    availabilityStatus: "available",
+    experienceYears: 10,
+    dailyRate: 275000,
+    rating: 4.9,
+    totalProjects: 48,
+    bio: "Operator alat berat bersertifikat dengan pengalaman 10 tahun di sektor pertambangan. Terlatih K3 pertambangan dan berpengalaman di tambang nikel dan batubara.",
+    phone: "0816-xxxx-xxxx",
+    skills: [skills[19], skills[20], skills[2]],
+    category: categories[9], // Pertambangan & Energi
+    createdAt: "2024-09-15",
+  },
+  {
+    id: 15,
+    fullName: "Agus Purnomo",
+    slug: "agus-purnomo",
+    photoUrl:
+      "https://images.unsplash.com/photo-1548449112-96a38a643324?w=300&h=300&fit=crop&crop=face&q=80",
+    location: "Makassar",
+    availabilityStatus: "available",
+    experienceYears: 7,
+    dailyRate: 225000,
+    rating: 4.8,
+    totalProjects: 40,
+    bio: "Welder/tukang las bersertifikat 6G dengan pengalaman di fabrikasi baja dan konstruksi berat. Menguasai teknik las SMAW, MIG, dan TIG.",
+    phone: "0817-xxxx-xxxx",
+    skills: [skills[21], skills[22]],
+    category: categories[10], // Industri & Fabrikasi Logam
+    createdAt: "2025-02-10",
+  },
+  {
+    id: 16,
+    fullName: "Wahyu Kurniawan",
+    slug: "wahyu-kurniawan",
+    photoUrl:
+      "https://images.unsplash.com/photo-1599566150163-29194dcabd9c?w=300&h=300&fit=crop&crop=face&q=80",
+    location: "Maros",
+    availabilityStatus: "busy",
+    experienceYears: 6,
+    dailyRate: 210000,
+    rating: 4.6,
+    totalProjects: 25,
+    bio: "Teknisi instalasi mesin berpengalaman dalam pemasangan dan commissioning mesin industri. Menguasai instalasi mekanikal dan sistem perpipaan.",
+    phone: "0818-xxxx-xxxx",
+    skills: [skills[23], skills[24], skills[9]],
+    category: categories[11], // Instalasi Mesin & Peralatan
+    createdAt: "2025-03-20",
+  },
+  {
+    id: 17,
+    fullName: "Eko Prasetyo",
+    slug: "eko-prasetyo",
+    photoUrl:
+      "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=300&h=300&fit=crop&crop=face&q=80",
+    location: "Makassar",
+    availabilityStatus: "available",
+    experienceYears: 5,
+    dailyRate: 190000,
+    rating: 4.5,
+    totalProjects: 22,
+    bio: "Spesialis pengelolaan limbah dengan sertifikasi waste management. Berpengalaman dalam penanganan limbah B3+non-B3, treatment air limbah, dan kepatuhan AMDAL.",
+    phone: "0819-xxxx-xxxx",
+    skills: [skills[25], skills[26], skills[5]],
+    category: categories[12], // Pengelolaan Limbah
+    createdAt: "2025-04-05",
+  },
+  {
+    id: 18,
+    fullName: "Irfan Maulana",
+    slug: "irfan-maulana",
+    photoUrl:
+      "https://images.unsplash.com/photo-1557862921-37829c790f19?w=300&h=300&fit=crop&crop=face&q=80",
+    location: "Gowa",
+    availabilityStatus: "available",
+    experienceYears: 9,
+    dailyRate: 250000,
+    rating: 4.9,
+    totalProjects: 52,
+    bio: "Mandor konstruksi berpengalaman 9 tahun di proyek gedung perkantoran dan hunian. Menguasai K3 konstruksi, scaffolding, dan manajemen lapangan.",
+    phone: "0820-xxxx-xxxx",
+    skills: [skills[27], skills[28], skills[2]],
+    category: categories[13], // Konstruksi & Bangunan
+    createdAt: "2024-08-01",
+  },
 ];
 
-// === Konversi untuk Card ===
+// ══════════════════════════════════════════════
+// KONVERSI UNTUK CARD
+// ══════════════════════════════════════════════
+
 export const workerCards: WorkerCardData[] = workers.map((w) => ({
   id: w.id,
   fullName: w.fullName,
@@ -335,17 +854,25 @@ export const workerCards: WorkerCardData[] = workers.map((w) => ({
   rating: w.rating,
   skills: w.skills,
   categoryName: w.category.name,
+  sectorSlug: sectors.find((s) => s.id === w.category.sectorId)?.slug,
 }));
 
-// === Statistik Website ===
+// ══════════════════════════════════════════════
+// STATISTIK WEBSITE (diperbarui)
+// ══════════════════════════════════════════════
+
 export const siteStats: SiteStats = {
-  totalWorkers: 287,
-  totalCategories: 8,
+  totalWorkers: 350,
+  totalCategories: 14,
+  totalSectors: 7,
   totalLocations: 12,
   totalPlacements: 1450,
 };
 
-// === Testimonial ===
+// ══════════════════════════════════════════════
+// TESTIMONIAL (tidak berubah)
+// ══════════════════════════════════════════════
+
 export const testimonials: Testimonial[] = [
   {
     id: 1,
@@ -379,7 +906,10 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
-// === Daftar Lokasi ===
+// ══════════════════════════════════════════════
+// DAFTAR LOKASI (tidak berubah)
+// ══════════════════════════════════════════════
+
 export const locations: string[] = [
   "Makassar",
   "Gowa",
@@ -395,19 +925,47 @@ export const locations: string[] = [
   "Jeneponto",
 ];
 
-// === Helper untuk mendapatkan worker berdasarkan slug ===
+// ══════════════════════════════════════════════
+// HELPER FUNCTIONS
+// ══════════════════════════════════════════════
+
+/** Mendapatkan data pekerja berdasarkan slug */
 export function getWorkerBySlug(slug: string): WorkerProfile | undefined {
   return workers.find((w) => w.slug === slug);
 }
 
-// === Helper untuk filter workers ===
+/** Mendapatkan data sektor berdasarkan slug */
+export function getSectorBySlug(slug: string): Sector | undefined {
+  return sectors.find((s) => s.slug === slug);
+}
+
+/** Mendapatkan daftar kegiatan usaha berdasarkan sektor */
+export function getServicesBySector(sectorId: number): ServiceItem[] {
+  return serviceItems.filter((s) => s.sectorId === sectorId);
+}
+
+/** Filter pekerja berdasarkan kategori, lokasi, sektor, dan pencarian */
 export function filterWorkers(
   category?: string,
   location?: string,
   search?: string,
+  sector?: string,
 ): WorkerCardData[] {
   let result = workerCards;
 
+  // Filter berdasarkan sektor
+  if (sector) {
+    const sectorData = sectors.find((s) => s.slug === sector);
+    if (sectorData) {
+      const categorySlugs = sectorData.categories.map((c) => c.slug);
+      result = result.filter((w) => {
+        const cat = categories.find((c) => c.name === w.categoryName);
+        return cat ? categorySlugs.includes(cat.slug) : false;
+      });
+    }
+  }
+
+  // Filter berdasarkan kategori
   if (category) {
     result = result.filter((w) => {
       const cat = categories.find((c) => c.slug === category);
@@ -415,12 +973,14 @@ export function filterWorkers(
     });
   }
 
+  // Filter berdasarkan lokasi
   if (location) {
     result = result.filter(
       (w) => w.location.toLowerCase() === location.toLowerCase(),
     );
   }
 
+  // Filter berdasarkan pencarian
   if (search) {
     const q = search.toLowerCase();
     result = result.filter(

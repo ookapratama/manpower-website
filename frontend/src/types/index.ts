@@ -6,6 +6,16 @@
 // === Status Ketersediaan Pekerja ===
 export type AvailabilityStatus = "available" | "busy" | "not_available";
 
+// === Sektor Bisnis (Parent dari Kategori) ===
+export interface Sector {
+  id: number;
+  name: string;
+  slug: string;
+  description: string;
+  icon: string;
+  categories: Category[];
+}
+
 // === Kategori Pekerjaan ===
 export interface Category {
   id: number;
@@ -14,6 +24,18 @@ export interface Category {
   description: string;
   icon: string;
   workerCount: number;
+  kbliCode?: string;
+  sectorId?: number;
+  sectorName?: string;
+}
+
+// === Kegiatan Usaha Detail (referensi akta perusahaan) ===
+export interface ServiceItem {
+  id: number;
+  name: string;
+  kbliCode: string;
+  sectorId: number;
+  description: string;
 }
 
 // === Keahlian / Skill ===
@@ -55,6 +77,7 @@ export interface WorkerCardData {
   rating: number;
   skills: Skill[];
   categoryName: string;
+  sectorSlug?: string;
 }
 
 // === Filter Options ===
@@ -72,6 +95,7 @@ export interface FilterOptions {
 export interface SiteStats {
   totalWorkers: number;
   totalCategories: number;
+  totalSectors: number;
   totalLocations: number;
   totalPlacements: number;
 }

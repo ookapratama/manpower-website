@@ -14,13 +14,27 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import WorkerCard from "@/components/ui/WorkerCard";
-import { workers, categories, locations } from "@/lib/dummy-data";
+import { workers, categories, sectors, locations } from "@/lib/dummy-data";
 
 export default function WorkersPage() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedSector, setSelectedSector] = useState<string>("all");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedLocation, setSelectedLocation] = useState<string>("all");
   const [showFilters, setShowFilters] = useState(false);
+
+  // Kategori yang tersedia berdasarkan sektor yang dipilih
+  const availableCategories = useMemo(() => {
+    if (selectedSector === "all") return categories;
+    const sector = sectors.find((s) => s.slug === selectedSector);
+    return sector ? sector.categories : categories;
+  }, [selectedSector]);
+
+  // Reset kategori ketika sektor berubah
+  const handleSectorChange = (value: string) => {
+    setSelectedSector(value);
+    setSelectedCategory("all");
+  };
 
   // Filter logic
   const filteredWorkers = useMemo(() => {
@@ -34,14 +48,18 @@ export default function WorkersPage() {
           s.name.toLowerCase().includes(searchQuery.toLowerCase()),
         );
 
+      const matchSector =
+        selectedSector === "all" ||
+        worker.category.sectorId ===
+          sectors.find((s) => s.slug === selectedSector)?.id;
       const matchCategory =
         selectedCategory === "all" || worker.category.slug === selectedCategory;
       const matchLocation =
         selectedLocation === "all" || worker.location === selectedLocation;
 
-      return matchSearch && matchCategory && matchLocation;
+      return matchSearch && matchSector && matchCategory && matchLocation;
     });
-  }, [searchQuery, selectedCategory, selectedLocation]);
+  }, [searchQuery, selectedSector, selectedCategory, selectedLocation]);
 
   return (
     <div className="min-h-screen bg-[#FFF7F5] pt-28 pb-16">
@@ -88,6 +106,20 @@ export default function WorkersPage() {
           </button>
 
           <div className="hidden lg:flex gap-4">
+            <Select value={selectedSector} onValueChange={handleSectorChange}>
+              <SelectTrigger className="px-6 py-7 bg-white border border-[#FED7AA]/50 rounded-2xl focus:ring-4 focus:ring-[#EA580C]/10 font-black text-xs text-[#1C0A00] shadow-xl shadow-red-900/5 cursor-pointer appearance-none min-w-[180px] h-auto">
+                <SelectValue placeholder="Pilih Sektor" />
+              </SelectTrigger>
+              <SelectContent className="bg-white border-[#FED7AA]/50 rounded-xl font-bold text-[#1C0A00]">
+                <SelectItem value="all">Semua Sektor</SelectItem>
+                {sectors.map((s) => (
+                  <SelectItem key={s.id} value={s.slug}>
+                    {s.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
             <Select
               value={selectedCategory}
               onValueChange={setSelectedCategory}
@@ -97,7 +129,7 @@ export default function WorkersPage() {
               </SelectTrigger>
               <SelectContent className="bg-white border-[#FED7AA]/50 rounded-xl font-bold text-[#1C0A00]">
                 <SelectItem value="all">Semua Kategori</SelectItem>
-                {categories.map((c) => (
+                {availableCategories.map((c) => (
                   <SelectItem key={c.id} value={c.slug}>
                     {c.name}
                   </SelectItem>
@@ -109,7 +141,7 @@ export default function WorkersPage() {
               value={selectedLocation}
               onValueChange={setSelectedLocation}
             >
-              <SelectTrigger className="px-6 py-7 bg-white border border-[#FED7AA]/50 rounded-2xl focus:ring-4 focus:ring-[#EA580C]/10 font-black text-xs text-[#1C0A00] shadow-xl shadow-red-900/5 cursor-pointer appearance-none min-w-[200px] h-auto">
+              <SelectTrigger className="px-6 py-7 bg-white border border-[#FED7AA]/50 rounded-2xl focus:ring-4 focus:ring-[#EA580C]/10 font-black text-xs text-[#1C0A00] shadow-xl shadow-red-900/5 cursor-pointer appearance-none min-w-[180px] h-auto">
                 <SelectValue placeholder="Pilih Lokasi" />
               </SelectTrigger>
               <SelectContent className="bg-white border-[#FED7AA]/50 rounded-xl font-bold text-[#1C0A00]">
@@ -203,12 +235,14 @@ export default function WorkersPage() {
               <span className="text-[#EA580C]">{filteredWorkers.length}</span>{" "}
               Pekerja
             </h2>
-            {(selectedCategory !== "all" ||
+            {(selectedSector !== "all" ||
+              selectedCategory !== "all" ||
               selectedLocation !== "all" ||
               searchQuery) && (
               <button
                 onClick={() => {
                   setSearchQuery("");
+                  setSelectedSector("all");
                   setSelectedCategory("all");
                   setSelectedLocation("all");
                 }}

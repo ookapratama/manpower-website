@@ -15,6 +15,13 @@ import {
   UserCheck,
   TreePine,
   Package,
+  Trees,
+  Mountain,
+  Hammer,
+  Cog,
+  Recycle,
+  HardHat,
+  Users,
   LucideIcon,
   ArrowRight,
 } from "lucide-react";
@@ -28,6 +35,14 @@ const iconMap: Record<string, LucideIcon> = {
   UserCheck,
   TreePine,
   Package,
+  // Icon baru untuk kategori dari akta perusahaan
+  Trees,
+  Mountain,
+  Hammer,
+  Cog,
+  Recycle,
+  HardHat,
+  Users,
 };
 
 interface CategoryCardProps {

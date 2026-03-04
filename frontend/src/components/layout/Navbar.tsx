@@ -13,6 +13,7 @@ const navLinks = [
   { name: "Beranda", href: "/" },
   { name: "Cari Tenaga Kerja", href: "/workers" },
   { name: "Kategori", href: "/categories" },
+  { name: "Layanan", href: "/services" },
   { name: "Tentang Kami", href: "/about" },
   { name: "Hubungi Kami", href: "/contact" },
 ];

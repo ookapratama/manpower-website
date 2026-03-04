@@ -27,6 +27,7 @@ import CategoryCard from "@/components/ui/CategoryCard";
 import WorkerCard from "@/components/ui/WorkerCard";
 import {
   categories,
+  sectors,
   workerCards,
   siteStats,
   testimonials,
@@ -37,6 +38,9 @@ export default function HomePage() {
   const featuredWorkers = workerCards
     .filter((w) => w.availabilityStatus === "available")
     .slice(0, 6);
+
+  // Hanya tampilkan 8 kategori utama (outsourcing umum) di homepage
+  const highlightCategories = categories.filter((c) => c.sectorId === 1);
 
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -143,8 +147,8 @@ export default function HomePage() {
               className="grid grid-cols-3 gap-12 pt-12 border-t border-white/5 max-w-xl mx-auto lg:mx-0"
             >
               {[
-                { value: "500+", label: "Professionals" },
-                { value: "50+", label: "Categories" },
+                { value: "350+", label: "Professionals" },
+                { value: `${siteStats.totalSectors}`, label: "Sektor Bisnis" },
                 { value: "120+", label: "Partners" },
               ].map((stat) => (
                 <div key={stat.label}>
@@ -272,9 +276,11 @@ export default function HomePage() {
               className="flex flex-col items-center md:items-end"
             >
               <div className="text-right hidden md:block mb-8">
-                <div className="text-4xl font-black text-[#1C0A00]">50+</div>
+                <div className="text-4xl font-black text-[#1C0A00]">
+                  {siteStats.totalCategories}
+                </div>
                 <div className="text-[10px] font-black text-[#78350F]/40 uppercase tracking-widest">
-                  Sub-Categories Available
+                  Kategori Tersedia
                 </div>
               </div>
               <Link
@@ -293,7 +299,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-16"
           >
-            {categories.map((category) => (
+            {highlightCategories.map((category) => (
               <motion.div key={category.id} variants={itemVariants}>
                 <CategoryCard category={category} />
               </motion.div>
