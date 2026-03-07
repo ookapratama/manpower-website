@@ -1,6 +1,6 @@
 # Progress Tracker — ManPower Supply Website
 
-> Diperbarui: 2026-03-04 18:00 WITA
+> Diperbarui: 2026-03-04 18:45 WITA
 
 ## Status: Fase 1 — MVP Frontend
 
@@ -41,33 +41,30 @@
 - [x] Dokumentasi: Pembuatan README.md utama
 - [x] Verified: Semua halaman berfungsi dan visual sudah premium di dev server (http://localhost:3000)
 
+#### 📄 Integrasi Akta Perusahaan (Pasal 3 — Kegiatan Usaha)
+
+> Detail: [`docs/TASK_AKTA_INTEGRASI.md`](./TASK_AKTA_INTEGRASI.md)
+
+- [x] **Fase A — Frontend Data Foundation** (Update Types, Dummy Data, Icons)
+- [x] **Fase B — Frontend UI Update** (Categories, Homepage, Services Page, Workers Filter, Navbar)
+- [x] **Fase C — Frontend Polish & Enhancement** (SectorCard, SEO Metadata, About Page Update)
+- [x] **Fase C4 — Halaman Legalitas & Perizinan** (Opsional/Next Phase)
+- [x] A1. Update Type Definitions (tambah Sector, kbliCode)
+- [x] A2. Update Dummy Data (6 sektor baru, 14 total kategori)
+- [x] A3. Update Icon Map di CategoryCard
+- [x] B1. Update halaman `/categories` (kelompokkan per sektor)
+- [x] B2. Update homepage section kategori
+- [x] B3. Buat halaman `/services` (baru)
+- [x] B4. Update filter di halaman `/workers`
+- [x] B5. Update navigasi (tambah menu Layanan)
+- [x] B6. Tambah data dummy pekerja untuk kategori baru
+- [x] C1. Buat komponen SectorCard (baru)
+- [x] C2. Update SEO metadata
+- [x] C3. Update halaman About — section sektor bisnis
+
 ### 🔄 Sedang Dikerjakan
 
-#### Integrasi Kegiatan Usaha Akta Perusahaan → Website
-
-> 📄 Detail lengkap: [`docs/TASK_AKTA_INTEGRASI.md`](./TASK_AKTA_INTEGRASI.md)
-
-**Fase A — Frontend Data Foundation**
-
-- [ ] A1. Update Type Definitions (tambah Sector, kbliCode)
-- [ ] A2. Update Dummy Data (6 sektor baru, 14 total kategori)
-- [ ] A3. Update Icon Map di CategoryCard
-
-**Fase B — Frontend UI Update**
-
-- [ ] B1. Update halaman `/categories` (kelompokkan per sektor)
-- [ ] B2. Update homepage section kategori
-- [ ] B3. Buat halaman `/services` (baru)
-- [ ] B4. Update filter di halaman `/workers`
-- [ ] B5. Update navigasi (tambah menu Layanan)
-- [ ] B6. Tambah data dummy pekerja untuk kategori baru
-
-**Fase C — Frontend Polish & Enhancement**
-
-- [ ] C1. Buat komponen SectorCard (baru)
-- [ ] C2. Update SEO metadata
-- [ ] C3. Update halaman About — section sektor bisnis
-- [ ] C4. Halaman Legalitas & Perizinan (opsional)
+_Selesai integrasi akta fase frontend. Menunggu validasi user untuk lanjut ke backend._
 
 ### ⏸️ Ditunda (Backend — Setelah Frontend Selesai)
 
