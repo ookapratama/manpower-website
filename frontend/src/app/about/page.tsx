@@ -142,7 +142,7 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl relative">
+              <div className="aspect-4/5 rounded-[3rem] overflow-hidden shadow-2xl relative">
                 <Image
                   src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2013&auto=format&fit=crop"
                   alt="Forester work"

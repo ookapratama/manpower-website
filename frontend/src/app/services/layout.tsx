@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Layanan & Kegiatan Usaha",
+  title: "Layanan Perizinan & Kehutanan",
   description:
-    "Daftar lengkap layanan ManPower Supply berdasarkan akta perusahaan. Mencakup sektor kehutanan, pertambangan, industri logam, instalasi mesin, pengelolaan limbah, dan konstruksi gedung.",
+    "Jasa konsultasi PT RMR Energi Indonesia: Penggunaan Kawasan Hutan (PPKH), Perlindungan & Konservasi Alam, dan Perencanaan Kehutanan.",
   keywords: [
-    "layanan outsourcing",
-    "kegiatan usaha akta",
-    "kbli man power",
-    "jasa kehutanan",
-    "jasa pertambangan",
-    "konstruksi gedung makassar",
+    "layanan PPKH",
+    "perizinan kawasan hutan",
+    "KBLI 02401",
+    "KBLI 02402",
+    "KBLI 02404",
+    "konsultan kehutanan",
   ],
 };
 

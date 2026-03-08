@@ -55,7 +55,7 @@ export default function HomePage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-r from-primary/95 via-primary/80 to-transparent" />
         </div>
 
         <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-0 flex flex-col items-start z-10">
@@ -392,7 +392,7 @@ export default function HomePage() {
           >
             {/* Background elements */}
             <div className="absolute inset-0 opacity-10 noise-bg" />
-            <div className="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-black/20 to-transparent" />
+            <div className="absolute top-0 right-0 w-2/3 h-full bg-linear-to-l from-black/20 to-transparent" />
 
             <div className="relative z-10 text-center flex flex-col items-center">
               <div className="w-20 h-20 bg-secondary rounded-3xl flex items-center justify-center mb-16 shadow-xl shadow-black/20 animate-bounce">

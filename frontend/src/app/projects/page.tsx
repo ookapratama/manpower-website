@@ -111,7 +111,7 @@ export default function ProjectsPage() {
                 </div>
 
                 {/* Project Info */}
-                <div className="p-10 flex flex-col flex-grow">
+                <div className="p-10 flex flex-col grow">
                   <div className="text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-4">
                     {project.category}
                   </div>

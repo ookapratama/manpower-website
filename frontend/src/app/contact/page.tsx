@@ -123,7 +123,7 @@ export default function ContactPage() {
                         <item.icon className="w-7 h-7" />
                       </div>
                       <div className="flex flex-col justify-center">
-                        <div className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-2 font-bold">
+                        <div className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-2">
                           {item.label}
                         </div>
                         <div className="text-lg font-black text-gray-900 leading-snug tracking-tight">
