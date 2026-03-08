@@ -17,6 +17,7 @@ import {
   Zap,
   Leaf,
   FileText,
+  Clock,
 } from "lucide-react";
 import React from "react";
 import { experts, siteStats } from "@/lib/dummy-data";
@@ -325,7 +326,7 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 className="group p-8 bg-white rounded-[2.5rem] shadow-xl shadow-gray-200/50 hover:shadow-2xl transition-all border border-transparent hover:border-primary/10"
               >
-                <div className="relative w-24 h-24 rounded-2xl overflow-hidden mb-8 group-hover:rotate-6 transition-transform">
+                <div className="relative w-28 h-28 rounded-3xl overflow-hidden mb-10 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 shadow-lg">
                   <Image
                     src={expert.avatar}
                     alt={expert.name}
@@ -333,22 +334,42 @@ export default function AboutPage() {
                     className="object-cover"
                   />
                 </div>
-                <h4 className="text-xl font-black text-gray-900 mb-2 leading-tight tracking-tight">
-                  {expert.name}
-                </h4>
-                <div className="text-primary text-[10px] font-black uppercase tracking-widest mb-6">
-                  {expert.position}
-                </div>
-                <div className="py-4 border-t border-gray-100">
-                  <div className="flex justify-between text-xs font-bold text-gray-400 mb-2">
-                    <span>Pengalaman</span>
-                    <span className="text-gray-900">{expert.experience}</span>
+                <div className="flex flex-col grow">
+                  <h4 className="text-2xl font-black text-gray-900 mb-2 leading-[1.1] tracking-tight group-hover:text-primary transition-colors">
+                    {expert.name}
+                  </h4>
+                  <div className="text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-10">
+                    {expert.position}
                   </div>
-                  <div className="flex justify-between text-xs font-bold text-gray-400">
-                    <span>Spesialisasi</span>
-                    <span className="text-gray-900">
-                      {expert.specialization}
-                    </span>
+
+                  <div className="mt-auto pt-8 border-t border-gray-100 flex flex-col gap-5">
+                    <div className="flex items-center gap-4 group/item">
+                      <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center text-gray-400 group-hover/item:text-primary group-hover/item:bg-primary/10 transition-colors">
+                        <Clock className="w-4 h-4" />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">
+                          Pengalaman
+                        </span>
+                        <span className="text-xs font-black text-gray-900 leading-none">
+                          {expert.experience}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-4 group/item">
+                      <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center text-gray-400 group-hover/item:text-primary group-hover/item:bg-primary/10 transition-colors">
+                        <Zap className="w-4 h-4" />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">
+                          Spesialisasi
+                        </span>
+                        <span className="text-xs font-black text-gray-900 leading-none">
+                          {expert.specialization}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>

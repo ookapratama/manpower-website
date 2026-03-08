@@ -31,13 +31,34 @@
 
 #### 📄 App Pages (Redesign)
 
-- [x] **Homepage**: Desain baru (Hero tagline RMR, About Summary, Layanan Grid, Portfolio Preview, Final CTA).
-- [x] **About Page**: Implementasi Visi & Misi asli RMR, Biografi Perusahaan, Legalitas (NIB), dan Tim Tenaga Ahli Senior.
-- [x] **Services Page**: Listing detail 3 kategori KBLI RMR (02401, 02402, 02404) dengan alur kerja (Workflow).
-- [x] **Projects Page**: Portofolio riwayat pekerjaan teknis (Matano, Malili, Larona, PPKH Sorowako).
-- [x] **Contact Page**: Update info kontak pusat (Makassar) & cabang (Sorowako), WhatsApp integration (0815-8954-945).
+| Phase 2: Content & Structure | 100% | ✅ |
+| Phase 3: UI/UX Refinement | 100% | ✅ |
 
-#### 🧹 Maintenance & Cleanup
+## 📁 Recent Activity Log
+
+### Redesign Phase (PT RMR Energi Indonesia)
+
+- **[DONE]** Home Page: Full redesign with high-end premium aesthetics.
+- **[DONE]** About Page: Vision, Mission, Legality (NIB), and Experts.
+- **[DONE]** Services Page: Dynamic layout with KBLI code integration.
+- **[DONE]** Projects Page: Portfolio grid with status filtering.
+- **[DONE]** **Project Detail Page**: Dynamic route `[id]` with deep project insights.
+- **[DONE]** **Navbar Accessibility**: Fixed text contrast on light/dark hero sections.
+- **[DONE]** **Expert UI/UX**: Improved expert card spacing and readability.
+- **[DONE]** Contact Page: Form with WhatsApp and branch office locations.
+- **[DONE]** **Build Bugfix**: Fixed `globals.css` and type errors for successful deployment.
+
+### Development Status
+
+- **CI/CD**: Build passing on Vercel.
+- **Next.js Version**: 16.1.6 (Turbopack).
+- **Tailwind Version**: v4.0.0.
+
+## 🚀 Future Enhancements
+
+1. Add more project case studies from PDF.
+2. Integrate backend for dynamic contact submissions.
+3. Optimize images using Next/Image and Sharp.
 
 - [x] Hapus route lama: `/workers` dan `/categories` (tidak relevan lagi).
 - [x] Cleanup Code: Menghapus data dummy outsourcing lama.

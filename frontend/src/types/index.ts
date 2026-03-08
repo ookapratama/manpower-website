@@ -22,6 +22,8 @@ export interface Project {
   year: string;
   location: string;
   image: string;
+  description?: string;
+  scope?: string[];
 }
 
 // === Tim Ahli / Experts ===

@@ -69,6 +69,14 @@ export const projects: Project[] = [
     location: "Luwu Timur",
     image:
       "https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=2070&auto=format&fit=crop",
+    description:
+      "Studi teknis dan pengurusan administrasi untuk permohonan penurunan status fungsi kawasan hutan di wilayah Matano Ring Belt guna mendukung pembangunan infrastruktur publik dan pemukiman yang terukur.",
+    scope: [
+      "Analisis Citra Satelit & GIS",
+      "Survei Lapangan Inventarisasi Tegakan",
+      "Penyusunan Dokumen Kajian Teknis",
+      "Koordinasi Lintas Instansi (KLHK & BPKH)",
+    ],
   },
   {
     id: 2,
@@ -79,6 +87,14 @@ export const projects: Project[] = [
     location: "Sulawesi",
     image:
       "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2013&auto=format&fit=crop",
+    description:
+      "Pendampingan penuh dalam penyusunan dokumen teknis dan administratif untuk Persetujuan Penggunaan Kawasan Hutan (PPKH) serta perpanjangan IPPKH bagi operasional pertambangan berkelanjutan di blok Tanamalia dan Larona.",
+    scope: [
+      "Penyusunan Peta Lampiran Lokasi",
+      "Penyusunan Business Plan Kehutanan",
+      "Verifikasi Batas Kawasan di Lapangan",
+      "Pengawalan Proses di PTSP & KLHK",
+    ],
   },
   {
     id: 3,
@@ -89,6 +105,14 @@ export const projects: Project[] = [
     location: "Malili",
     image:
       "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=2074&auto=format&fit=crop",
+    description:
+      "Pembuatan data baseline teknis dan kajian lingkungan untuk rencana pengerukan sedimen di Sungai Malili untuk mencegah banjir bandang dan menjaga alur pelayaran masyarakat lokal.",
+    scope: [
+      "Pengambilan Sampel Batimetri",
+      "Uji Kualitas Air & Sedimen",
+      "Pemetaan Area Terdampak",
+      "Rekomendasi Penempatan Disposal Area",
+    ],
   },
   {
     id: 4,
@@ -99,6 +123,14 @@ export const projects: Project[] = [
     location: "Luwu Timur",
     image:
       "https://images.unsplash.com/photo-1501854140801-50d01674aa3e?q=80&w=2074&auto=format&fit=crop",
+    description:
+      "Penilaian ekologis dan sosial untuk zona penyangga hutan Petea guna memastikan aktivitas operasional tambang tidak mengganggu keanekaragaman hayati endemik di daerah tersebut.",
+    scope: [
+      "Inventarisasi Flora & Fauna Endemik",
+      "Kajian Sosial Budaya Masyarakat Sekitar",
+      "Pemetaan Zona Sensitif Ekologis",
+      "Strategi Mitigasi Konflik Satwa",
+    ],
   },
   {
     id: 5,
@@ -109,6 +141,14 @@ export const projects: Project[] = [
     location: "Sorowako",
     image:
       "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop",
+    description:
+      "Pengurusan dokumen perizinan PPKH secara bertahap (batching) untuk area eksplorasi dan infrastruktur tambang di wilayah Sorowako, memastikan kepatuhan terhadap regulasi terbaru KLHK.",
+    scope: [
+      "Audit Dokumen Legalitas Dasar",
+      "Pemetaan GIS Lintas Waktu",
+      "Koordinasi Stakeholder Daerah",
+      "Monitoring Pemenuhan Kewajiban PPKH",
+    ],
   },
 ];
 

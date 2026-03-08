@@ -30,6 +30,11 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Helper to determine if we are on a page with a light-colored hero section
+  const isLightHeroPage = ["/services", "/projects", "/contact"].some((path) =>
+    pathname?.startsWith(path),
+  );
+
   return (
     <nav
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
@@ -47,12 +52,18 @@ export default function Navbar() {
             </div>
             <div className="flex flex-col">
               <span
-                className={`text-lg font-black tracking-tighter leading-none transition-colors duration-300 ${scrolled ? "text-primary" : "text-white"}`}
+                className={`text-lg font-black tracking-tighter leading-none transition-colors duration-300 ${
+                  scrolled || isLightHeroPage ? "text-primary" : "text-white"
+                }`}
               >
                 PT RMR
               </span>
               <span
-                className={`text-[10px] font-bold uppercase tracking-widest leading-normal transition-colors duration-300 ${scrolled ? "text-gray-500" : "text-secondary"}`}
+                className={`text-[10px] font-bold uppercase tracking-widest leading-normal transition-colors duration-300 ${
+                  scrolled || isLightHeroPage
+                    ? "text-gray-500"
+                    : "text-secondary"
+                }`}
               >
                 Energi Indonesia
               </span>
@@ -71,10 +82,14 @@ export default function Navbar() {
                     isActive
                       ? scrolled
                         ? "text-primary"
-                        : "text-secondary"
+                        : isLightHeroPage
+                          ? "text-primary"
+                          : "text-secondary"
                       : scrolled
                         ? "text-gray-600 hover:text-primary"
-                        : "text-white/90 hover:text-white"
+                        : isLightHeroPage
+                          ? "text-gray-600 hover:text-primary"
+                          : "text-white/90 hover:text-white"
                   }`}
                 >
                   {link.name}
@@ -102,7 +117,11 @@ export default function Navbar() {
 
           {/* Mobile Toggle */}
           <button
-            className={`md:hidden p-2 rounded-lg transition-colors ${scrolled ? "text-gray-600 hover:bg-gray-100" : "text-primary hover:bg-white/10"}`}
+            className={`md:hidden p-2 rounded-lg transition-colors ${
+              scrolled || isLightHeroPage
+                ? "text-primary hover:bg-gray-100"
+                : "text-white hover:bg-white/10"
+            }`}
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
