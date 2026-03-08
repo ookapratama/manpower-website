@@ -1,9 +1,18 @@
 /**
- * Halaman Hubungi Kami — Kontak (Light Theme + Animations)
+ * Halaman Hubungi Kami — PT RMR Energi Indonesia
  */
 "use client";
 
-import { Phone, Mail, MapPin, Clock, MessageSquare, Send } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Send,
+  MessageSquare,
+  Globe,
+  ChevronRight,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import {
   Select,
@@ -12,6 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import React from "react";
 
 export default function ContactPage() {
   const containerVariants = {
@@ -25,89 +35,98 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header Halaman */}
-      <section className="relative pt-32 pb-16 bg-[#FFF7F5] overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
-        <div className="absolute inset-0 noise-bg opacity-10 pointer-events-none" />
+    <div className="min-h-screen bg-white selection:bg-primary/10 selection:text-primary">
+      {/* ==================== HEADER HALAMAN ==================== */}
+      <section className="relative pt-48 pb-32 bg-gray-50 overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-5 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 className="text-4xl sm:text-6xl font-black text-[#1C0A00] tracking-tight leading-none mb-6">
-              Mulai <span className="text-gradient">Hubungi Kami</span>
+            <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-primary/5 border border-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.4em] mb-10">
+              <Globe className="w-4 h-4" />
+              Global Forestry Network
+            </div>
+            <h1 className="text-5xl sm:text-7xl font-black text-gray-900 tracking-tight leading-none mb-8">
+              Hubungi{" "}
+              <span className="text-primary italic tracking-tighter">
+                Ahli Kami.
+              </span>
             </h1>
-            <p className="text-lg sm:text-xl text-[#78350F]/70 max-w-2xl mx-auto leading-relaxed font-bold">
-              Tim kami siap membantu Anda 24/7. Sampaikan kebutuhan tenaga kerja
-              Anda dan kami akan segera memberikan solusi outsourcing terbaik.
+            <p className="text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed font-medium">
+              Tim konsultan kami siap membantu menavigasi setiap tahapan
+              birokrasi perizinan kawasan hutan Anda.
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="py-24 lg:py-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-5 gap-16 items-start">
-            {/* Kolom Kiri: Info Kontak */}
-            <div className="lg:col-span-2 space-y-12">
+          <div className="grid lg:grid-cols-5 gap-20 items-start">
+            {/* ==================== KOLOM KIRI: INFO KONTAK ==================== */}
+            <div className="lg:col-span-2 space-y-16">
               <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
               >
-                <h2 className="text-2xl font-black text-[#1C0A00] mb-8 tracking-tight uppercase">
-                  Informasi Kontak
-                </h2>
+                <div className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-12 block">
+                  Saluran Komunikasi
+                </div>
 
-                <div className="space-y-10">
+                <div className="space-y-12">
                   {[
                     {
                       icon: Phone,
                       label: "Telepon & WhatsApp",
-                      value: "+62 411-123-4567",
-                      color: "text-emerald-600",
-                      bg: "bg-emerald-50/50",
+                      value: "0815-8954-945",
+                      color: "text-primary",
+                      bg: "bg-primary/5",
                     },
                     {
                       icon: Mail,
                       label: "Email Resmi",
-                      value: "info@manpowersupply.co.id",
-                      color: "text-[#EA580C]",
-                      bg: "bg-[#FFF7F5]",
+                      value: "pt.rmrenergiindonesia@gmail.com",
+                      color: "text-primary",
+                      bg: "bg-primary/5",
                     },
                     {
                       icon: MapPin,
-                      label: "Alamat Kantor",
+                      label: "Kantor Pusat (Makassar)",
                       value:
-                        "Jl. Andi Pangeran Pettarani No. 123, Makassar, Sulawesi Selatan",
-                      color: "text-[#DC2626]",
-                      bg: "bg-[#DC2626]/5",
+                        "JI. SYARIF AL QADRI No. 91 RT. 002 RW. 001, Maricaya Baru, Makassar",
+                      color: "text-primary",
+                      bg: "bg-primary/5",
                     },
                     {
-                      icon: Clock,
-                      label: "Jam Operasional",
-                      value: "Senin - Jumat: 08:00 - 17:00 WITA",
-                      color: "text-amber-600",
-                      bg: "bg-amber-50/50",
+                      icon: MapPin,
+                      label: "Kantor Cabang (Sorowako)",
+                      value:
+                        "JI. Poros Malili - Sorowako, Luwu Timur, Sulawesi Selatan",
+                      color: "text-primary",
+                      bg: "bg-primary/5",
                     },
                   ].map((item, idx) => (
                     <motion.div
                       key={idx}
                       variants={itemVariants}
-                      className="flex gap-6 group"
+                      className="flex gap-8 group"
                     >
                       <div
-                        className={`w-14 h-14 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-black/2 border border-slate-100 group-hover:scale-110 transition-transform duration-500`}
+                        className={`w-16 h-16 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center shrink-0 shadow-lg border border-gray-100 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500`}
                       >
-                        <item.icon className="w-6 h-6" />
+                        <item.icon className="w-7 h-7" />
                       </div>
-                      <div>
-                        <div className="text-[10px] font-black text-[#EA580C] uppercase tracking-[0.2em] mb-1">
+                      <div className="flex flex-col justify-center">
+                        <div className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-2 font-bold">
                           {item.label}
                         </div>
-                        <div className="text-base font-black text-[#1C0A00] leading-snug">
+                        <div className="text-lg font-black text-gray-900 leading-snug tracking-tight">
                           {item.value}
                         </div>
                       </div>
@@ -116,135 +135,145 @@ export default function ContactPage() {
                 </div>
               </motion.div>
 
-              {/* Chat CTA Box */}
+              {/* WhatsApp Box */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="p-8 bg-[#1A0A00] rounded-3xl text-white relative overflow-hidden shadow-2xl shadow-red-900/10"
+                className="p-12 bg-primary rounded-[3rem] text-white relative overflow-hidden shadow-2xl"
               >
-                <div className="absolute top-0 right-0 p-8 opacity-20 pointer-events-none noise-bg h-full w-full" />
-                <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[60%] bg-[#DC2626]/20 rounded-full blur-[60px]" />
+                <div className="absolute inset-0 noise-bg opacity-10 pointer-events-none" />
+                <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[60%] bg-white/10 rounded-full blur-[60px]" />
 
-                <h3 className="text-2xl font-black mb-3 relative z-10 tracking-tight">
-                  Respon Cepat via WA
+                <h3 className="text-2xl font-black mb-4 relative z-10 tracking-tight">
+                  Konsultasi Via WA
                 </h3>
-                <p className="text-slate-400 font-medium mb-8 relative z-10 leading-relaxed text-sm">
-                  Konsultasi kebutuhan dalam hitungan menit lewat asisten online
-                  kami.
+                <p className="text-white/60 font-medium mb-10 relative z-10 leading-relaxed">
+                  Dapatkan respon lebih cepat untuk pertanyaan regulasi dan
+                  perizinan.
                 </p>
                 <a
-                  href="https://wa.me/6281234567890"
+                  href="https://wa.me/628158954945"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-white font-black text-xs rounded-xl transition-all shadow-xl shadow-emerald-900/40 active:scale-95 relative z-10"
+                  className="inline-flex items-center gap-3 px-10 py-5 bg-secondary text-primary font-black text-sm rounded-2xl hover:bg-white transition-all shadow-xl active:scale-95 relative z-10"
                 >
-                  Chat Sekarang
-                  <Send className="w-5 h-5" />
+                  Hubungi Admin WA{" "}
+                  <MessageSquare className="w-5 h-5 fill-primary" />
                 </a>
               </motion.div>
             </div>
 
-            {/* Kolom Kanan: Form Kontak */}
+            {/* ==================== KOLOM KANAN: FORM KONTAK ==================== */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-3 bg-white border border-[#FED7AA]/20 rounded-3xl p-8 sm:p-12 shadow-2xl shadow-red-900/5"
+              className="lg:col-span-3 bg-white border border-gray-100 rounded-[3.5rem] p-10 sm:p-20 shadow-2xl shadow-gray-200/50"
             >
-              <h2 className="text-3xl font-black text-[#1C0A00] mb-4 tracking-tight">
-                Kirim Pesan
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-px bg-primary/20" />
+                <span className="text-primary text-[10px] font-black uppercase tracking-[0.4em]">
+                  Hubungi Kami
+                </span>
+              </div>
+              <h2 className="text-4xl font-black text-gray-900 mb-6 tracking-tight">
+                Kirim Pesan Teknis.
               </h2>
-              <p className="text-[#78350F]/60 font-bold text-base mb-12 leading-relaxed">
-                Berikan detail kebutuhan Anda dan tim ahli kami akan segera
-                menghubungi Anda kembali dengan rekomendasi solusi.
+              <p className="text-gray-500 font-medium text-lg mb-16 leading-relaxed max-w-xl">
+                Lengkapi form di bawah ini untuk mendapatkan estimasi waktu dan
+                biaya pengurusan dokumen teknis Anda.
               </p>
 
-              <form className="space-y-10">
-                <div className="grid sm:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black text-[#EA580C] uppercase tracking-[0.2em] ml-1">
+              <form className="space-y-12">
+                <div className="grid sm:grid-cols-2 gap-10">
+                  <div className="space-y-4">
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-1">
                       Nama Lengkap
                     </label>
                     <input
                       type="text"
                       placeholder="Contoh: Budi Santoso"
-                      className="w-full px-6 py-4 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-xl focus:outline-none focus:border-[#EA580C] focus:bg-white transition-all font-bold text-[#1C0A00] shadow-sm text-sm"
+                      className="w-full px-8 py-5 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:border-primary focus:bg-white transition-all font-bold text-gray-900 shadow-inner text-sm"
                     />
                   </div>
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black text-[#EA580C] uppercase tracking-[0.2em] ml-1">
-                      Perusahaan / Organisasi
+                  <div className="space-y-4">
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-1">
+                      Perusahaan / Institusi
                     </label>
                     <input
                       type="text"
-                      placeholder="Contoh: PT. Maju Jaya"
-                      className="w-full px-6 py-4 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-xl focus:outline-none focus:border-[#EA580C] focus:bg-white transition-all font-bold text-[#1C0A00] shadow-sm text-sm"
+                      placeholder="Nama PT atau Instansi"
+                      className="w-full px-8 py-5 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:border-primary focus:bg-white transition-all font-bold text-gray-900 shadow-inner text-sm"
                     />
                   </div>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black text-[#EA580C] uppercase tracking-[0.2em] ml-1">
-                      Email
+                <div className="grid sm:grid-cols-2 gap-10">
+                  <div className="space-y-4">
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-1">
+                      Email Bisnis
                     </label>
                     <input
                       type="email"
-                      placeholder="budi@email.com"
-                      className="w-full px-6 py-4 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-xl focus:outline-none focus:border-[#EA580C] focus:bg-white transition-all font-bold text-[#1C0A00] shadow-sm text-sm"
+                      placeholder="email@perusahaan.com"
+                      className="w-full px-8 py-5 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:border-primary focus:bg-white transition-all font-bold text-gray-900 shadow-inner text-sm"
                     />
                   </div>
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black text-[#EA580C] uppercase tracking-[0.2em] ml-1">
+                  <div className="space-y-4">
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-1">
                       No. Telepon / WA
                     </label>
                     <input
                       type="tel"
-                      placeholder="0812xxxxxxx"
-                      className="w-full px-6 py-4 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-xl focus:outline-none focus:border-[#EA580C] focus:bg-white transition-all font-bold text-[#1C0A00] shadow-sm text-sm"
+                      placeholder="0812xxxxxxxx"
+                      className="w-full px-8 py-5 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:border-primary focus:bg-white transition-all font-bold text-gray-900 shadow-inner text-sm"
                     />
                   </div>
                 </div>
 
-                <div className="space-y-3">
-                  <label className="text-[10px] font-black text-[#EA580C] uppercase tracking-[0.2em] ml-1">
-                    Kategori Tenaga Kerja
+                <div className="space-y-4">
+                  <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-1">
+                    Kebutuhan Layanan
                   </label>
                   <Select>
-                    <SelectTrigger className="w-full px-6 py-7 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-xl focus:ring-4 focus:ring-[#EA580C]/10 font-bold text-[#1C0A00] cursor-pointer shadow-sm text-sm h-auto">
-                      <SelectValue placeholder="Pilih Kategori Kebutuhan" />
+                    <SelectTrigger className="w-full px-8 py-8 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-4 focus:ring-primary/10 font-bold text-gray-900 cursor-pointer shadow-inner text-base h-auto">
+                      <SelectValue placeholder="Pilih Jenis Layanan" />
                     </SelectTrigger>
-                    <SelectContent className="bg-white border-[#FED7AA]/50 rounded-xl font-bold text-[#1C0A00]">
-                      <SelectItem value="security">
-                        Security & Satpam
+                    <SelectContent className="bg-white border-gray-100 rounded-2xl font-bold text-gray-900 shadow-2xl">
+                      <SelectItem value="ppkh">
+                        Izin Persetujuan Penggunaan Kawasan Hutan (PPKH)
                       </SelectItem>
-                      <SelectItem value="cleaning">Cleaning Service</SelectItem>
-                      <SelectItem value="driver">Driver Profesional</SelectItem>
-                      <SelectItem value="technician">
-                        Teknisi & Maintenance
+                      <SelectItem value="plan">
+                        Jasa Perencanaan Kehutanan
                       </SelectItem>
-                      <SelectItem value="others">Lainnya</SelectItem>
+                      <SelectItem value="cons">
+                        Perlindungan & Konservasi Alam
+                      </SelectItem>
+                      <SelectItem value="others">
+                        Lainnya / Konsultasi Umum
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
-                <div className="space-y-3">
-                  <label className="text-[10px] font-black text-[#EA580C] uppercase tracking-[0.2em] ml-1">
-                    Detail Kebutuhan Outsourcing
+                <div className="space-y-4">
+                  <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] ml-1">
+                    Detail Pertanyaan / Brief Proyek
                   </label>
                   <textarea
-                    rows={4}
-                    placeholder="Sampaikan jumlah tenaga kerja yang dibutuhkan, kualifikasi khusus, dan durasi penempatan..."
-                    className="w-full px-6 py-4 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-xl focus:outline-none focus:border-[#EA580C] focus:bg-white transition-all font-bold text-[#1C0A00] resize-none shadow-sm text-sm"
+                    rows={5}
+                    placeholder="Sampaikan rincian kebutuhan Anda, seperti lokasi proyek, luas lahan, atau kendala regulasi yang dihadapi..."
+                    className="w-full px-8 py-6 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:border-primary focus:bg-white transition-all font-bold text-gray-900 resize-none shadow-inner text-sm"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-5 bg-[#DC2626] text-white font-black text-lg rounded-xl hover:bg-[#B91C1C] transition-all shadow-2xl shadow-red-900/20 active:scale-95"
+                  className="w-full py-6 bg-primary text-white font-black text-lg rounded-2xl hover:bg-gray-900 transition-all shadow-2xl shadow-primary/20 active:scale-95 flex items-center justify-center gap-4"
                 >
-                  Kirim Permintaan Penawaran
+                  Kirim Pesan Sekarang{" "}
+                  <ArrowRight className="w-6 h-6 text-secondary" />
                 </button>
               </form>
             </motion.div>
@@ -252,5 +281,25 @@ export default function ContactPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+function ArrowRight(props: any) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M5 12h14" />
+      <path d="m12 5 7 7-7 7" />
+    </svg>
   );
 }

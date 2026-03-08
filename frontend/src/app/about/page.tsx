@@ -1,39 +1,27 @@
 /**
- * Halaman Tentang Kami — Profil (Light Theme + Animations)
+ * Halaman Tentang Kami — Profil PT RMR Energi Indonesia
  */
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import {
-  Users,
+  ShieldCheck,
   Target,
-  Shield,
   Award,
   CheckCircle2,
-  Building2,
-  Handshake,
-  TrendingUp,
-  ArrowRight,
-  Zap,
+  Users,
+  Briefcase,
   Globe,
-  Rocket,
-  ShieldCheck,
+  Star,
+  Zap,
+  Leaf,
+  FileText,
 } from "lucide-react";
-import React, { useRef } from "react";
-import SectorCard from "@/components/ui/SectorCard";
-import { sectors, siteStats } from "@/lib/dummy-data";
+import React from "react";
+import { experts, siteStats } from "@/lib/dummy-data";
 
 export default function AboutPage() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, 300]);
-  const opacity1 = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
@@ -45,377 +33,323 @@ export default function AboutPage() {
   };
 
   return (
-    <div
-      ref={containerRef}
-      className="min-h-screen bg-[#FFF7F5] selection:bg-[#DC2626]/10 selection:text-[#DC2626]"
-    >
-      {/* Hero Header */}
-      <section className="relative pt-32 pb-24 overflow-hidden bg-[#1C0A00]">
+    <div className="min-h-screen bg-white selection:bg-primary/10 selection:text-primary">
+      {/* ==================== HERO HEADER ==================== */}
+      <section className="relative pt-48 pb-32 overflow-hidden bg-primary">
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#EA580C]/15 rounded-full blur-[160px] -translate-y-1/2 translate-x-1/2 opacity-60 animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#DC2626]/10 rounded-full blur-[140px] translate-y-1/2 -translate-x-1/2 opacity-40" />
-          <div className="absolute inset-0 noise-bg opacity-15 pointer-events-none" />
-          <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-secondary/10 rounded-full blur-[160px] translate-x-1/3 -translate-y-1/3" />
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-black/10 rounded-full blur-[140px] -translate-x-1/3 translate-y-1/3" />
+          <div className="absolute inset-0 noise-bg opacity-10 pointer-events-none" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-          <motion.div style={{ y: y1, opacity: opacity1 }}>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/5 border border-white/10 text-white/70 text-[10px] font-black uppercase tracking-[0.4em] mb-12 backdrop-blur-md"
-            >
-              <Users className="w-4 h-4 text-[#EA580C]" />
-              Kenali Lebih Dekat
-            </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/10 border border-white/20 text-white/80 text-[10px] font-black uppercase tracking-[0.4em] mb-12 backdrop-blur-md">
+              <Leaf className="w-4 h-4 text-secondary" />
+              Tentang PT RMR Energi Indonesia
+            </div>
 
-            <h1 className="text-4xl sm:text-7xl font-black text-white tracking-tight leading-[1.1] mb-8">
-              The Engine <br />
-              Behind Your <br />
-              <span className="text-gradient">Success.</span>
+            <h1 className="text-5xl sm:text-7xl font-black text-white tracking-tight leading-none mb-8">
+              Navigasi{" "}
+              <span className="text-secondary tracking-tighter italic">
+                Regulasi
+              </span>{" "}
+              <br />
+              Demi Keberlanjutan.
             </h1>
 
-            <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed font-medium tracking-tight">
-              Sejak 2020, ManPower Supply telah menjadi katalisator bagi
-              transformasi ekosistem ketenagakerjaan profesional di seluruh
-              Indonesia.
+            <p className="text-lg sm:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed font-medium tracking-tight">
+              Mitra strategis dan konsultan ahli dalam perizinan Persetujuan
+              Penggunaan Kawasan Hutan (PPKH) di Indonesia.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Philosophy Section */}
-      <section className="py-24 bg-white relative">
+      {/* ==================== BIOGRAPHY & LEGALITY ==================== */}
+      <section className="py-24 lg:py-40 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid lg:grid-cols-2 gap-16 items-center mb-40"
-          >
-            <motion.div variants={itemVariants}>
-              <div className="inline-flex items-center gap-3 border border-[#EA580C]/20 px-5 py-2 rounded-full mb-8">
-                <Rocket className="w-4 h-4 text-[#EA580C]" />
-                <span className="text-[#EA580C] text-[10px] font-black uppercase tracking-[0.4em]">
-                  Our Core Value
+          <div className="grid lg:grid-cols-2 gap-20 items-start">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="inline-flex items-center gap-3 border border-primary/20 px-4 py-2 rounded-full mb-8">
+                <FileText className="w-4 h-4 text-primary" />
+                <span className="text-primary text-[10px] font-black uppercase tracking-[0.4em]">
+                  Biografi Perusahaan
                 </span>
               </div>
-              <h2 className="text-3xl sm:text-5xl font-black text-[#1C0A00] tracking-tight leading-[1.1] mb-8">
-                Misi Besar Untuk <br /> Dampak{" "}
-                <span className="text-gradient">Nyata.</span>
+              <h2 className="text-4xl font-black text-gray-900 mb-8 tracking-tight leading-tight">
+                Membangun Kepercayaan <br /> Melalui{" "}
+                <span className="text-primary">Keahlian Teknis.</span>
               </h2>
-              <p className="text-[#78350F]/70 text-lg sm:text-xl leading-relaxed font-bold tracking-tight mb-10">
-                Kami tidak sekadar menyalurkan tenaga kerja; kami membangun
-                jembatan kepercayaan antara talenta terbaik dan perusahaan
-                visioner.
-              </p>
-
-              <div className="grid sm:grid-cols-2 gap-8">
-                {[
-                  {
-                    icon: ShieldCheck,
-                    title: "Lengkap & Legal",
-                    desc: "Patuh 100% regulasi RI.",
-                  },
-                  {
-                    icon: Globe,
-                    title: "Skala Nasional",
-                    desc: "Coverage seluruh wilayah.",
-                  },
-                ].map((stat, i) => (
-                  <div
-                    key={i}
-                    className="p-6 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-2xl"
-                  >
-                    <stat.icon className="w-8 h-8 text-[#DC2626] mb-4" />
-                    <div className="font-black text-[#1C0A00] text-lg mb-1">
-                      {stat.title}
-                    </div>
-                    <div className="text-sm font-bold text-[#78350F]/50 leading-tight">
-                      {stat.desc}
-                    </div>
-                  </div>
-                ))}
+              <div className="space-y-6 text-gray-600 text-lg leading-relaxed mb-12">
+                <p>
+                  PT RMR ENERGI INDONESIA didukung oleh tim tenaga teknis dan
+                  legal yang berkompeten serta berpengalaman dalam menavigasi
+                  regulasi kehutanan yang dinamis.
+                </p>
+                <p>
+                  Kami yakin dengan kemampuan tinggi serta konsistensi tim kami
+                  dalam mengawal setiap tahapan birokrasi, akan memenuhi standar
+                  kepatuhan regulasi dan kepuasan kualitas layanan yang
+                  diinginkan oleh klien.
+                </p>
               </div>
-            </motion.div>
 
-            <motion.div variants={itemVariants} className="relative group">
-              <div className="aspect-4/5 rounded-[2.5rem] overflow-hidden border-8 border-[#FFF7F5] shadow-2xl relative">
-                <Image
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2000&auto=format&fit=crop"
-                  alt="Professional Leadership"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-1000"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-[#1C0A00]/80 via-transparent to-transparent" />
-                <div className="absolute bottom-12 left-12 right-12 text-white">
-                  <div className="text-2xl font-black tracking-tight mb-2">
-                    Integritas Tanpa Kompromi
-                  </div>
-                  <div className="text-[#EA580C] text-[10px] font-black uppercase tracking-[0.4em]">
-                    Prinsip Utama Kami
-                  </div>
+              <div className="p-8 bg-gray-50 rounded-[2.5rem] border border-gray-100">
+                <h3 className="text-xl font-black text-gray-900 mb-6">
+                  Informasi Legalitas
+                </h3>
+                <div className="space-y-4">
+                  {[
+                    {
+                      label: "Nama Perusahaan",
+                      value: "PT RMR Energi Indonesia",
+                    },
+                    { label: "NIB", value: "0403260056576" },
+                    {
+                      label: "Izin Usaha",
+                      value: "Persetujuan Penggunaan Kawasan Hutan (PPKH)",
+                    },
+                    { label: "Domisili", value: "Makassar, Sulawesi Selatan" },
+                  ].map((info) => (
+                    <div
+                      key={info.label}
+                      className="flex justify-between items-center py-3 border-b border-gray-200 last:border-0"
+                    >
+                      <span className="text-sm font-bold text-gray-400 uppercase tracking-widest">
+                        {info.label}
+                      </span>
+                      <span className="text-sm font-black text-gray-800">
+                        {info.value}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
-              <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-[#DC2626]/10 rounded-full blur-3xl -z-10 group-hover:scale-125 transition-transform" />
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 gap-12"
-          >
-            <motion.div
-              variants={itemVariants}
-              className="p-10 bg-[#FFF7F5] border border-[#FED7AA]/30 rounded-3xl hover:border-[#EA580C]/30 transition-all duration-700 group relative overflow-hidden"
-            >
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#EA580C]/5 rounded-full blur-3xl" />
-              <div className="w-16 h-16 rounded-2xl bg-[#EA580C] text-white flex items-center justify-center mb-10 shadow-xl shadow-orange-900/30 group-hover:rotate-6 transition-transform">
-                <Target className="w-8 h-8" />
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-black text-[#1C0A00] mb-6 tracking-tight">
-                Visi Strategis
-              </h2>
-              <p className="text-[#78350F]/70 text-lg leading-relaxed font-bold tracking-tight">
-                Menjadi benchmark utama dalam industri penyediaan tenaga kerja
-                profesional di Asia Pasifik dengan mengedepankan inovasi
-                teknologi rekrutmen.
-              </p>
             </motion.div>
 
             <motion.div
-              variants={itemVariants}
-              className="p-10 bg-[#1C0A00] text-white rounded-3xl shadow-2xl shadow-red-900/10 relative overflow-hidden group"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
             >
-              <div className="absolute inset-0 noise-bg opacity-10" />
-              <div className="w-16 h-16 rounded-2xl bg-white/5 text-[#EA580C] flex items-center justify-center mb-10 border border-white/10 group-hover:rotate-6 transition-transform">
-                <TrendingUp className="w-8 h-8" />
+              <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl relative">
+                <Image
+                  src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2013&auto=format&fit=crop"
+                  alt="Forester work"
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h2 className="text-2xl sm:text-3xl font-black text-white mb-6 tracking-tight">
-                Misi Operasional
-              </h2>
-              <ul className="space-y-8">
-                {[
-                  "Rekrutmen berbasis Intelligence Testing.",
-                  "Proteksi legalitas menyeluruh bagi pekerja.",
-                  "Sistem manajemen SDM yang transparan.",
-                  "Peningkatan kompetensi melalui training intensif.",
-                ].map((misi, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-4 text-slate-300 font-bold"
-                  >
-                    <div className="w-6 h-6 rounded-full bg-[#EA580C]/10 flex items-center justify-center shrink-0 mt-1">
-                      <CheckCircle2 className="w-4 h-4 text-[#EA580C]" />
-                    </div>
-                    <span className="text-lg leading-snug tracking-tight">
-                      {misi}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+              <div className="absolute -bottom-10 -left-10 bg-secondary p-12 rounded-[2.5rem] shadow-2xl hidden sm:block">
+                <div className="flex flex-col">
+                  <span className="text-primary text-xs font-black uppercase tracking-[0.4em] mb-2">
+                    Didirikan Oleh
+                  </span>
+                  <span className="text-xl font-black text-primary leading-tight">
+                    Muhammad Fahmi <br /> Mubarak, S.T.
+                  </span>
+                </div>
+              </div>
             </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Sektor Bisnis Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-[#FED7AA]/30 to-transparent" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-[#EA580C]/5 border border-[#EA580C]/10 text-[#EA580C] text-[10px] font-black uppercase tracking-[0.4em] mb-8">
-              Lingkup Operasional
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-black text-[#1C0A00] tracking-tight leading-none mb-6">
-              Sektor <span className="text-gradient">Bisnis</span> Kami.
-            </h2>
-            <p className="text-[#78350F]/60 max-w-2xl mx-auto font-bold text-lg sm:text-xl tracking-tight leading-relaxed">
-              Kami beroperasi di 7 sektor strategis nasional dengan legalitas
-              dan kompetensi yang teruji di setiap bidangnya.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
-          >
-            {sectors.map((sector) => (
-              <motion.div key={sector.id} variants={itemVariants}>
-                <SectorCard sector={sector} />
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <div className="mt-20 text-center">
-            <LinkNext
-              href="/services"
-              className="inline-flex items-center gap-3 px-10 py-5 bg-[#1C0A00] text-white font-black rounded-2xl hover:bg-[#EA580C] transition-all shadow-xl shadow-black/10 active:scale-95 group"
-            >
-              Lihat Detail Layanan per Sektor
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-            </LinkNext>
           </div>
         </div>
       </section>
-      <section className="py-24 bg-[#FFF7F5] relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#EA580C]/5 blur-[160px] translate-x-1/2" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true }}
-            className="relative aspect-21/10 rounded-3xl sm:rounded-[4rem] overflow-hidden border-8 border-white shadow-3xl group"
-          >
-            <Image
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop"
-              alt="Our Professional Team"
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-1000"
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-[#1C0A00]/95 via-[#1C0A00]/20 to-transparent" />
-            <div className="absolute bottom-16 left-16 right-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
-              <div>
-                <h3 className="text-3xl sm:text-5xl font-black text-white mb-4 tracking-tight">
-                  Kekuatan di Balik Layanan.
-                </h3>
-                <p className="text-[#EA580C] font-black uppercase tracking-[0.5em] text-[10px]">
-                  Professional Human Capital Team
-                </p>
-              </div>
-              <LinkNext
-                href="/contact"
-                className="px-10 py-5 bg-white text-[#1C0A00] font-black rounded-2xl hover:bg-[#EA580C] hover:text-white transition-all shadow-xl"
-              >
-                Join Our Ecosystem
-              </LinkNext>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* Keunggulan Header */}
-      <section className="py-24 bg-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center text-center mb-32">
+      {/* ==================== VISION & MISSION ==================== */}
+      <section className="py-24 lg:py-40 bg-gray-950 relative overflow-hidden">
+        <div className="absolute inset-0 noise-bg opacity-10 pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              className="p-12 sm:p-20 bg-primary rounded-[3.5rem] text-white relative overflow-hidden"
             >
-              <div className="w-20 h-1 bg-[#DC2626] mb-10 rounded-full mx-auto" />
-              <h2 className="text-3xl sm:text-5xl font-black text-[#1C0A00] mb-6 tracking-tight leading-none">
-                Why Partners <br />{" "}
-                <span className="text-gradient">Choose Us?</span>
+              <div className="absolute top-0 right-0 p-12 opacity-10">
+                <Target className="w-40 h-40" />
+              </div>
+              <h2 className="text-4xl font-black mb-8 tracking-tight">
+                Visi Terdepan.
               </h2>
-              <p className="text-[#78350F]/60 max-w-xl mx-auto font-bold text-lg sm:text-xl tracking-tight leading-relaxed">
-                Empat pilar utama yang menjadikan kami mitra strategis paling
-                andal di industri outsourcing Indonesia.
+              <p className="text-xl sm:text-2xl leading-relaxed font-medium text-white/90 italic">
+                &ldquo;Menjadi mitra strategis terdepan di Indonesia dalam
+                penyediaan solusi perizinan kawasan hutan yang terpercaya,
+                akurat, dan berkelanjutan.&rdquo;
               </p>
             </motion.div>
-          </div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16"
-          >
-            {[
-              {
-                icon: Shield,
-                title: "Legalitas Rigid",
-                desc: "Kepatuhan hukum mutlak terhadap seluruh regulasi ketenagakerjaan.",
-                color: "text-emerald-600",
-                bg: "bg-emerald-50",
-              },
-              {
-                icon: Award,
-                title: "Quality First",
-                desc: "Proses seleksi berbasis performa dan kompetensi nyata.",
-                color: "text-[#EA580C]",
-                bg: "bg-[#FFF7F5]",
-              },
-              {
-                icon: Handshake,
-                title: "Dedicated Support",
-                desc: "Manajer akun khusus untuk setiap mitra bisnis kami.",
-                color: "text-[#DC2626]",
-                bg: "bg-[#DC2626]/5",
-              },
-              {
-                icon: Building2,
-                title: "Full Coverage",
-                desc: "Proteksi jaminan sosial & asuransi lengkap bagi seluruh tenaga kerja.",
-                color: "text-purple-600",
-                bg: "bg-purple-50",
-              },
-            ].map((item) => (
-              <motion.div
-                key={item.title}
-                variants={itemVariants}
-                whileHover={{ y: -10 }}
-                className="p-8 bg-white border border-[#FED7AA]/30 rounded-3xl shadow-2xl shadow-red-900/2 hover:shadow-red-900/5 transition-all duration-500 group relative"
-              >
-                <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-[#FED7AA]/20 to-transparent group-hover:via-[#EA580C]/40 transition-all" />
-                <div
-                  className={`w-16 h-16 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center mb-8 border border-black/5 shadow-inner transition-transform group-hover:scale-110`}
-                >
-                  <item.icon className="w-8 h-8" />
-                </div>
-                <h3 className="text-xl font-black text-[#1C0A00] mb-4 tracking-tight group-hover:text-[#DC2626] transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-[#78350F]/70 leading-relaxed font-bold italic">
-                  &ldquo;{item.desc}&rdquo;
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="p-12 sm:p-20 bg-white/5 border border-white/10 rounded-[3.5rem] text-white"
+            >
+              <h2 className="text-4xl font-black mb-12 tracking-tight">
+                Misi Utama.
+              </h2>
+              <div className="grid gap-10">
+                {[
+                  {
+                    title: "Navigasi Regulasi",
+                    desc: "Berperan aktif dalam membimbing klien melalui peraturan kehutanan yang kompleks.",
+                  },
+                  {
+                    title: "Kualitas Teknis",
+                    desc: "Menjamin setiap rekomendasi didasarkan pada analisis data teknis yang akurat.",
+                  },
+                  {
+                    title: "Efisiensi Birokrasi",
+                    desc: "Memastikan proses administrasi perizinan berjalan tepat waktu dan efektif.",
+                  },
+                  {
+                    title: "Keberlanjutan Alam",
+                    desc: "Mendorong operasional bisnis yang selaras dengan pelestarian hutan.",
+                  },
+                ].map((misi, i) => (
+                  <div key={misi.title} className="flex gap-6">
+                    <div className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center shrink-0">
+                      <span className="text-primary font-black">{i + 1}</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-secondary mb-2 uppercase tracking-wide">
+                        {misi.title}
+                      </h3>
+                      <p className="text-white/60 leading-relaxed">
+                        {misi.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Stats with Big Numbers */}
-      <section className="py-32 bg-[#1C0A00] text-white relative overflow-hidden shadow-2xl">
-        <div className="absolute inset-0 noise-bg opacity-15" />
-        <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
-        <div className="max-w-7xl mx-auto px-8 relative z-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-24 sm:gap-32 text-center">
-            {[
-              { value: "5+", label: "Years Exp" },
-              { value: `${siteStats.totalWorkers}+`, label: "Active Talent" },
-              { value: `${siteStats.totalSectors}`, label: "Sektor Bisnis" },
-              {
-                value: `${siteStats.totalCategories}`,
-                label: "Kategori Layanan",
-              },
-            ].map((stat, i) => (
+      {/* ==================== CORE VALUES ==================== */}
+      <section className="py-24 lg:py-40 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-24"
+          >
+            <span className="text-primary text-xs font-black uppercase tracking-[0.5em] mb-4 block">
+              Nilai Kami
+            </span>
+            <h2 className="text-4xl sm:text-6xl font-black text-gray-900 tracking-tight leading-none mb-8">
+              Pilar Integritas <br />
+              <span className="text-primary">PT RMR.</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-12 rounded-[3.5rem] bg-gray-50 border border-gray-100 hover:shadow-2xl transition-all group"
+            >
+              <div className="w-20 h-20 bg-primary/10 rounded-3xl flex items-center justify-center mx-auto mb-10 group-hover:scale-110 group-hover:bg-primary transition-all">
+                <ShieldCheck className="w-10 h-10 text-primary group-hover:text-white" />
+              </div>
+              <h3 className="text-3xl font-black text-gray-900 mb-6 tracking-tight">
+                RELIABLE
+              </h3>
+              <p className="text-gray-500 text-lg font-medium leading-relaxed">
+                Menjamin konsistensi kualitas layanan dan memberikan kepastian
+                hukum bagi setiap mitra yang bekerja sama dengan kami.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-12 rounded-[3.5rem] bg-gray-50 border border-gray-100 hover:shadow-2xl transition-all group"
+            >
+              <div className="w-20 h-20 bg-secondary/20 rounded-3xl flex items-center justify-center mx-auto mb-10 group-hover:scale-110 group-hover:bg-secondary transition-all">
+                <Award className="w-10 h-10 text-primary group-hover:text-primary" />
+              </div>
+              <h3 className="text-3xl font-black text-gray-900 mb-6 tracking-tight">
+                MASTERFUL
+              </h3>
+              <p className="text-gray-500 text-lg font-medium leading-relaxed">
+                Penguasaan mendalam atas aspek teknis dan rincian legalitas
+                kehutanan yang diperlukan untuk operasional bisnis skala besar.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== EXPERT TEAM ==================== */}
+      <section className="py-24 lg:py-40 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row items-end justify-between mb-24 gap-12">
+            <div className="max-w-2xl">
+              <span className="text-primary text-xs font-black uppercase tracking-[0.5em] mb-4 block">
+                Engineers & Experts
+              </span>
+              <h2 className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight leading-none mb-6">
+                Didukung Tenaga Ahli <br />
+                <span className="text-primary">Terverifikasi.</span>
+              </h2>
+              <p className="text-gray-500 text-lg font-medium leading-relaxed">
+                Kami menggabungkan pengalaman senior lebih dari 30 tahun dengan
+                tenaga teknis muda yang inovatif.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {experts.map((expert, i) => (
               <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.1, duration: 0.8 }}
+                key={expert.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
+                className="group p-8 bg-white rounded-[2.5rem] shadow-xl shadow-gray-200/50 hover:shadow-2xl transition-all border border-transparent hover:border-primary/10"
               >
-                <div className="text-5xl sm:text-8xl font-black text-[#EA580C] mb-6 tracking-tight leading-none">
-                  {stat.value}
+                <div className="relative w-24 h-24 rounded-2xl overflow-hidden mb-8 group-hover:rotate-6 transition-transform">
+                  <Image
+                    src={expert.avatar}
+                    alt={expert.name}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-                <div className="text-[10px] sm:text-xs font-black text-white/40 uppercase tracking-[0.5em] leading-loose">
-                  {stat.label}
+                <h4 className="text-xl font-black text-gray-900 mb-2 leading-tight tracking-tight">
+                  {expert.name}
+                </h4>
+                <div className="text-primary text-[10px] font-black uppercase tracking-widest mb-6">
+                  {expert.position}
+                </div>
+                <div className="py-4 border-t border-gray-100">
+                  <div className="flex justify-between text-xs font-bold text-gray-400 mb-2">
+                    <span>Pengalaman</span>
+                    <span className="text-gray-900">{expert.experience}</span>
+                  </div>
+                  <div className="flex justify-between text-xs font-bold text-gray-400">
+                    <span>Spesialisasi</span>
+                    <span className="text-gray-900">
+                      {expert.specialization}
+                    </span>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -425,5 +359,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-import LinkNext from "next/link";

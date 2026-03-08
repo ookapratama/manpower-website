@@ -5,35 +5,32 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #fff7f5;
-  --foreground: #1c0a00;
+  --background: #ffffff;
+  --foreground: #111827; /* Gray 900 */
   --card: #ffffff;
-  --card-foreground: #1c0a00;
+  --card-foreground: #111827;
   --popover: #ffffff;
-  --popover-foreground: #1c0a00;
-  --primary: #dc2626;
+  --popover-foreground: #111827;
+  --primary: #056839; /* RMR Logo Green */
   --primary-foreground: #ffffff;
-  --secondary: #78350f;
-  --secondary-foreground: #ffffff;
-  --muted: #fff1ee;
-  --muted-foreground: #78350f;
-  --accent: #ea580c;
+  --secondary: #facc15; /* Yellow/Gold accent */
+  --secondary-foreground: #111827;
+  --muted: #f3f4f6;
+  --muted-foreground: #4b5563;
+  --accent: #0d9488; /* Teal accent */
   --accent-foreground: #ffffff;
   --destructive: #991b1b;
   --destructive-foreground: #ffffff;
-  --border: #fed7aa;
-  --input: #fed7aa;
-  --ring: #dc2626;
-  --radius: 0.75rem;
-  --dark-bg: #1a0a00;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #056839;
+  --radius: 0.5rem;
 }
 
 @theme {
   --color-primary: var(--primary);
-  --color-primary-dark: var(--primary-dark);
-  --color-accent: var(--accent);
   --color-secondary: var(--secondary);
-  --color-dark-bg: var(--dark-bg);
+  --color-accent: var(--accent);
 }
 
 body {
@@ -72,119 +69,31 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #fed7aa;
+  background: #d1d5db;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #f97316;
+  background: #056839;
 }
 
 /* Utilities */
 .text-gradient {
-  background: linear-gradient(to right, #dc2626, #ea580c, #f97316);
+  background: linear-gradient(to right, #056839, #0d9488);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.bg-grid {
-  background-image:
-    linear-gradient(to right, #78350f10 1px, transparent 1px),
-    linear-gradient(to bottom, #78350f10 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
 .bg-glass {
-  background: rgba(26, 10, 0, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.hero-glow {
-  position: absolute;
-  width: 1000px;
-  height: 1000px;
-  background: radial-gradient(
-    circle,
-    rgba(220, 38, 38, 0.05) 0%,
-    transparent 70%
-  );
-  z-index: -1;
-}
-
-.noise-bg {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3仿真%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  opacity: 0.03;
-}
-
-@theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-}
-
-.dark {
-  --background: #1a0a00;
-  --foreground: #fff7f5;
-  --card: #2d1200;
-  --card-foreground: #fff7f5;
-  --popover: #2d1200;
-  --popover-foreground: #fff7f5;
-  --primary: #dc2626;
-  --primary-foreground: #ffffff;
-  --secondary: #ea580c;
-  --secondary-foreground: #ffffff;
-  --muted: #2d1200;
-  --muted-foreground: #fed7aa;
-  --accent: #ea580c;
-  --accent-foreground: #ffffff;
-  --destructive: #991b1b;
-  --destructive-foreground: #ffffff;
-  --border: rgba(255, 255, 255, 0.1);
-  --input: rgba(255, 255, 255, 0.1);
-  --ring: #dc2626;
-  --chart-1: #dc2626;
-  --chart-2: #ea580c;
-  --chart-3: #f97316;
-  --chart-4: #fb923c;
-  --chart-5: #fdba74;
+.hero-gradient {
+  background: linear-gradient(135deg, #056839 0%, #064e3b 100%);
 }
 
 @layer base {
