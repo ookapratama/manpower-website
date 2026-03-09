@@ -20,7 +20,7 @@ import {
   Clock,
 } from "lucide-react";
 import React from "react";
-import { experts, siteStats } from "@/lib/dummy-data";
+import { experts, siteStats, organizationData } from "@/lib/dummy-data";
 
 export default function AboutPage() {
   const containerVariants = {
@@ -64,8 +64,8 @@ export default function AboutPage() {
             </h1>
 
             <p className="text-lg sm:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed font-medium tracking-tight">
-              Mitra strategis dan konsultan ahli dalam perizinan Persetujuan
-              Penggunaan Kawasan Hutan (PPKH) di Indonesia.
+              Mitra strategis dan konsultan ahli dalam bidang perizinan
+              kehutanan dan lingkungan di Indonesia.
             </p>
           </motion.div>
         </div>
@@ -117,7 +117,7 @@ export default function AboutPage() {
                     { label: "NIB", value: "0403260056576" },
                     {
                       label: "Izin Usaha",
-                      value: "Persetujuan Penggunaan Kawasan Hutan (PPKH)",
+                      value: "Kehutanan & Lingkungan Hidup",
                     },
                     { label: "Domisili", value: "Makassar, Sulawesi Selatan" },
                   ].map((info) => (
@@ -162,6 +162,67 @@ export default function AboutPage() {
                 </div>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== STRUKTUR ORGANISASI ==================== */}
+      <section className="py-24 lg:py-40 bg-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-24">
+            <span className="text-primary text-xs font-black uppercase tracking-[0.5em] mb-4 block">
+              Leadership & Team
+            </span>
+            <h2 className="text-4xl sm:text-6xl font-black text-gray-900 tracking-tight leading-none">
+              Struktur Organisasi <br />
+              <span className="text-primary">PT RMR Energi Indonesia.</span>
+            </h2>
+          </div>
+
+          <div className="flex flex-col items-center">
+            {/* Top Level: Direksi */}
+            <div className="grid sm:grid-cols-2 gap-8 mb-20">
+              {[
+                organizationData.direkturUtama,
+                organizationData.direkturOperasional,
+              ].map((dir, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-primary p-10 rounded-[2.5rem] text-white text-center shadow-2xl min-w-[300px]"
+                >
+                  <div className="text-secondary text-[10px] font-black uppercase tracking-widest mb-3">
+                    {dir.role}
+                  </div>
+                  <div className="text-2xl font-black tracking-tight">
+                    {dir.name}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Middle Level: Management & Engineers */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+              {organizationData.management.map((m, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                  className="bg-gray-50 border border-gray-100 p-8 rounded-3xl text-center hover:bg-white hover:shadow-xl transition-all group"
+                >
+                  <div className="text-primary text-[9px] font-black uppercase tracking-widest mb-2 group-hover:scale-110 transition-transform">
+                    {m.role}
+                  </div>
+                  <div className="text-lg font-black text-gray-900 leading-tight">
+                    {m.name}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -303,20 +364,20 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row items-end justify-between mb-24 gap-12">
             <div className="max-w-2xl">
               <span className="text-primary text-xs font-black uppercase tracking-[0.5em] mb-4 block">
-                Engineers & Experts
+                Expert Team
               </span>
               <h2 className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight leading-none mb-6">
                 Didukung Tenaga Ahli <br />
                 <span className="text-primary">Terverifikasi.</span>
               </h2>
               <p className="text-gray-500 text-lg font-medium leading-relaxed">
-                Kami menggabungkan pengalaman senior lebih dari 30 tahun dengan
-                tenaga teknis muda yang inovatif.
+                Kami menggabungkan pengalaman senior hingga lebih dari 30 tahun
+                dengan spesialisasi multidisiplin.
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {experts.map((expert, i) => (
               <motion.div
                 key={expert.id}
@@ -324,7 +385,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="group p-8 bg-white rounded-[2.5rem] shadow-xl shadow-gray-200/50 hover:shadow-2xl transition-all border border-transparent hover:border-primary/10"
+                className="group p-8 bg-white rounded-[2.5rem] shadow-xl shadow-gray-200/50 hover:shadow-2xl transition-all border border-transparent hover:border-primary/10 flex flex-col"
               >
                 <div className="relative w-28 h-28 rounded-3xl overflow-hidden mb-10 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 shadow-lg">
                   <Image

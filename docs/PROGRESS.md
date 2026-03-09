@@ -1,6 +1,6 @@
 # Progress Tracker — PT RMR Energi Indonesia Website
 
-> Diperbarui: 2026-03-04 19:30 WITA
+> Diperbarui: 2026-03-09 15:45 WITA
 > Proyek: Company Profile Website for PT RMR Energi Indonesia (Pivoted from ManPower Supply)
 
 ## Status: Fase 1 — Company Profile Redesign (Frontend MVP)
@@ -17,17 +17,21 @@
 - [x] Update Typography: Menggunakan font profesional (Inter/Sans-serif).
 - [x] Update Assets: Integrasi gambar bertema kehutanan, lingkungan, dan energi dari Unsplash.
 
-#### 📊 Data Foundation
+#### 📊 Data Foundation (Updated Mar 2026)
 
-- [x] Extract Content: Mengambil data dari Company Profile PDF (Tagline, Visi/Misi, Layanan KBLI, Proyek, Tim Ahli).
+- [x] Extract Content: Mengintegrasikan data terbaru dari **Company Profile PDF (Update Maret 2026)**.
+- [x] Bulk Update Experts: Menambahkan seluruh 12 anggota tim ahli (Expert Team) dengan pengalaman 30+ tahun.
+- [x] Bulk Update Projects: Menambahkan proyek terbaru (RKAB Kalla Arebamma, Baseline Malili, dll).
+- [x] Generalized Terminology: Mengubah seluruh penyebutan spesifik "PPKH" menjadi "**Perizinan Kehutanan & Lingkungan**" sesuai arahan Direksi.
 - [x] Update `types/index.ts`: Definisi tipe data baru (`ServiceItem`, `Project`, `Expert`, `Partner`).
-- [x] Update `lib/dummy-data.ts`: Mengisi data asli PT RMR (3 Layanan Utama, 5+ Proyek Unggulan, 4 Tenaga Ahli Senior).
+- [x] Update `lib/dummy-data.ts`: Mengisi data asli PT RMR (3 Layanan Utama, 6+ Proyek Unggulan, 12 Tenaga Ahli).
 
 #### 🛠️ Core UI Components
 
-- [x] Navbar: Desain ulang logo (RMR style), link navigasi (Beranda, Layanan, Proyek, Tentang Kami, Kontak), dan penanganan state scroll.
+- [x] Navbar: Desain ulang logo (RMR style), link navigasi, dan penanganan state scroll.
 - [x] Footer: Redesign total dengan info kontak RMR, link layanan kehutanan, dan legalitas (NIB).
-- [x] Komponen UI: Update visual di seluruh halaman untuk konsistensi branding.
+- [x] **Project Detail Page**: Dynamic route `[id]` dengan deep project insights (Case Study style).
+- [x] **Organization Structure**: Penambahan visual struktur organisasi di halaman Tentang Kami.
 
 #### 📄 App Pages (Redesign)
 
@@ -36,40 +40,33 @@
 
 ## 📁 Recent Activity Log
 
-### Redesign Phase (PT RMR Energi Indonesia)
+### Bulk Update Content (Mar 2026)
 
-- **[DONE]** Home Page: Full redesign with high-end premium aesthetics.
-- **[DONE]** About Page: Vision, Mission, Legality (NIB), and Experts.
-- **[DONE]** Services Page: Dynamic layout with KBLI code integration.
-- **[DONE]** Projects Page: Portfolio grid with status filtering.
-- **[DONE]** **Project Detail Page**: Dynamic route `[id]` with deep project insights.
-- **[DONE]** **Navbar Accessibility**: Fixed text contrast on light/dark hero sections.
-- **[DONE]** **Expert UI/UX**: Improved expert card spacing and readability.
+- **[DONE]** Home Page: Generalize PPKH terminology and update lead metrics.
+- **[DONE]** About Page: **New "Struktur Organisasi" section** with hierarchical layout for Direksi and Management.
+- **[DONE]** About Page: Expanded Expert Team grid to accommodate 12 members with detailed specialization icons.
+- **[DONE]** Services Page: Generalized terminology and updated KBLI descriptions.
+- **[DONE]** Projects Page: Updated portfolio with latest projects (RKAB, Baseline, etc) and generalized filters.
+- **[DONE]** Dummy Data: Refined project descriptions and scopes based on latest PDF.
+
+### Redesign Phase
+
+- **[DONE]** Project Detail Page: Dynamic route `[id]` with high-end statistics sidebar.
+- **[DONE]** Navbar Accessibility: Fixed text contrast on light/dark hero sections.
+- **[DONE]** Expert UI/UX: Improved expert card spacing and readability.
 - **[DONE]** Contact Page: Form with WhatsApp and branch office locations.
-- **[DONE]** **Build Bugfix**: Fixed `globals.css` and type errors for successful deployment.
 
 ### Development Status
 
-- **CI/CD**: Build passing on Vercel.
-- **Next.js Version**: 16.1.6 (Turbopack).
+- **CI/CD**: Build passing synchronously.
+- **Next.js Version**: 16.1.6.
 - **Tailwind Version**: v4.0.0.
 
 ## 🚀 Future Enhancements
 
 1. Add more project case studies from PDF.
 2. Integrate backend for dynamic contact submissions.
-3. Optimize images using Next/Image and Sharp.
-
-- [x] Hapus route lama: `/workers` dan `/categories` (tidak relevan lagi).
-- [x] Cleanup Code: Menghapus data dummy outsourcing lama.
-
----
-
-### 🔄 SEDANG DIKERJAKAN
-
-- [ ] Polishing Visual: Menambahkan micro-animations (Framer Motion) di halaman Services & Projects.
-- [ ] SEO Optimization: Update metadata (title/description) di setiap halaman baru sesuai keyword RMR & PPKH.
-- [ ] Responsive Testing: Memastikan tampilan premium di Mobile (Small screens).
+3. SEO Content audit for "Perizinan Kehutanan Makassar".
 
 ---
 
@@ -77,13 +74,11 @@
 
 #### 🚀 Fitur Lanjutan
 
-- [ ] Detail Project Page: Halaman khusus untuk setiap riwayat proyek (Case Study).
-- [ ] Detail Service Page: Penjelasan mendalam per jenis izin PPKH.
-- [ ] Integration: (Opsional) Form kontak terintegrasi dengan email/database.
+- [ ] Interactive Map: Visualisasi sebaran proyek RMR di seluruh Indonesia.
+- [ ] Detail NGO Collaborations: Halaman khusus kerja sama lingkungan (Biodiversitas).
 
 #### ⚙️ Backend (TBD - Jika Diperlukan)
 
-- [ ] Migrasi database untuk Master Project & Expert Team.
 - [ ] Admin Dashboard (Filament/Laravel) untuk update portofolio secara dinamis.
 
 ---
@@ -92,23 +87,11 @@
 
 ```
 manPower_supply/
-├── docs/                  ← Dokumentasi (PROGRESS, ADR, Progress Tracker)
+├── docs/                  ← Dokumentasi (PROGRESS, COMPANY PROFILE PDF)
 ├── frontend/              ← Website Publik (Next.js)
 │   ├── src/
 │   │   ├── app/           ← Pages (Beranda, Layanan, Proyek, Tentang, Kontak)
 │   │   ├── components/    ← Navbar, Footer, UI Elements
 │   │   ├── lib/           ← Dummy Data RMR & Utils
 │   │   └── types/         ← RMR Type Definitions
-└── base-laravel/          ← (Opsional) Backend Laravel
-```
-
----
-
-## Cara Menjalankan
-
-```bash
-# Frontend (Next.js)
-cd frontend
-npm install
-npm run dev    # → http://localhost:3000
 ```

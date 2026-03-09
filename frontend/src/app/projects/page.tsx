@@ -54,7 +54,7 @@ export default function ProjectsPage() {
 
             <p className="text-lg sm:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-medium tracking-tight">
               Rekam jejak keberhasilan kami dalam penyusunan dokumen teknis dan
-              pengurusan perizinan kawasan hutan di seluruh Indonesia.
+              perizinan kehutanan serta lingkungan di seluruh Indonesia.
             </p>
           </motion.div>
         </div>
@@ -67,7 +67,7 @@ export default function ProjectsPage() {
           <div className="flex flex-wrap items-center justify-center gap-4 mb-24">
             {[
               "Semua Proyek",
-              "Perizinan PPKH",
+              "Perizinan Kehutanan",
               "Perencanaan Kehutanan",
               "Studi Lingkungan",
             ].map((tab, i) => (

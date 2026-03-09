@@ -71,7 +71,7 @@ export default function HomePage() {
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-secondary"></span>
               </span>
               <span className="text-white text-xs font-bold tracking-widest uppercase">
-                Konsultan Ahli Perizinan PPKH
+                Konsultan Perizinan Kehutanan & Lingkungan
               </span>
             </div>
 

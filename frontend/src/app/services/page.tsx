@@ -51,7 +51,7 @@ export default function ServicesPage() {
           >
             <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-primary/5 border border-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.4em] mb-10">
               <Briefcase className="w-4 h-4" />
-              Solusi Perizinan & Konsultan Kehutanan
+              Perizinan Kehutanan & Lingkungan
             </div>
 
             <h1 className="text-5xl sm:text-7xl font-black text-gray-900 tracking-tight leading-none mb-8">
