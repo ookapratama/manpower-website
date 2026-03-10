@@ -63,11 +63,14 @@ export default function Footer() {
             </h4>
             <ul className="space-y-6">
               {[
-                { label: "Penggunaan Kawasan Hutan", href: "/services" },
-                { label: "Perlindungan & Konservasi", href: "/services" },
-                { label: "Perencanaan Kehutanan", href: "/services" },
-                { label: "Izin PPKH IPPKH", href: "/services" },
-                { label: "Studi Teknis Lingkungan", href: "/services" },
+                { label: "Pembukaan Kawasan Hutan", href: "/services" },
+                {
+                  label: "Perizinan Kehutanan & Lingkungan",
+                  href: "/services",
+                },
+                { label: "Perencanaan & Konsultansi", href: "/services" },
+                { label: "Studi AMDAL & RKL-RPL", href: "/services" },
+                { label: "Pemetaan GIS & Citra Satelit", href: "/services" },
               ].map((item) => (
                 <li key={item.label}>
                   <Link

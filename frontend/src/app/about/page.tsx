@@ -247,7 +247,8 @@ export default function AboutPage() {
               <p className="text-xl sm:text-2xl leading-relaxed font-medium text-white/90 italic">
                 &ldquo;Menjadi mitra strategis terdepan di Indonesia dalam
                 penyediaan solusi perizinan kawasan hutan yang terpercaya,
-                akurat, dan berkelanjutan.&rdquo;
+                akurat, dan berkelanjutan guna mendukung percepatan investasi
+                nasional yang berwawasan lingkungan.&rdquo;
               </p>
             </motion.div>
 
@@ -265,19 +266,15 @@ export default function AboutPage() {
                 {[
                   {
                     title: "Navigasi Regulasi",
-                    desc: "Berperan aktif dalam membimbing klien melalui peraturan kehutanan yang kompleks.",
+                    desc: "Pendampingan profesional dalam perizinan kehutanan dan lingkungan dengan pemahaman mendalam terhadap dinamika regulasi terbaru.",
                   },
                   {
                     title: "Kualitas Teknis",
-                    desc: "Menjamin setiap rekomendasi didasarkan pada analisis data teknis yang akurat.",
+                    desc: "Penyelenggaraan jasa inventarisasi dan pemetaan hutan dengan standar akurasi tinggi untuk menunjang percepatan investasi.",
                   },
                   {
                     title: "Efisiensi Birokrasi",
-                    desc: "Memastikan proses administrasi perizinan berjalan tepat waktu dan efektif.",
-                  },
-                  {
-                    title: "Keberlanjutan Alam",
-                    desc: "Mendorong operasional bisnis yang selaras dengan pelestarian hutan.",
+                    desc: "Mengoptimalkan proses perizinan melalui koordinasi efektif dengan instansi terkait guna menjamin ketepatan waktu.",
                   },
                 ].map((misi, i) => (
                   <div key={misi.title} className="flex gap-6">
@@ -354,87 +351,6 @@ export default function AboutPage() {
                 kehutanan yang diperlukan untuk operasional bisnis skala besar.
               </p>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ==================== EXPERT TEAM ==================== */}
-      <section className="py-24 lg:py-40 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-end justify-between mb-24 gap-12">
-            <div className="max-w-2xl">
-              <span className="text-primary text-xs font-black uppercase tracking-[0.5em] mb-4 block">
-                Expert Team
-              </span>
-              <h2 className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight leading-none mb-6">
-                Didukung Tenaga Ahli <br />
-                <span className="text-primary">Terverifikasi.</span>
-              </h2>
-              <p className="text-gray-500 text-lg font-medium leading-relaxed">
-                Kami menggabungkan pengalaman senior hingga lebih dari 30 tahun
-                dengan spesialisasi multidisiplin.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {experts.map((expert, i) => (
-              <motion.div
-                key={expert.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className="group p-8 bg-white rounded-[2.5rem] shadow-xl shadow-gray-200/50 hover:shadow-2xl transition-all border border-transparent hover:border-primary/10 flex flex-col"
-              >
-                <div className="relative w-28 h-28 rounded-3xl overflow-hidden mb-10 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 shadow-lg">
-                  <Image
-                    src={expert.avatar}
-                    alt={expert.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="flex flex-col grow">
-                  <h4 className="text-2xl font-black text-gray-900 mb-2 leading-[1.1] tracking-tight group-hover:text-primary transition-colors">
-                    {expert.name}
-                  </h4>
-                  <div className="text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-10">
-                    {expert.position}
-                  </div>
-
-                  <div className="mt-auto pt-8 border-t border-gray-100 flex flex-col gap-5">
-                    <div className="flex items-center gap-4 group/item">
-                      <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center text-gray-400 group-hover/item:text-primary group-hover/item:bg-primary/10 transition-colors">
-                        <Clock className="w-4 h-4" />
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">
-                          Pengalaman
-                        </span>
-                        <span className="text-xs font-black text-gray-900 leading-none">
-                          {expert.experience}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-4 group/item">
-                      <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center text-gray-400 group-hover/item:text-primary group-hover/item:bg-primary/10 transition-colors">
-                        <Zap className="w-4 h-4" />
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">
-                          Spesialisasi
-                        </span>
-                        <span className="text-xs font-black text-gray-900 leading-none">
-                          {expert.specialization}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>

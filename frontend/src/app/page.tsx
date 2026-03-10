@@ -106,18 +106,13 @@ export default function HomePage() {
         </div>
 
         {/* Floating Quick Stats */}
-        <div className="absolute bottom-0 right-0 left-0 lg:left-auto bg-white/5 backdrop-blur-xl border-t lg:border-l border-white/10 py-12 px-8 lg:px-16 lg:w-[40%] z-20">
-          <div className="grid grid-cols-2 gap-12">
+        <div className="absolute bottom-0 right-0 left-0 lg:left-auto bg-white/5 backdrop-blur-xl border-t lg:border-l border-white/10 py-12 px-8 lg:px-16 lg:w-[45%] z-20">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
             {[
               {
                 value: siteStats.totalProjects,
                 label: "Proyek Selesai",
                 icon: CheckCircle2,
-              },
-              {
-                value: siteStats.expertMembers,
-                label: "Tenaga Ahli",
-                icon: Award,
               },
               {
                 value: siteStats.yearsExperience,
@@ -175,7 +170,7 @@ export default function HomePage() {
               <div className="absolute -bottom-10 -right-10 bg-primary p-12 rounded-[2.5rem] shadow-2xl hidden sm:block">
                 <div className="flex flex-col">
                   <span className="text-5xl font-black text-white leading-none">
-                    8+
+                    {siteStats.yearsExperience}+
                   </span>
                   <span className="text-xs font-bold text-white/60 uppercase tracking-widest mt-2">
                     Tahun Berkarya
